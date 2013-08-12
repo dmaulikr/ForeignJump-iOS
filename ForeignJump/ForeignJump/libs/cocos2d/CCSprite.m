@@ -73,6 +73,16 @@
 @synthesize offsetPosition = _offsetPosition;
 
 
+-(CGFloat) width
+{
+    return [self boundingBox].size.width;
+}
+
+-(CGFloat) height
+{
+    return [self boundingBox].size.height;
+}
+
 +(id)spriteWithTexture:(CCTexture2D*)texture
 {
 	return [[[self alloc] initWithTexture:texture] autorelease];

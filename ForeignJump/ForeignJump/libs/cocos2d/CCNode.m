@@ -778,9 +778,20 @@ static NSUInteger globalOrderOfArrival = 1;
 {
 	[_scheduler unscheduleAllForTarget:self];
 }
+
 - (void) resumeSchedulerAndActions
 {
 	[_scheduler resumeTarget:self];
+	[_actionManager resumeTarget:self];
+}
+
+- (void) resumeScheduler
+{
+	[_scheduler resumeTarget:self];
+}
+
+- (void) resumeActions
+{
 	[_actionManager resumeTarget:self];
 }
 
@@ -789,6 +800,17 @@ static NSUInteger globalOrderOfArrival = 1;
 	[_scheduler pauseTarget:self];
 	[_actionManager pauseTarget:self];
 }
+
+- (void) pauseScheduler
+{
+	[_scheduler pauseTarget:self];
+}
+
+- (void) pauseActions
+{
+	[_actionManager pauseTarget:self];
+}
+
 
 /* override me */
 -(void) update:(ccTime)delta

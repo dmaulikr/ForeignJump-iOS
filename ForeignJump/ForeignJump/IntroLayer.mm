@@ -2,22 +2,21 @@
 //  IntroLayer.m
 //  ForeignJump
 //
-//  Created by Francis Visoiu Mistrih on 12/08/13.
+//  Created by Francis Visoiu Mistrih on 25/07/13.
 //  Copyright Epimac 2013. All rights reserved.
 //
 
 
 // Import the interfaces
 #import "IntroLayer.h"
-#import "HelloWorldLayer.h"
-
+#import "InGame.h"
 
 #pragma mark - IntroLayer
 
-// HelloWorldLayer implementation
+// InGame implementation
 @implementation IntroLayer
 
-// Helper class method that creates a Scene with the HelloWorldLayer as the only child.
+// Helper class method that creates a Scene with the InGame as the only child.
 +(CCScene *) scene
 {
 	// 'scene' is an autorelease object.
@@ -61,6 +60,6 @@
 -(void) onEnter
 {
 	[super onEnter];
-	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene] ]];
+	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[InGame scene] ]];
 }
 @end

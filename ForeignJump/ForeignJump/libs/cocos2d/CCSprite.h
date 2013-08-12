@@ -145,6 +145,14 @@
 
 #pragma mark CCSprite - Initializers
 
+//get the width of a sprite
+
+-(CGFloat) width;
+
+//get the height of a sprite
+
+-(CGFloat) height;
+
 /** Creates an sprite with a texture.
  The rect used will be the size of the texture.
  The offset will be (0,0).

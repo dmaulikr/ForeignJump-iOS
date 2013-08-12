@@ -536,7 +536,17 @@ enum {
 /** pauses all scheduled selectors and actions.
  Called internally by onExit
  */
+
 -(void) pauseSchedulerAndActions;
+
+//added by thegameg
+-(void) resumeScheduler;
+
+-(void) resumeActions;
+
+-(void) pauseScheduler;
+
+-(void) pauseActions;
 
 /* Update will be called automatically every frame if "scheduleUpdate" is called, and the node is "live"
  */
