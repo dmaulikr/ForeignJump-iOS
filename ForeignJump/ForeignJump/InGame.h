@@ -10,10 +10,12 @@
 #import <GameKit/GameKit.h>
 
 // When you import this file, you import all the cocos2d classes
+#import "cocos2d.h"
 #import "GLES-Render.h"
 #import "Hero.h"
-#import "cocos2d.h"
+#import "Ennemi.h"
 #import "Background.h"
+#import "HUD.h"
 #import "Map.h"
 #import "ContactListener.h"
 
@@ -28,12 +30,17 @@
 {
 	GLESDebugDraw *m_debugDraw;		// strong ref
     Hero* hero; //the main hero
+    Ennemi* ennemi;
     b2World* world;
     ContactListener *contactListener; //detect coin collision
 }
 
 @property (nonatomic, assign) Hero* hero;
+@property (nonatomic, assign) Ennemi* ennemi;
 
 // returns a CCScene that contains the InGame as the only child
 +(CCScene *) scene;
+
++(int) getScore;
++(void) scorePlusPlus;
 @end

@@ -1,5 +1,5 @@
 //
-//  Hero.h
+//  Ennemi.h
 //  ForeignJump
 //
 //  Created by Francis Visoiu Mistrih on 29/07/13.
@@ -11,7 +11,7 @@
 #import "Box2D.h"
 #import "Tile.h"
 
-@interface Hero : CCNode {
+@interface Ennemi : CCNode {
     CCSprite * texture;
     CGPoint position;
     b2Body* body;

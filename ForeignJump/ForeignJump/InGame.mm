@@ -28,9 +28,19 @@ static const float gravityconst = 28;
 }
 
 Map *map;
-Background *background;
 
-@synthesize hero;
+@synthesize hero = hero;
+@synthesize ennemi = ennemi;
+
+static int score;
+
++(int) getScore {
+    return score;
+}
+
++(void) scorePlusPlus {
+    score++;
+}
 
 +(CCScene *) scene
 {
@@ -38,7 +48,7 @@ Background *background;
 	CCScene *scene = [CCScene node];
 	
     // add background layer
-    background = [Background node];
+    Background *background = [Background node];
     [scene addChild: background z: 0];
     
     // add map layer
@@ -47,6 +57,9 @@ Background *background;
 	// add game layer
 	InGame *layer = [InGame node];
 	[scene addChild: layer z:2];
+    
+    HUD* hud = [HUD node];
+    [scene addChild:hud z: 3];
 	
 	// return the scene
 	return scene;
@@ -60,10 +73,16 @@ Background *background;
         
         worldSize = CGSizeMake(25 * mapCols, 25 * mapRows);
         
+        score = 0;
+        
         //init hero
         hero = [[Hero alloc] init];
         [self addChild:hero];
         //end init hero
+        
+        //init ennemi
+        ennemi = [[Ennemi alloc] init];
+        [self addChild:ennemi];
         
         //init physics
         [self initPhysics];
@@ -78,16 +97,20 @@ Background *background;
         //init map
         [self initMap];
         
-        [self runAction: [CCFollow actionWithTarget:hero.sprite worldBoundary:CGRectMake(0, 0, worldSize.width, 290)]];
-	}
+        [self runAction: [CCFollow actionWithTarget:hero.texture worldBoundary:CGRectMake(0, 0, worldSize.width, 290)]];
+        
+}
 	return self;
 }
 
 -(void) dealloc {
+    
 	delete world;
 	world = NULL;
     
     hero.body = NULL;
+    
+    ennemi.body = NULL;
     
     delete contactListener;
     
@@ -102,10 +125,14 @@ Background *background;
     [self createWorld:gravityconst]; //create the world
     
     [hero initPhysics:world]; //init hero's body
+
+    [ennemi initPhysics:world]; //init ennemy's body
     
+    [self initScreenEdges];
+
     //setup contactlistener
-//    contactListener = new ContactListener();
-  //  world->SetContactListener(contactListener);
+    contactListener = new ContactListener();
+    world->SetContactListener(contactListener);
 }
 
 -(void) draw
@@ -132,15 +159,13 @@ Background *background;
     uint32 flags = 0;
     flags += GLESDebugDraw::e_shapeBit;
     m_debugDraw->SetFlags(flags);
-    
 }
-
 
 -(void) initMap {
     
 #define GetFullPath(_filePath_) [[NSBundle mainBundle] pathForResource:[_filePath_ lastPathComponent] ofType:nil inDirectory:[_filePath_ stringByDeletingLastPathComponent]]
     
-    [map initWithFile:GetFullPath(@"map.txt")];
+    [map initWithFile:GetFullPath(@"Map/map.txt")];
     [map loadMap:world];
 
     [self addChild: map z: 1];
@@ -151,10 +176,31 @@ Background *background;
     b2Vec2 gravity = b2Vec2(0.0f, -intensity);
     world = new b2World(gravity);
     world->SetAllowSleeping(NO);
+    world->SetContinuousPhysics(TRUE);
+}
+
+- (void) initScreenEdges {
+    // Create edges around the entire screen
+	b2BodyDef groundBodyDef;
+	groundBodyDef.position.Set(0,0);
+    
+	b2Body *groundBody = world->CreateBody(&groundBodyDef);
+	b2EdgeShape groundEdge;
+	b2FixtureDef boxShapeDef;
+	boxShapeDef.shape = &groundEdge;
+    
+    //left edge
+    groundEdge.Set(b2Vec2(0,0), b2Vec2(0,size.height/PTM_RATIO));
+    groundBody->CreateFixture(&boxShapeDef);
+    
+    //top edge
+    groundEdge.Set(b2Vec2(0, size.height/PTM_RATIO),
+                   b2Vec2(size.width/PTM_RATIO, size.height/PTM_RATIO));
+    groundBody->CreateFixture(&boxShapeDef);
 }
 
 -(void) update: (ccTime) delta {
-   
+    NSLog(@"%i", score);
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {

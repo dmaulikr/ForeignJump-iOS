@@ -13,8 +13,6 @@
     b2World* world;
 }
 
-#define PTM_RATIO 32
-
 -(id) initWithFile:(NSString*)file {
     
     if( (self=[super init])) {
@@ -29,8 +27,6 @@
 
 -(void) loadMap:(b2World*)world_ {
     CGSize size = [[CCDirector sharedDirector] winSize];
-    
-    pieces = [[[CCArray alloc ] init ] autorelease ];
     
     world = world_;
     
@@ -56,7 +52,7 @@
                 {
                     [object initWithSpriteFile:@"piece.png" andType:Piece atPosition:ccp(i*25,size.height - j*25) andWorld:world];
                     [self addChild:object.texture];
-                    //[pieces addObject:object];
+                    //[coins addObject:object];
                     break;
                 }
                 default:

@@ -35,17 +35,20 @@
         case Terre:
         {
             [self createPhysicsTerre];
+            texture.tag = 1;
             break;
         }
         
         case Piece:
         {
-            [self createPhysicsPiece];
+            [self createPhysicsCoin];
+            texture.tag = 5;
             break;
         }
             
         default:
         {
+            texture.tag = 4;
             break;
         }
     }
@@ -57,7 +60,8 @@
     blockBodyDef.type = b2_staticBody;
     blockBodyDef.position.Set(position.x/PTM_RATIO, position.y/PTM_RATIO);
     blockBodyDef.userData = texture;
-    b2Body *blockBody = world ->CreateBody(&blockBodyDef);
+    b2Body *body = world ->CreateBody(&blockBodyDef);
+    
     
     // Create block shape
     b2PolygonShape blockShape;
@@ -69,16 +73,16 @@
     blockShapeDef.shape = &blockShape;
     blockShapeDef.friction = 0.0f;
     blockShapeDef.restitution = 0.01f;
-    blockBody->CreateFixture(&blockShapeDef);
+    body->CreateFixture(&blockShapeDef);
 }
 
--(void) createPhysicsPiece {
+-(void) createPhysicsCoin {
     //create body
     b2BodyDef spriteBodyDef;
     spriteBodyDef.type = b2_staticBody;
     spriteBodyDef.position.Set(position.x/PTM_RATIO, position.y/PTM_RATIO);
     spriteBodyDef.userData = texture;
-    b2Body *spriteBody = world ->CreateBody(&spriteBodyDef);
+    b2Body *body = world ->CreateBody(&spriteBodyDef);
     
     //create circular shape
     b2CircleShape spriteShape;
@@ -88,7 +92,7 @@
     b2FixtureDef spriteShapeDef;
     spriteShapeDef.shape = &spriteShape;
     spriteShapeDef.isSensor = true;
-    spriteBody->CreateFixture(&spriteShapeDef);
+    body->CreateFixture(&spriteShapeDef);
 }
 
 @end

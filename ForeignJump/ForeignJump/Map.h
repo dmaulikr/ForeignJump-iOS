@@ -10,11 +10,9 @@
 #import "Tile.h"
 
 @interface Map : CCLayer
-{
-    CCArray* pieces;
-}
 
 -(id) initWithFile:(NSString*)file;
 -(void) loadMap:(b2World*)world;
 
 @end
+ 

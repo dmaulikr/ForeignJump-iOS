@@ -1,18 +1,17 @@
 //
-//  Hero.m
+//  ennemi.m
 //  ForeignJump
 //
 //  Created by Francis Visoiu Mistrih on 29/07/13.
 //  Copyright (c) 2013 Epimac. All rights reserved.
 //
 
-#import "Hero.h"
-#import "Box2D.h"
+#import "Ennemi.h"
 
 static const float densityconst = 1.85f;
 static const float velocityx = 4;
 
-@implementation Hero {
+@implementation Ennemi {
     BOOL animate;
     CCAction *walkAction;
     float delta;
@@ -31,7 +30,7 @@ static const float velocityx = 4;
     {
         [self initWithPosition:ccp(10,280)];
         
-        CCSpriteBatchNode* spriteSheet = [self initWithPlist:@"hero.plist" andTexture:@"hero.png"];
+        CCSpriteBatchNode* spriteSheet = [self initWithPlist:@"ennemi.plist" andTexture:@"ennemi.png"];
         
         [self addChild:spriteSheet];
         
@@ -47,7 +46,7 @@ static const float velocityx = 4;
     
     animate = YES;
     
-    type = HeroType;
+    type = EnnemiType;
     
     return self;
 }
@@ -86,12 +85,12 @@ static const float velocityx = 4;
 {
     world_ = world;
     
-    // Create hero body and shape
-    b2BodyDef heroBodyDef;
-    heroBodyDef.fixedRotation = true;
-    heroBodyDef.type = b2_dynamicBody;
-    heroBodyDef.position.Set(position.x/PTM_RATIO, position.y/PTM_RATIO);
-    body = world_->CreateBody(&heroBodyDef);
+    // Create ennemi body and shape
+    b2BodyDef ennemiBodyDef;
+    ennemiBodyDef.fixedRotation = true;
+    ennemiBodyDef.type = b2_dynamicBody;
+    ennemiBodyDef.position.Set(position.x/PTM_RATIO, position.y/PTM_RATIO);
+    body = world_->CreateBody(&ennemiBodyDef);
     body->SetUserData(texture);
     
     b2PolygonShape shape;
@@ -116,7 +115,7 @@ static const float velocityx = 4;
         b2Vec2(17.0f / PTM_RATIO , 17.500 /PTM_RATIO)
     };
     shape2.Set(vertices2,num2);
-
+    
     
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &shape;
@@ -124,14 +123,14 @@ static const float velocityx = 4;
     b2FixtureDef fixtureDef2;
     fixtureDef2.shape = &shape2;
     
-    b2FixtureDef heroShapeDef;
-    heroShapeDef.shape = &shape;
-    heroShapeDef.density = densityconst;
-    body->CreateFixture(&heroShapeDef);
+    b2FixtureDef ennemiShapeDef;
+    ennemiShapeDef.shape = &shape;
+    ennemiShapeDef.density = densityconst;
+    body->CreateFixture(&ennemiShapeDef);
     
-    b2FixtureDef heroShapeDef2;
-    heroShapeDef2.shape = &shape2;
-    body->CreateFixture(&heroShapeDef2);
+    b2FixtureDef ennemiShapeDef2;
+    ennemiShapeDef2.shape = &shape2;
+    body->CreateFixture(&ennemiShapeDef2);
     
     //set constant velocity
     body->SetLinearVelocity(b2Vec2(velocityx, 0));
@@ -147,20 +146,20 @@ static const float velocityx = 4;
         
         if (b->GetUserData() != NULL) {
             
-            /*if ([b->GetUserData() isKindOfClass:[Hero class]])
-            {
-                Hero* hero = (Hero*)b->GetUserData();
-                CCSprite *heroSprite = hero.texture;
-                heroSprite.position = ccp(b->GetPosition().x * PTM_RATIO,
-                                    b->GetPosition().y * PTM_RATIO);
-            }
-            else if ([b->GetUserData() isKindOfClass:[Tile class]])
-            {
-                Tile* tile = (Tile*)b->GetUserData();
-                CCSprite *tileSprite = tile.texture;
-                tileSprite.position = ccp(b->GetPosition().x * PTM_RATIO,
-                                    b->GetPosition().y * PTM_RATIO);
-            }*/
+            /*if ([b->GetUserData() isKindOfClass:[ennemi class]])
+             {
+             ennemi* ennemi = (ennemi*)b->GetUserData();
+             CCSprite *ennemiSprite = ennemi.texture;
+             ennemiSprite.position = ccp(b->GetPosition().x * PTM_RATIO,
+             b->GetPosition().y * PTM_RATIO);
+             }
+             else if ([b->GetUserData() isKindOfClass:[Tile class]])
+             {
+             Tile* tile = (Tile*)b->GetUserData();
+             CCSprite *tileSprite = tile.texture;
+             tileSprite.position = ccp(b->GetPosition().x * PTM_RATIO,
+             b->GetPosition().y * PTM_RATIO);
+             }*/
             
             CCSprite *data = (CCSprite*)b->GetUserData();
             data.position =ccp(b->GetPosition().x * PTM_RATIO,
@@ -175,10 +174,10 @@ static const float velocityx = 4;
     
     //set velocity.x to const value
     body->SetLinearVelocity(b2Vec2(velocityx, vel.y));
-
+    
     position.x = body->GetPosition().x * PTM_RATIO;
     position.y = body->GetPosition().y * PTM_RATIO;
-
+    
     //start the animation if hit the ground
     if (vel.y >= -0.05 && vel.y <= 0.05 && !animate)
     {

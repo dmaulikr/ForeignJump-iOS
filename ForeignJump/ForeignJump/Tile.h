@@ -22,18 +22,18 @@ enum TypeCase {
     Bombe = 9,
     ACDC = 10,
     HeroType = 11,
-    Ennemi = 12
+    EnnemiType = 12
     };
 
 @interface Tile : CCNode
 {
     CCSprite* texture;
-    enum TypeCase type;
+    TypeCase type;
     CGPoint position;
 }
 
 @property (nonatomic, retain) CCSprite* texture;
-@property (nonatomic, readwrite) enum TypeCase type;
+@property (nonatomic, readwrite) TypeCase type;
 @property (nonatomic, readwrite) CGPoint position;
 
 -(void) initWithSpriteFile:(NSString*)texture_ andType:(TypeCase)type_ atPosition:(CGPoint)position_ andWorld:(b2World*)world_;

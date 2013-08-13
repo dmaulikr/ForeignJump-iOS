@@ -7,6 +7,8 @@
 //
 
 #import "Box2D.h"
+#import "cocos2d.h"
+#import "Map.h"
 
 class ContactListener : public b2ContactListener
 {

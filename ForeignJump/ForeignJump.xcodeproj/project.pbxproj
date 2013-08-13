@@ -195,6 +195,9 @@
 		D27240B517B923CE00DCAFBF /* Map.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240AC17B923CE00DCAFBF /* Map.mm */; };
 		D27240B617B923CE00DCAFBF /* Tile.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240AE17B923CE00DCAFBF /* Tile.mm */; };
 		D27240B917B9241400DCAFBF /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240B817B9241400DCAFBF /* GLES-Render.mm */; };
+		D27240C117B994AE00DCAFBF /* HUD.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240C017B994AE00DCAFBF /* HUD.mm */; };
+		D27240C417B9AC4100DCAFBF /* Ennemi.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240C317B9AC4100DCAFBF /* Ennemi.mm */; };
+		D27240C617B9AD5600DCAFBF /* Ennemi in Resources */ = {isa = PBXBuildFile; fileRef = D27240C517B9AD5600DCAFBF /* Ennemi */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -587,6 +590,11 @@
 		D27240AE17B923CE00DCAFBF /* Tile.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Tile.mm; sourceTree = "<group>"; };
 		D27240B717B9241400DCAFBF /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
 		D27240B817B9241400DCAFBF /* GLES-Render.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
+		D27240BF17B994AE00DCAFBF /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
+		D27240C017B994AE00DCAFBF /* HUD.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HUD.mm; sourceTree = "<group>"; };
+		D27240C217B9AC4100DCAFBF /* Ennemi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ennemi.h; sourceTree = "<group>"; };
+		D27240C317B9AC4100DCAFBF /* Ennemi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ennemi.mm; sourceTree = "<group>"; };
+		D27240C517B9AD5600DCAFBF /* Ennemi */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Ennemi; path = Resources/Ennemi; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -653,6 +661,8 @@
 				D27240A817B923CE00DCAFBF /* InGame.mm */,
 				D27240A517B923CE00DCAFBF /* Hero.h */,
 				D27240A617B923CE00DCAFBF /* Hero.mm */,
+				D27240C217B9AC4100DCAFBF /* Ennemi.h */,
+				D27240C317B9AC4100DCAFBF /* Ennemi.mm */,
 				D27240AB17B923CE00DCAFBF /* Map.h */,
 				D27240AC17B923CE00DCAFBF /* Map.mm */,
 				D27240AD17B923CE00DCAFBF /* Tile.h */,
@@ -661,6 +671,8 @@
 				D27240A217B923CE00DCAFBF /* ContactListener.mm */,
 				D272409F17B923CE00DCAFBF /* Background.h */,
 				D27240A017B923CE00DCAFBF /* Background.mm */,
+				D27240BF17B994AE00DCAFBF /* HUD.h */,
+				D27240C017B994AE00DCAFBF /* HUD.mm */,
 				D27240B717B9241400DCAFBF /* GLES-Render.h */,
 				D27240B817B9241400DCAFBF /* GLES-Render.mm */,
 				D222791B17B921D900421B00 /* Resources */,
@@ -673,6 +685,7 @@
 		D222791B17B921D900421B00 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D27240C517B9AD5600DCAFBF /* Ennemi */,
 				D272409917B9239B00DCAFBF /* Background */,
 				D272409A17B9239B00DCAFBF /* Hero */,
 				D272409B17B9239B00DCAFBF /* Map */,
@@ -1240,6 +1253,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Epimac;
+				TargetAttributes = {
+					D222790217B921D900421B00 = {
+						DevelopmentTeam = E5L7NC8M9T;
+					};
+				};
 			};
 			buildConfigurationList = D22278FE17B921D900421B00 /* Build configuration list for PBXProject "ForeignJump" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1265,6 +1283,7 @@
 			files = (
 				D222792D17B921D900421B00 /* Icon.png in Resources */,
 				D2227A8B17B921DA00421B00 /* ChangeLog in Resources */,
+				D27240C617B9AD5600DCAFBF /* Ennemi in Resources */,
 				D222791F17B921D900421B00 /* Default@2x.png in Resources */,
 				D222792917B921D900421B00 /* Icon-Small.png in Resources */,
 				D222792517B921D900421B00 /* Icon-72.png in Resources */,
@@ -1333,6 +1352,7 @@
 				D2227AE817B921DB00421B00 /* b2ContactManager.cpp in Sources */,
 				D22279B117B921DA00421B00 /* CCParticleExamples.m in Sources */,
 				D22279AE17B921DA00421B00 /* CCParticleBatchNode.m in Sources */,
+				D27240C417B9AC4100DCAFBF /* Ennemi.mm in Sources */,
 				D2227AC917B921DB00421B00 /* b2EdgeShape.cpp in Sources */,
 				D2227AEE17B921DB00421B00 /* b2Island.cpp in Sources */,
 				D22279F117B921DA00421B00 /* CCTextureAtlas.m in Sources */,
@@ -1385,6 +1405,7 @@
 				D2227AD417B921DB00421B00 /* b2Draw.cpp in Sources */,
 				D2227A2117B921DA00421B00 /* CCGLView.m in Sources */,
 				D2227A4E17B921DA00421B00 /* CGPointExtension.m in Sources */,
+				D27240C117B994AE00DCAFBF /* HUD.mm in Sources */,
 				D27240B917B9241400DCAFBF /* GLES-Render.mm in Sources */,
 				D222795217B921D900421B00 /* CCActionPageTurn3D.m in Sources */,
 				D2227AA317B921DB00421B00 /* vec3.c in Sources */,
@@ -1501,6 +1522,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1518,6 +1541,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"ForeignJump/libs\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1527,6 +1551,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ForeignJump/Prefix.pch;
@@ -1543,6 +1569,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"ForeignJump/libs\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
