@@ -35,8 +35,8 @@
     ContactListener *contactListener; //detect coin collision
 }
 
-@property (nonatomic, assign) Hero* hero;
-@property (nonatomic, assign) Ennemi* ennemi;
+@property (nonatomic, strong) Hero* hero;
+@property (nonatomic, strong) Ennemi* ennemi;
 
 // returns a CCScene that contains the InGame as the only child
 +(CCScene *) scene;

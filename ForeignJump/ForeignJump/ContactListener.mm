@@ -17,8 +17,7 @@ void ContactListener::BeginContact(b2Contact* contact)
     b2Body* bodyA = contact->GetFixtureA()->GetBody();
     b2Body* bodyB = contact->GetFixtureB()->GetBody();
     
-    /*
-    if ([bodyA->GetUserData() isKindOfClass:[Hero class]] &&
+/*    if ([bodyA->GetUserData() isKindOfClass:[Hero class]] &&
         [bodyB->GetUserData() isKindOfClass:[Tile class]])
     {
         Hero *hero = (Hero*)bodyA->GetUserData();
@@ -38,7 +37,8 @@ void ContactListener::BeginContact(b2Contact* contact)
     
     CCSprite *textureA = (CCSprite*)bodyA->GetUserData();
     CCSprite *textureB = (CCSprite*)bodyB->GetUserData();
-
+    
+    // hero & pièce
     if (textureA.tag == 11 && textureB.tag == 5)
     {
         textureB.visible = NO;
@@ -50,4 +50,14 @@ void ContactListener::BeginContact(b2Contact* contact)
         [InGame scorePlusPlus];
     }
     
+    // hero & ennemi
+    if (textureA.tag == 11 && textureB.tag == 12)
+    {
+        textureA.visible = NO;
+    }
+    else if (textureA.tag == 12 && textureB.tag == 11)
+    {
+        textureB.visible = NO;
+    }
+
 }

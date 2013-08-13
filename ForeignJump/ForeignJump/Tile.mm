@@ -58,8 +58,8 @@
     b2BodyDef blockBodyDef;
     blockBodyDef.type = b2_staticBody;
     blockBodyDef.position.Set(position.x/PTM_RATIO, position.y/PTM_RATIO);
-    blockBodyDef.userData = texture;
     b2Body *body = world ->CreateBody(&blockBodyDef);
+    body->SetUserData(texture);
     
     
     // Create block shape
@@ -80,8 +80,8 @@
     b2BodyDef spriteBodyDef;
     spriteBodyDef.type = b2_staticBody;
     spriteBodyDef.position.Set(position.x/PTM_RATIO, position.y/PTM_RATIO);
-    spriteBodyDef.userData = texture;
     b2Body *body = world ->CreateBody(&spriteBodyDef);
+    body->SetUserData(texture);
     
     //create circular shape
     b2CircleShape spriteShape;

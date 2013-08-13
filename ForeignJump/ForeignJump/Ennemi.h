@@ -10,19 +10,23 @@
 #import "cocos2d.h"
 #import "Box2D.h"
 #import "Tile.h"
+#import "Hero.h"
 
 @interface Ennemi : CCNode {
     CCSprite * texture;
     CGPoint position;
     b2Body* body;
     TypeCase type;
+    Hero* hero;
 }
 
 @property (nonatomic, readonly) CCSprite* texture;
 @property (nonatomic, readwrite) b2Body* body;
 @property (nonatomic, readwrite) TypeCase type;
 
-- (id)initWithPosition:(CGPoint)position_;
+- (id)init:(Hero*)hero_;
+
+- (id)initWithPosition:(CGPoint)position_ andHero:(Hero*)hero_;
 
 - (CCSpriteBatchNode *)initWithPlist:(NSString *)plist andTexture:(NSString *)texture;
 

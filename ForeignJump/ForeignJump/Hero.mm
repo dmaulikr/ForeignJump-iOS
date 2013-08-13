@@ -40,6 +40,13 @@ static const float velocityx = 4;
     return self;
 }
 
+-(void)dealloc {
+    
+    body = NULL;
+
+    [super dealloc];
+}
+
 -(id)initWithPosition:(CGPoint)position_ {
     
     position = position_;
@@ -145,8 +152,8 @@ static const float velocityx = 4;
     for(b2Body *b = world_->GetBodyList(); b; b=b->GetNext()) {
         
         if (b->GetUserData() != NULL) {
-            
-            /*if ([b->GetUserData() isKindOfClass:[Hero class]])
+            /*
+            if ([(Hero*)b->GetUserData() isKindOfClass:[Hero class]])
              {
              Hero* hero = (Hero*)b->GetUserData();
              CCSprite *heroSprite = hero.texture;
@@ -159,8 +166,8 @@ static const float velocityx = 4;
              CCSprite *tileSprite = tile.texture;
              tileSprite.position = ccp(b->GetPosition().x * PTM_RATIO,
              b->GetPosition().y * PTM_RATIO);
-             }*/
-            
+             }
+            */
             CCSprite *data = (CCSprite*)b->GetUserData();
             data.position =ccp(b->GetPosition().x * PTM_RATIO,
                                b->GetPosition().y * PTM_RATIO);
@@ -184,11 +191,10 @@ static const float velocityx = 4;
         [self startAnimation];
     }
     
-    if (vel.x >= -0.41 && vel.x <= -0.35 && animate)
+    if (vel.x >= -0.41 && vel.x <= 0.001 && animate)
     {
         [self stopAnimation];
     }
-    
 }
 
 - (void)stopAnimation {

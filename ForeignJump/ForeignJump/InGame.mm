@@ -68,7 +68,7 @@ static int score;
 -(id) init
 {
 	if( (self=[super init])) {
-		
+        
         size = [[CCDirector sharedDirector] winSize];
         
         worldSize = CGSizeMake(25 * mapCols, 25 * mapRows);
@@ -81,7 +81,7 @@ static int score;
         //end init hero
         
         //init ennemi
-        ennemi = [[Ennemi alloc] init];
+        ennemi = [[Ennemi alloc] init:hero];
         [self addChild:ennemi];
         
         //init physics
@@ -108,9 +108,9 @@ static int score;
 	delete world;
 	world = NULL;
     
-    hero.body = NULL;
+    [hero dealloc];
     
-    ennemi.body = NULL;
+    [ennemi dealloc];
     
     delete contactListener;
     

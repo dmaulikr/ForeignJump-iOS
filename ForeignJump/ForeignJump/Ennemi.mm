@@ -9,13 +9,13 @@
 #import "Ennemi.h"
 
 static const float densityconst = 1.85f;
-static const float velocityx = 4;
 
 @implementation Ennemi {
     BOOL animate;
     CCAction *walkAction;
     float delta;
     b2World* world_;
+    float velocityx;
 }
 
 #define PTM_RATIO 32
@@ -24,11 +24,11 @@ static const float velocityx = 4;
 @synthesize body;
 @synthesize type;
 
--(id)init
+-(id)init:(Hero*)hero_
 {
     if ((self = [super init]))
     {
-        [self initWithPosition:ccp(10,280)];
+        [self initWithPosition:ccp(10,280) andHero:hero_];
         
         CCSpriteBatchNode* spriteSheet = [self initWithPlist:@"Ennemi/ennemi.plist" andTexture:@"Ennemi/ennemi.png"];
         
@@ -40,13 +40,22 @@ static const float velocityx = 4;
     return self;
 }
 
--(id)initWithPosition:(CGPoint)position_ {
+-(void)dealloc {
+    
+    body = NULL;
+    
+    [super dealloc];
+}
+
+-(id)initWithPosition:(CGPoint)position_ andHero:(Hero *)hero_ {
     
     position = position_;
     
     animate = YES;
     
     type = EnnemiType;
+    
+    hero = hero_;
     
     return self;
 }
@@ -77,7 +86,7 @@ static const float velocityx = 4;
     [texture runAction:walkAction];
     
     texture.position = position;
-    texture.tag = 11;
+    texture.tag = 12;
     [spriteSheet addChild:texture];
 }
 
@@ -132,6 +141,8 @@ static const float velocityx = 4;
     ennemiShapeDef2.shape = &shape2;
     body->CreateFixture(&ennemiShapeDef2);
     
+    velocityx = hero.body->GetLinearVelocity().x;
+    
     //set constant velocity
     body->SetLinearVelocity(b2Vec2(velocityx, 0));
     
@@ -161,7 +172,6 @@ static const float velocityx = 4;
     {
         [self stopAnimation];
         [self jump:40];
-        
     }
     
 }
