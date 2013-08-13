@@ -29,8 +29,8 @@ static const float gravityconst = 28;
 
 Map *map;
 
-@synthesize hero = hero;
-@synthesize ennemi = ennemi;
+@synthesize hero;
+@synthesize ennemi;
 
 static int score;
 
@@ -200,7 +200,7 @@ static int score;
 }
 
 -(void) update: (ccTime) delta {
-    NSLog(@"%i", score);
+    
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {

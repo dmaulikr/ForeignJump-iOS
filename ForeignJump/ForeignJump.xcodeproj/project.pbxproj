@@ -184,7 +184,6 @@
 		D2227B3717B921DB00421B00 /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2227B3617B921DB00421B00 /* b2Rope.cpp */; };
 		D2227B3D17B921DB00421B00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2227B3C17B921DB00421B00 /* main.m */; };
 		D2227B4017B921DB00421B00 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2227B3F17B921DB00421B00 /* AppDelegate.mm */; };
-		D2227B4617B921DB00421B00 /* IntroLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2227B4517B921DB00421B00 /* IntroLayer.mm */; };
 		D272409C17B9239B00DCAFBF /* Background in Resources */ = {isa = PBXBuildFile; fileRef = D272409917B9239B00DCAFBF /* Background */; };
 		D272409D17B9239B00DCAFBF /* Hero in Resources */ = {isa = PBXBuildFile; fileRef = D272409A17B9239B00DCAFBF /* Hero */; };
 		D272409E17B9239B00DCAFBF /* Map in Resources */ = {isa = PBXBuildFile; fileRef = D272409B17B9239B00DCAFBF /* Map */; };
@@ -196,8 +195,8 @@
 		D27240B617B923CE00DCAFBF /* Tile.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240AE17B923CE00DCAFBF /* Tile.mm */; };
 		D27240B917B9241400DCAFBF /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240B817B9241400DCAFBF /* GLES-Render.mm */; };
 		D27240C117B994AE00DCAFBF /* HUD.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240C017B994AE00DCAFBF /* HUD.mm */; };
-		D27240C417B9AC4100DCAFBF /* Ennemi.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240C317B9AC4100DCAFBF /* Ennemi.mm */; };
-		D27240C617B9AD5600DCAFBF /* Ennemi in Resources */ = {isa = PBXBuildFile; fileRef = D27240C517B9AD5600DCAFBF /* Ennemi */; };
+		D2837C3917B9B728008FCC59 /* Ennemi.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2837C3817B9B728008FCC59 /* Ennemi.mm */; };
+		D2837C3B17B9B73F008FCC59 /* Ennemi in Resources */ = {isa = PBXBuildFile; fileRef = D2837C3A17B9B73F008FCC59 /* Ennemi */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -572,7 +571,6 @@
 		D2227B3C17B921DB00421B00 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D2227B3E17B921DB00421B00 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D2227B3F17B921DB00421B00 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		D2227B4517B921DB00421B00 /* IntroLayer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = IntroLayer.mm; sourceTree = "<group>"; };
 		D272409917B9239B00DCAFBF /* Background */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Background; path = Resources/Background; sourceTree = "<group>"; };
 		D272409A17B9239B00DCAFBF /* Hero */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Hero; path = Resources/Hero; sourceTree = "<group>"; };
 		D272409B17B9239B00DCAFBF /* Map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Map; path = Resources/Map; sourceTree = "<group>"; };
@@ -592,9 +590,9 @@
 		D27240B817B9241400DCAFBF /* GLES-Render.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		D27240BF17B994AE00DCAFBF /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
 		D27240C017B994AE00DCAFBF /* HUD.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HUD.mm; sourceTree = "<group>"; };
-		D27240C217B9AC4100DCAFBF /* Ennemi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ennemi.h; sourceTree = "<group>"; };
-		D27240C317B9AC4100DCAFBF /* Ennemi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ennemi.mm; sourceTree = "<group>"; };
-		D27240C517B9AD5600DCAFBF /* Ennemi */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Ennemi; path = Resources/Ennemi; sourceTree = "<group>"; };
+		D2837C3717B9B728008FCC59 /* Ennemi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ennemi.h; sourceTree = "<group>"; };
+		D2837C3817B9B728008FCC59 /* Ennemi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ennemi.mm; sourceTree = "<group>"; };
+		D2837C3A17B9B73F008FCC59 /* Ennemi */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Ennemi; path = Resources/Ennemi; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -661,8 +659,8 @@
 				D27240A817B923CE00DCAFBF /* InGame.mm */,
 				D27240A517B923CE00DCAFBF /* Hero.h */,
 				D27240A617B923CE00DCAFBF /* Hero.mm */,
-				D27240C217B9AC4100DCAFBF /* Ennemi.h */,
-				D27240C317B9AC4100DCAFBF /* Ennemi.mm */,
+				D2837C3717B9B728008FCC59 /* Ennemi.h */,
+				D2837C3817B9B728008FCC59 /* Ennemi.mm */,
 				D27240AB17B923CE00DCAFBF /* Map.h */,
 				D27240AC17B923CE00DCAFBF /* Map.mm */,
 				D27240AD17B923CE00DCAFBF /* Tile.h */,
@@ -685,7 +683,7 @@
 		D222791B17B921D900421B00 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D27240C517B9AD5600DCAFBF /* Ennemi */,
+				D2837C3A17B9B73F008FCC59 /* Ennemi */,
 				D272409917B9239B00DCAFBF /* Background */,
 				D272409A17B9239B00DCAFBF /* Hero */,
 				D272409B17B9239B00DCAFBF /* Map */,
@@ -1283,7 +1281,7 @@
 			files = (
 				D222792D17B921D900421B00 /* Icon.png in Resources */,
 				D2227A8B17B921DA00421B00 /* ChangeLog in Resources */,
-				D27240C617B9AD5600DCAFBF /* Ennemi in Resources */,
+				D2837C3B17B9B73F008FCC59 /* Ennemi in Resources */,
 				D222791F17B921D900421B00 /* Default@2x.png in Resources */,
 				D222792917B921D900421B00 /* Icon-Small.png in Resources */,
 				D222792517B921D900421B00 /* Icon-72.png in Resources */,
@@ -1348,11 +1346,11 @@
 				D222793D17B921D900421B00 /* CCActionCatmullRom.m in Sources */,
 				D22279B417B921DA00421B00 /* CCParticleSystem.m in Sources */,
 				D2227A0917B921DA00421B00 /* CCTransition.m in Sources */,
+				D2837C3917B9B728008FCC59 /* Ennemi.mm in Sources */,
 				D2227ABC17B921DB00421B00 /* b2DynamicTree.cpp in Sources */,
 				D2227AE817B921DB00421B00 /* b2ContactManager.cpp in Sources */,
 				D22279B117B921DA00421B00 /* CCParticleExamples.m in Sources */,
 				D22279AE17B921DA00421B00 /* CCParticleBatchNode.m in Sources */,
-				D27240C417B9AC4100DCAFBF /* Ennemi.mm in Sources */,
 				D2227AC917B921DB00421B00 /* b2EdgeShape.cpp in Sources */,
 				D2227AEE17B921DB00421B00 /* b2Island.cpp in Sources */,
 				D22279F117B921DA00421B00 /* CCTextureAtlas.m in Sources */,
@@ -1445,7 +1443,6 @@
 				D2227B0217B921DB00421B00 /* b2Contact.cpp in Sources */,
 				D222797717B921D900421B00 /* CCDrawingPrimitives.m in Sources */,
 				D22279DF17B921DA00421B00 /* ccShaders.m in Sources */,
-				D2227B4617B921DB00421B00 /* IntroLayer.mm in Sources */,
 				D2227AF517B921DB00421B00 /* b2WorldCallbacks.cpp in Sources */,
 				D2227B1517B921DB00421B00 /* b2DistanceJoint.cpp in Sources */,
 				D2227A3517B921DA00421B00 /* CCWindow.m in Sources */,

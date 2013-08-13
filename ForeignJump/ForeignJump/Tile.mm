@@ -7,7 +7,6 @@
 //
 
 #import "Tile.h"
-#import "Box2D.h"
 
 @implementation Tile
 {

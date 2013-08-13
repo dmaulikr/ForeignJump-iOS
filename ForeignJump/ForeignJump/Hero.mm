@@ -7,7 +7,6 @@
 //
 
 #import "Hero.h"
-#import "Box2D.h"
 
 static const float densityconst = 1.85f;
 static const float velocityx = 4;
@@ -29,9 +28,9 @@ static const float velocityx = 4;
 {
     if ((self = [super init]))
     {
-        [self initWithPosition:ccp(10,280)];
+        [self initWithPosition:ccp(90,280)];
         
-        CCSpriteBatchNode* spriteSheet = [self initWithPlist:@"hero.plist" andTexture:@"hero.png"];
+        CCSpriteBatchNode* spriteSheet = [self initWithPlist:@"Hero/hero.plist" andTexture:@"Hero/hero.png"];
         
         [self addChild:spriteSheet];
         
@@ -148,19 +147,19 @@ static const float velocityx = 4;
         if (b->GetUserData() != NULL) {
             
             /*if ([b->GetUserData() isKindOfClass:[Hero class]])
-            {
-                Hero* hero = (Hero*)b->GetUserData();
-                CCSprite *heroSprite = hero.texture;
-                heroSprite.position = ccp(b->GetPosition().x * PTM_RATIO,
-                                    b->GetPosition().y * PTM_RATIO);
-            }
-            else if ([b->GetUserData() isKindOfClass:[Tile class]])
-            {
-                Tile* tile = (Tile*)b->GetUserData();
-                CCSprite *tileSprite = tile.texture;
-                tileSprite.position = ccp(b->GetPosition().x * PTM_RATIO,
-                                    b->GetPosition().y * PTM_RATIO);
-            }*/
+             {
+             Hero* hero = (Hero*)b->GetUserData();
+             CCSprite *heroSprite = hero.texture;
+             heroSprite.position = ccp(b->GetPosition().x * PTM_RATIO,
+             b->GetPosition().y * PTM_RATIO);
+             }
+             else if ([b->GetUserData() isKindOfClass:[Tile class]])
+             {
+             Tile* tile = (Tile*)b->GetUserData();
+             CCSprite *tileSprite = tile.texture;
+             tileSprite.position = ccp(b->GetPosition().x * PTM_RATIO,
+             b->GetPosition().y * PTM_RATIO);
+             }*/
             
             CCSprite *data = (CCSprite*)b->GetUserData();
             data.position =ccp(b->GetPosition().x * PTM_RATIO,

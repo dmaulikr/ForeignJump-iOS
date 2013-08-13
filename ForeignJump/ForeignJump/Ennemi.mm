@@ -30,7 +30,7 @@ static const float velocityx = 4;
     {
         [self initWithPosition:ccp(10,280)];
         
-        CCSpriteBatchNode* spriteSheet = [self initWithPlist:@"ennemi.plist" andTexture:@"ennemi.png"];
+        CCSpriteBatchNode* spriteSheet = [self initWithPlist:@"Ennemi/ennemi.plist" andTexture:@"Ennemi/ennemi.png"];
         
         [self addChild:spriteSheet];
         
@@ -140,36 +140,9 @@ static const float velocityx = 4;
 }
 
 - (void) update:(ccTime)dt {
-    
-    world_->Step(dt, 60, 60);
-    for(b2Body *b = world_->GetBodyList(); b; b=b->GetNext()) {
-        
-        if (b->GetUserData() != NULL) {
-            
-            /*if ([b->GetUserData() isKindOfClass:[ennemi class]])
-             {
-             ennemi* ennemi = (ennemi*)b->GetUserData();
-             CCSprite *ennemiSprite = ennemi.texture;
-             ennemiSprite.position = ccp(b->GetPosition().x * PTM_RATIO,
-             b->GetPosition().y * PTM_RATIO);
-             }
-             else if ([b->GetUserData() isKindOfClass:[Tile class]])
-             {
-             Tile* tile = (Tile*)b->GetUserData();
-             CCSprite *tileSprite = tile.texture;
-             tileSprite.position = ccp(b->GetPosition().x * PTM_RATIO,
-             b->GetPosition().y * PTM_RATIO);
-             }*/
-            
-            CCSprite *data = (CCSprite*)b->GetUserData();
-            data.position =ccp(b->GetPosition().x * PTM_RATIO,
-                               b->GetPosition().y * PTM_RATIO);
-        }
-    }
-    
     //get actual velocity
     b2Vec2 vel = body->GetLinearVelocity();
-    
+    NSLog(@"%f", vel.x);
     //NSLog(@"%f , %f", vel.x, vel.y);
     
     //set velocity.x to const value
@@ -184,9 +157,11 @@ static const float velocityx = 4;
         [self startAnimation];
     }
     
-    if (vel.x >= -0.41 && vel.x <= -0.35 && animate)
+    if (vel.x >= -0.41 && vel.x <= 0.001 && animate)
     {
         [self stopAnimation];
+        [self jump:40];
+        
     }
     
 }

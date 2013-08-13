@@ -7,6 +7,7 @@
 //
 
 #import "ContactListener.h"
+#import "Map.h"
 #import "InGame.h"
 #import "Hero.h"
 

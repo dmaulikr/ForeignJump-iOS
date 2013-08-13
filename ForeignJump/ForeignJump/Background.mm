@@ -32,21 +32,15 @@ static const int mapRows = 15;
         //background
         
 		if( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ) {
-			background = [CCSprite spriteWithFile:@"bg.png"];
+			background = [CCSprite spriteWithFile:@"Background/bg.png"];
 		} else {
-			background = [CCSprite spriteWithFile:@"bg.png"];
+			background = [CCSprite spriteWithFile:@"Background/bg.png"];
 		}
 		background.position = ccp(size.width/2, size.height/2);
         
         [self addChild: background z: 0];
 
         //end background
-        /*
-        sun = [CCSprite spriteWithFile:@"sun.png"];
-        sun.position = ccp(size.width/2, size.height/2);
-        
-        [self addChild:sun z: 1];
-        */
         
         [self setupBackgroundImage];
         
@@ -59,7 +53,7 @@ static const int mapRows = 15;
 - (void)setupBackgroundImage
 {
     
-    sun = [CCSprite spriteWithFile:@"sun.png"];
+    sun = [CCSprite spriteWithFile:@"Background/sun.png"];
     
     sun.position = ccp(size.width, size.height/2);
 

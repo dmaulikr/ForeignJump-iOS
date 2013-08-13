@@ -44,20 +44,20 @@
             switch (chara) {
                 case '1':
                 {
-                    [object initWithSpriteFile:@"obstacle.png" andType:Terre atPosition:ccp(i*25,size.height - j*25) andWorld:world];
+                    [object initWithSpriteFile:@"Map/obstacle.png" andType:Terre atPosition:ccp(i*25,size.height - j*25) andWorld:world];
                     [self addChild:object.texture];
                     break;
                 }
                 case '2':
                 {
-                    [object initWithSpriteFile:@"piece.png" andType:Piece atPosition:ccp(i*25,size.height - j*25) andWorld:world];
+                    [object initWithSpriteFile:@"Map/piece.png" andType:Piece atPosition:ccp(i*25,size.height - j*25) andWorld:world];
                     [self addChild:object.texture];
                     //[coins addObject:object];
                     break;
                 }
                 default:
                 {
-                    [object initWithSpriteFile:@"rien.png" andType:Null atPosition:ccp(i*25,size.height - j*25) andWorld:world];
+                    [object initWithSpriteFile:@"Map/rien.png" andType:Null atPosition:ccp(i*25,size.height - j*25) andWorld:world];
                     [self addChild:object.texture];
                     break;
                 }
