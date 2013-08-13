@@ -28,6 +28,7 @@ static const float gravityconst = 28;
 }
 
 Map *map;
+Background *background;
 
 @synthesize hero;
 @synthesize ennemi;
@@ -48,7 +49,7 @@ static int score;
 	CCScene *scene = [CCScene node];
 	
     // add background layer
-    Background *background = [Background node];
+    background = [Background node];
     [scene addChild: background z: 0];
     
     // add map layer
@@ -99,6 +100,8 @@ static int score;
         
         [self runAction: [CCFollow actionWithTarget:hero.texture worldBoundary:CGRectMake(0, 0, worldSize.width, 290)]];
         
+        [background initWithHero:hero andWorldWidth:worldSize.width];
+        
 }
 	return self;
 }
@@ -133,32 +136,6 @@ static int score;
     //setup contactlistener
     contactListener = new ContactListener();
     world->SetContactListener(contactListener);
-}
-
--(void) draw
-{
-	//
-	// IMPORTANT:
-	// This is only for debug purposes
-	// It is recommend to disable it
-	//
-	[super draw];
-	
-	ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
-	
-	kmGLPushMatrix();
-	
-	world->DrawDebugData();
-	
-	kmGLPopMatrix();
-    
-    
-    //Initialize debug drawing
-    m_debugDraw = new GLESDebugDraw( 32 );
-    world->SetDebugDraw(m_debugDraw);
-    uint32 flags = 0;
-    flags += GLESDebugDraw::e_shapeBit;
-    m_debugDraw->SetFlags(flags);
 }
 
 -(void) initMap {
@@ -200,6 +177,10 @@ static int score;
 }
 
 -(void) update: (ccTime) delta {
+    
+    float hpos = hero.texture.position.x;
+    float xpos = (worldSize.width - hpos)/7;
+    background.sun.position = ccp(xpos, background.sun.position.y );
     
 }
 

@@ -152,22 +152,6 @@ static const float velocityx = 4;
     for(b2Body *b = world_->GetBodyList(); b; b=b->GetNext()) {
         
         if (b->GetUserData() != NULL) {
-            /*
-            if ([(Hero*)b->GetUserData() isKindOfClass:[Hero class]])
-             {
-             Hero* hero = (Hero*)b->GetUserData();
-             CCSprite *heroSprite = hero.texture;
-             heroSprite.position = ccp(b->GetPosition().x * PTM_RATIO,
-             b->GetPosition().y * PTM_RATIO);
-             }
-             else if ([b->GetUserData() isKindOfClass:[Tile class]])
-             {
-             Tile* tile = (Tile*)b->GetUserData();
-             CCSprite *tileSprite = tile.texture;
-             tileSprite.position = ccp(b->GetPosition().x * PTM_RATIO,
-             b->GetPosition().y * PTM_RATIO);
-             }
-            */
             CCSprite *data = (CCSprite*)b->GetUserData();
             data.position =ccp(b->GetPosition().x * PTM_RATIO,
                                b->GetPosition().y * PTM_RATIO);

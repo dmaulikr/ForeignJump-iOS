@@ -9,6 +9,7 @@
 
 // Background
 #import "cocos2d.h"
+#import "Hero.h"
 
 @interface Background : CCLayer {
     CCSprite* background;
@@ -21,5 +22,6 @@
 
 - (void) pauseBG;
 - (void) resumeBG;
+- (void) initWithHero:(Hero*)hero_ andWorldWidth:(float)width;
 
 @end

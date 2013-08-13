@@ -11,13 +11,11 @@
 
 #pragma mark - Background
 
-static const int mapCols = 120;
-static const int mapRows = 15;
-
 @implementation Background
 {
-    CCParallaxNode *parallaxNode;
     CGSize size;
+    Hero* hero;
+    float worldWidth;
 }
 
 @synthesize sun;
@@ -63,14 +61,12 @@ static const int mapRows = 15;
     [self schedule:@selector(scroll:)];
 }
 
+- (void)initWithHero:(Hero *)hero_ andWorldWidth:(float)wWidth {
+    hero = hero_;
+    worldWidth = wWidth;
+}
+
 - (void)scroll:(ccTime)dt {
-    
-    sun.position = ccp( sun.position.x - 0.03, sun.position.y );
-    
-    if (sun.position.x == - (size.width/2)) {
-        sun.position = ccp(size.width+(size.width/2), size.height/2);
-    }
-    
 }
 
 - (void) pauseBG {

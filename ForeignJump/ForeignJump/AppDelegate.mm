@@ -90,7 +90,7 @@
 	director_ = (CCDirectorIOS*) [CCDirector sharedDirector];
 	
 	director_.wantsFullScreenLayout = YES;
-	
+    
 	// Display FSP and SPF
 	[director_ setDisplayStats:YES];
 	
@@ -138,7 +138,10 @@
 	
 	// make main window visible
 	[window_ makeKeyAndVisible];
-	
+    
+    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
 	return YES;
 }
 
