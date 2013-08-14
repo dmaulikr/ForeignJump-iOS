@@ -21,6 +21,7 @@
 @property (nonatomic, readonly) CCSprite* texture;
 @property (nonatomic, readwrite) b2Body* body;
 @property (nonatomic, readwrite) TypeCase type;
+@property (nonatomic, readwrite) CGPoint position;
 
 - (id)initWithPosition:(CGPoint)position_;
 

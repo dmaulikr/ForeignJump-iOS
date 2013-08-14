@@ -25,6 +25,7 @@ static const float gravityconst = 28;
     float dt;
     CGSize size;
     CGSize worldSize;
+    bool exploded;
 }
 
 Map *map;
@@ -41,6 +42,16 @@ static int score;
 
 +(void) scorePlusPlus {
     score++;
+}
+
+static bool dead;
+
++(int) getDead {
+    return dead;
+}
+
++(void) setDead:(bool)dead_ {
+    dead = dead_;
 }
 
 +(CCScene *) scene
@@ -76,6 +87,8 @@ static int score;
         
         score = 0;
         
+        exploded = false;
+        
         //init hero
         hero = [[Hero alloc] init];
         [self addChild:hero];
@@ -101,6 +114,12 @@ static int score;
         [self runAction: [CCFollow actionWithTarget:hero.texture worldBoundary:CGRectMake(0, 0, worldSize.width, 290)]];
         
         [background initWithHero:hero andWorldWidth:worldSize.width];
+        
+        particleSystem = [CCParticleSystemQuad particleWithFile:@"Particle/fire.plist"];
+        //particleSystem.texture = [[CCTextureCache sharedTextureCache] addImage:@"Particle/fire.png"];
+        
+        [particleSystem stopSystem];
+        [self addChild:particleSystem z:33 tag:99];
         
 }
 	return self;
@@ -178,10 +197,13 @@ static int score;
 
 -(void) update: (ccTime) delta {
     
-    float hpos = hero.texture.position.x;
-    float xpos = (worldSize.width - hpos)/7;
-    background.sun.position = ccp(xpos, background.sun.position.y );
-    
+    if (dead && !exploded)
+    {
+        CGPoint pnt = hero.position;
+        particleSystem.position = pnt;
+        [particleSystem resetSystem];
+        exploded = true;
+    }
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -189,6 +211,7 @@ static int score;
     startTouch = [touch locationInView: [touch view]];
     
     //NSLog(@"StartY : %f", startTouch.y);
+    
     return YES;
 }
 
@@ -210,6 +233,7 @@ static int score;
 
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
 }
+
 
 -(void) registerWithTouchDispatcher
 {

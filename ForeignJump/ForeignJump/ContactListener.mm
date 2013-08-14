@@ -36,9 +36,31 @@ void ContactListener::BeginContact(b2Contact* contact)
     if (textureA.tag == 11 && textureB.tag == 12)
     {
         textureA.visible = NO;
+        [InGame setDead:YES];
     }
     else if (textureA.tag == 12 && textureB.tag == 11)
     {
         textureB.visible = NO;
+        [InGame setDead:YES];
     }
+}
+
+void ContactListener::EndContact(b2Contact* contact)
+{
+    b2Body* bodyA = contact->GetFixtureA()->GetBody();
+    b2Body* bodyB = contact->GetFixtureB()->GetBody();
+    
+    CCSprite *textureA = (CCSprite*)bodyA->GetUserData();
+    CCSprite *textureB = (CCSprite*)bodyB->GetUserData();
+    
+    // hero & pièce
+    if (textureA.tag == 11 && textureB.tag == 5)
+    {
+        //bodyA->GetWorld()->DestroyBody(bodyB);
+    }
+    else if (textureA.tag == 5 && textureB.tag == 11)
+    {
+        //bodyB->GetWorld()->DestroyBody(bodyA);
+    }
+    
 }

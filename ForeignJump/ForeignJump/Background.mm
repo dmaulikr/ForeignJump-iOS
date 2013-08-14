@@ -58,7 +58,7 @@
     [self addChild:sun z:1];
     
     //add schedule to move backgrounds
-    [self schedule:@selector(scroll:)];
+    [self schedule:@selector(moveBackground)];
 }
 
 - (void)initWithHero:(Hero *)hero_ andWorldWidth:(float)wWidth {
@@ -66,8 +66,12 @@
     worldWidth = wWidth;
 }
 
-- (void)scroll:(ccTime)dt {
+- (void)moveBackground {
+    float hpos = hero.texture.position.x;
+    float xpos = (worldWidth - hpos)/7;
+    sun.position = ccp(xpos, sun.position.y);
 }
+
 
 - (void) pauseBG {
     [self pauseSchedulerAndActions];

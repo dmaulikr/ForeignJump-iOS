@@ -184,6 +184,7 @@
 		D2227B3717B921DB00421B00 /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2227B3617B921DB00421B00 /* b2Rope.cpp */; };
 		D2227B3D17B921DB00421B00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2227B3C17B921DB00421B00 /* main.m */; };
 		D2227B4017B921DB00421B00 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2227B3F17B921DB00421B00 /* AppDelegate.mm */; };
+		D24F5ADE17BB968E00F312FD /* Particle in Resources */ = {isa = PBXBuildFile; fileRef = D24F5ADD17BB968E00F312FD /* Particle */; };
 		D272409C17B9239B00DCAFBF /* Background in Resources */ = {isa = PBXBuildFile; fileRef = D272409917B9239B00DCAFBF /* Background */; };
 		D272409D17B9239B00DCAFBF /* Hero in Resources */ = {isa = PBXBuildFile; fileRef = D272409A17B9239B00DCAFBF /* Hero */; };
 		D272409E17B9239B00DCAFBF /* Map in Resources */ = {isa = PBXBuildFile; fileRef = D272409B17B9239B00DCAFBF /* Map */; };
@@ -571,6 +572,7 @@
 		D2227B3C17B921DB00421B00 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D2227B3E17B921DB00421B00 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D2227B3F17B921DB00421B00 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		D24F5ADD17BB968E00F312FD /* Particle */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Particle; path = Resources/Particle; sourceTree = "<group>"; };
 		D272409917B9239B00DCAFBF /* Background */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Background; path = Resources/Background; sourceTree = "<group>"; };
 		D272409A17B9239B00DCAFBF /* Hero */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Hero; path = Resources/Hero; sourceTree = "<group>"; };
 		D272409B17B9239B00DCAFBF /* Map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Map; path = Resources/Map; sourceTree = "<group>"; };
@@ -683,6 +685,7 @@
 		D222791B17B921D900421B00 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D24F5ADD17BB968E00F312FD /* Particle */,
 				D2837C3A17B9B73F008FCC59 /* Ennemi */,
 				D272409917B9239B00DCAFBF /* Background */,
 				D272409A17B9239B00DCAFBF /* Hero */,
@@ -1289,6 +1292,7 @@
 				D222792717B921D900421B00 /* Icon-Small-50.png in Resources */,
 				D222793217B921D900421B00 /* iTunesArtwork in Resources */,
 				D222792B17B921D900421B00 /* Icon-Small@2x.png in Resources */,
+				D24F5ADE17BB968E00F312FD /* Particle in Resources */,
 				D222792317B921D900421B00 /* Default-Landscape~ipad.png in Resources */,
 				D222792117B921D900421B00 /* Default-568h@2x.png in Resources */,
 				D222792F17B921D900421B00 /* Icon@2x.png in Resources */,

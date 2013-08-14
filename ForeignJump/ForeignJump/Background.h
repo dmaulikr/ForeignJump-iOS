@@ -10,6 +10,7 @@
 // Background
 #import "cocos2d.h"
 #import "Hero.h"
+#import "InGame.h"
 
 @interface Background : CCLayer {
     CCSprite* background;

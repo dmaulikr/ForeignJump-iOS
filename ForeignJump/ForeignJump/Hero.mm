@@ -23,6 +23,7 @@ static const float velocityx = 4;
 @synthesize texture;
 @synthesize body;
 @synthesize type;
+@synthesize position;
 
 -(id)init
 {

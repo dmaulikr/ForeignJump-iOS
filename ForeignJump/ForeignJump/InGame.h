@@ -33,6 +33,8 @@
     Ennemi* ennemi;
     b2World* world;
     ContactListener *contactListener; //detect coin collision
+    
+    CCParticleSystemQuad *particleSystem;
 }
 
 @property (nonatomic, strong) Hero* hero;
@@ -43,4 +45,8 @@
 
 +(int) getScore;
 +(void) scorePlusPlus;
+
++(int) getDead;
++(void) setDead:(bool)dead_;
+
 @end
