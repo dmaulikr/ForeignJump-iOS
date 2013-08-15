@@ -6,7 +6,7 @@
 //  Copyright Epimac 2013. All rights reserved.
 //
 
-#import "cocos2d.h"
+
 
 #import "AppDelegate.h"
 #import "InGame.h"

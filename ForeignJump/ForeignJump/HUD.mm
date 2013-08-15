@@ -9,11 +9,7 @@
 // Import the interfaces
 #import "HUD.h"
 
-#pragma mark - HUD
-
 @implementation HUD
-{
-}
 
 -(id) init
 {
@@ -31,7 +27,7 @@
 }
 
 -(void) updateScore {
-    int score = [InGame getScore];
+    int score = [Data getScore];
     [scoreLabel setString:[NSString stringWithFormat:@"%i", score]];
 }
 

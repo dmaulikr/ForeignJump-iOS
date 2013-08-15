@@ -6,53 +6,37 @@
 //  Copyright Epimac 2013. All rights reserved.
 //
 
-// Import the interfaces
 #import "InGame.h"
-
-//Import touch detection
 #import "CCTouchDispatcher.h"
 
+#pragma mark - Constant declaration
 static const int mapCols = 120;
 static const int mapRows = 15;
 static const float jumpintensity = 40;
 static const float gravityconst = 28;
 
-#pragma mark - InGame
-
 @implementation InGame {
     CGPoint startTouch;
     CGPoint stopTouch;
+    
     float dt;
+    
     CGSize size;
     CGSize worldSize;
+    
+    CCParticleSystemQuad *smoke;
+    CCParticleSystemQuad *sparkle;
+    CCParticleSystemQuad *explosion;
     bool exploded;
+
 }
 
 Map *map;
 Background *background;
 
+#pragma mark - synthesize
 @synthesize hero;
 @synthesize ennemi;
-
-static int score;
-
-+(int) getScore {
-    return score;
-}
-
-+(void) scorePlusPlus {
-    score++;
-}
-
-static bool dead;
-
-+(int) getDead {
-    return dead;
-}
-
-+(void) setDead:(bool)dead_ {
-    dead = dead_;
-}
 
 +(CCScene *) scene
 {
@@ -77,6 +61,8 @@ static bool dead;
 	return scene;
 }
 
+#pragma mark - Init Methods
+
 -(id) init
 {
 	if( (self=[super init])) {
@@ -84,8 +70,6 @@ static bool dead;
         size = [[CCDirector sharedDirector] winSize];
         
         worldSize = CGSizeMake(25 * mapCols, 25 * mapRows);
-        
-        score = 0;
         
         exploded = false;
         
@@ -115,31 +99,19 @@ static bool dead;
         
         [background initWithHero:hero andWorldWidth:worldSize.width];
         
-        particleSystem = [CCParticleSystemQuad particleWithFile:@"Particle/fire.plist"];
-        //particleSystem.texture = [[CCTextureCache sharedTextureCache] addImage:@"Particle/fire.png"];
+        explosion = [CCParticleSystemQuad particleWithFile:@"Particle/fire.plist"];
+        [explosion stopSystem];
+        [self addChild:explosion z:99];
         
-        [particleSystem stopSystem];
-        [self addChild:particleSystem z:33 tag:99];
+        sparkle = [CCParticleSystemQuad particleWithFile:@"Particle/piece.plist"];
+        [sparkle stopSystem];
+        [self addChild:sparkle z:99];
         
+        smoke = [CCParticleSystemQuad particleWithFile:@"Particle/smoke.plist"];
+        [smoke stopSystem];
+        [self addChild:smoke z:98];
 }
 	return self;
-}
-
--(void) dealloc {
-    
-	delete world;
-	world = NULL;
-    
-    [hero dealloc];
-    
-    [ennemi dealloc];
-    
-    delete contactListener;
-    
-	delete m_debugDraw;
-	m_debugDraw = NULL;
-	
-	[super dealloc];
 }
 
 -(void) initPhysics {
@@ -195,16 +167,45 @@ static bool dead;
     groundBody->CreateFixture(&boxShapeDef);
 }
 
+#pragma mark - Update
+
 -(void) update: (ccTime) delta {
     
-    if (dead && !exploded)
+    if ([Data getDead] && !exploded)
     {
-        CGPoint pnt = hero.position;
-        particleSystem.position = pnt;
-        [particleSystem resetSystem];
+        CCDelayTime *delay = [CCDelayTime actionWithDuration:2];
+        
+        CCCallFunc *explodeAction = [CCCallFunc actionWithTarget:self selector:@selector(releaseExplosion)];
+     
+        CCCallFunc *smokeAction = [CCCallFunc actionWithTarget:self selector:@selector(releaseSmoke)];
+        
+        CCSequence *sequence = [CCSequence actions:explodeAction, delay, smokeAction, nil];
         exploded = true;
+        
+        [self runAction:sequence];
+    }
+    
+    if ([Data isCoinTouched])
+    {
+        sparkle.position = [Data getTouchPoint];
+        [sparkle resetSystem];
+        [Data setCoinTouch:NO];
     }
 }
+
+- (void)releaseExplosion {
+    CGPoint pnt = hero.position;
+    explosion.position = pnt;
+    [explosion resetSystem];
+}
+
+- (void)releaseSmoke {
+    CGPoint pnt = hero.position;
+    smoke.position = ccp(pnt.x, pnt.y - hero.texture.height/3);
+    [smoke resetSystem];
+}
+
+#pragma mark - Touch methods
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     
@@ -231,13 +232,27 @@ static bool dead;
     }
 }
 
-- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
-}
-
-
 -(void) registerWithTouchDispatcher
 {
 	[[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
 }
 
+#pragma mark - Dealloc
+
+-(void) dealloc {
+    
+	delete world;
+	world = NULL;
+    
+    [hero dealloc];
+    
+    [ennemi dealloc];
+    
+    delete contactListener;
+    
+	delete m_debugDraw;
+	m_debugDraw = NULL;
+	
+	[super dealloc];
+}
 @end

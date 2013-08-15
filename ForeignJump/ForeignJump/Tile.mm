@@ -13,12 +13,12 @@
     b2World* world;
 }
 
-#define PTM_RATIO 32
-
+#pragma mark - synthesize
 @synthesize texture;
 @synthesize type;
 @synthesize position;
 
+#pragma mark - Init method
 -(void) initWithSpriteFile:(NSString*)texture_ andType:(TypeCase)type_ atPosition:(CGPoint)position_ andWorld:(b2World*)world_ {
 
         // Create block and add it to the layer
@@ -52,6 +52,8 @@
         }
     }
 }
+
+#pragma mark - Init Physics
 
 -(void) createPhysicsTerre {
     // Create block body

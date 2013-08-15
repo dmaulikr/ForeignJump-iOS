@@ -9,8 +9,6 @@
 // Import the interfaces
 #import "Background.h"
 
-#pragma mark - Background
-
 @implementation Background
 {
     CGSize size;
@@ -18,9 +16,11 @@
     float worldWidth;
 }
 
+#pragma mark - synthesize
 @synthesize sun;
 @synthesize animation;
 
+#pragma mark - Init methods
 -(id) init
 {
 	if( (self=[super init])) {
@@ -66,21 +66,10 @@
     worldWidth = wWidth;
 }
 
+#pragma mark - Update methods
 - (void)moveBackground {
     float hpos = hero.texture.position.x;
     float xpos = (worldWidth - hpos)/7;
     sun.position = ccp(xpos, sun.position.y);
 }
-
-
-- (void) pauseBG {
-    [self pauseSchedulerAndActions];
-    animation = false;
-}
-
-- (void) resumeBG {
-    [self resumeSchedulerAndActions];
-    animation = true;
-}
-
 @end

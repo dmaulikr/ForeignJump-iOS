@@ -8,7 +8,7 @@
 
 
 // HUD
-#import "cocos2d.h"
+
 #import "InGame.h"
 
 @interface HUD : CCLayer {

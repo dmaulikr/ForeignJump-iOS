@@ -8,6 +8,7 @@
 
 #import "Ennemi.h"
 
+#pragma mark - Constant declaration
 static const float densityconst = 1.85f;
 
 @implementation Ennemi {
@@ -18,12 +19,13 @@ static const float densityconst = 1.85f;
     float velocityx;
 }
 
-#define PTM_RATIO 32
-
+#pragma mark - synthesize
 @synthesize texture;
 @synthesize body;
 @synthesize type;
 
+
+#pragma mark - Init methods
 -(id)init:(Hero*)hero_
 {
     if ((self = [super init]))
@@ -38,13 +40,6 @@ static const float densityconst = 1.85f;
         
     }
     return self;
-}
-
--(void)dealloc {
-    
-    body = NULL;
-    
-    [super dealloc];
 }
 
 -(id)initWithPosition:(CGPoint)position_ andHero:(Hero *)hero_ {
@@ -150,6 +145,7 @@ static const float densityconst = 1.85f;
     [self schedule:@selector(update:)];
 }
 
+#pragma mark - Update
 - (void) update:(ccTime)dt {
     //get actual velocity
     b2Vec2 vel = body->GetLinearVelocity();
@@ -176,6 +172,18 @@ static const float densityconst = 1.85f;
     
 }
 
+#pragma mark - Jump methods
+- (void) jump:(float)intensity {
+    
+    //set the force
+    b2Vec2 force = b2Vec2(0, intensity);
+    //apply the force
+    body->ApplyLinearImpulse(force, body->GetPosition());
+    //stop the animation
+    
+    [self stopAnimation];
+}
+
 - (void)stopAnimation {
     [texture pauseActions];
     animate = NO;
@@ -186,15 +194,13 @@ static const float densityconst = 1.85f;
     [texture resumeActions];
 }
 
-- (void) jump:(float)intensity {
+#pragma mark - Dealloc
+
+-(void)dealloc {
     
-    //set the force
-    b2Vec2 force = b2Vec2(0, intensity);
-    //apply the force
-    body->ApplyLinearImpulse(force, body->GetPosition());
-    //stop the animation
+    body = NULL;
     
-    [self stopAnimation];
+    [super dealloc];
 }
 
 @end

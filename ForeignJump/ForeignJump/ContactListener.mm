@@ -24,24 +24,28 @@ void ContactListener::BeginContact(b2Contact* contact)
     if (textureA.tag == 11 && textureB.tag == 5)
     {
         textureB.visible = NO;
-        [InGame scorePlusPlus];
+        [Data scorePlusPlus];
+        [Data startCoinParticle:textureA.position];
+        [Data setCoinTouch:YES];
     }
     else if (textureA.tag == 5 && textureB.tag == 11)
     {
         textureA.visible = NO;
-        [InGame scorePlusPlus];
+        [Data scorePlusPlus];
+        [Data startCoinParticle:textureA.position];
+        [Data setCoinTouch:YES];
     }
     
     // hero & ennemi
     if (textureA.tag == 11 && textureB.tag == 12)
     {
         textureA.visible = NO;
-        [InGame setDead:YES];
+        [Data setDead:YES];
     }
     else if (textureA.tag == 12 && textureB.tag == 11)
     {
         textureB.visible = NO;
-        [InGame setDead:YES];
+        [Data setDead:YES];
     }
 }
 

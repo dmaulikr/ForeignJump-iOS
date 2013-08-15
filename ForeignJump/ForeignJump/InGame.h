@@ -10,7 +10,7 @@
 #import <GameKit/GameKit.h>
 
 // When you import this file, you import all the cocos2d classes
-#import "cocos2d.h"
+
 #import "GLES-Render.h"
 #import "Hero.h"
 #import "Ennemi.h"
@@ -33,8 +33,6 @@
     Ennemi* ennemi;
     b2World* world;
     ContactListener *contactListener; //detect coin collision
-    
-    CCParticleSystemQuad *particleSystem;
 }
 
 @property (nonatomic, strong) Hero* hero;
@@ -42,11 +40,5 @@
 
 // returns a CCScene that contains the InGame as the only child
 +(CCScene *) scene;
-
-+(int) getScore;
-+(void) scorePlusPlus;
-
-+(int) getDead;
-+(void) setDead:(bool)dead_;
 
 @end

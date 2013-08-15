@@ -198,6 +198,7 @@
 		D27240C117B994AE00DCAFBF /* HUD.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240C017B994AE00DCAFBF /* HUD.mm */; };
 		D2837C3917B9B728008FCC59 /* Ennemi.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2837C3817B9B728008FCC59 /* Ennemi.mm */; };
 		D2837C3B17B9B73F008FCC59 /* Ennemi in Resources */ = {isa = PBXBuildFile; fileRef = D2837C3A17B9B73F008FCC59 /* Ennemi */; };
+		D2D5DBE117BBD10D0071E801 /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5DBE017BBD10D0071E801 /* Data.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -595,6 +596,8 @@
 		D2837C3717B9B728008FCC59 /* Ennemi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ennemi.h; sourceTree = "<group>"; };
 		D2837C3817B9B728008FCC59 /* Ennemi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ennemi.mm; sourceTree = "<group>"; };
 		D2837C3A17B9B73F008FCC59 /* Ennemi */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Ennemi; path = Resources/Ennemi; sourceTree = "<group>"; };
+		D2D5DBDF17BBD10D0071E801 /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		D2D5DBE017BBD10D0071E801 /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -675,6 +678,8 @@
 				D27240C017B994AE00DCAFBF /* HUD.mm */,
 				D27240B717B9241400DCAFBF /* GLES-Render.h */,
 				D27240B817B9241400DCAFBF /* GLES-Render.mm */,
+				D2D5DBDF17BBD10D0071E801 /* Data.h */,
+				D2D5DBE017BBD10D0071E801 /* Data.m */,
 				D222791B17B921D900421B00 /* Resources */,
 				D222793317B921D900421B00 /* libs */,
 				D2227B3A17B921DB00421B00 /* Supporting Files */,
@@ -1314,6 +1319,7 @@
 				D222799817B921D900421B00 /* CCLayer.m in Sources */,
 				D2227AC317B921DB00421B00 /* b2ChainShape.cpp in Sources */,
 				D22279FA17B921DA00421B00 /* CCTileMapAtlas.m in Sources */,
+				D2D5DBE117BBD10D0071E801 /* Data.m in Sources */,
 				D22279FD17B921DA00421B00 /* CCTMXLayer.m in Sources */,
 				D27240B317B923CE00DCAFBF /* InGame.mm in Sources */,
 				D2227AB217B921DB00421B00 /* b2CollideEdge.cpp in Sources */,

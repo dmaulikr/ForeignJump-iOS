@@ -5,9 +5,9 @@
 //  Created by Francis Visoiu Mistrih on 29/07/13.
 //  Copyright (c) 2013 Epimac. All rights reserved.
 //
-
 #import "Hero.h"
 
+#pragma mark - Constant declaration
 static const float densityconst = 1.85f;
 static const float velocityx = 4;
 
@@ -18,12 +18,13 @@ static const float velocityx = 4;
     b2World* world_;
 }
 
-#define PTM_RATIO 32
-
+#pragma mark - synthesize
 @synthesize texture;
 @synthesize body;
 @synthesize type;
 @synthesize position;
+
+#pragma mark - Init methods
 
 -(id)init
 {
@@ -39,13 +40,6 @@ static const float velocityx = 4;
         
     }
     return self;
-}
-
--(void)dealloc {
-    
-    body = NULL;
-
-    [super dealloc];
 }
 
 -(id)initWithPosition:(CGPoint)position_ {
@@ -147,6 +141,8 @@ static const float velocityx = 4;
     [self schedule:@selector(update:)];
 }
 
+#pragma mark - Update
+
 - (void) update:(ccTime)dt {
     
     world_->Step(dt, 60, 60);
@@ -182,15 +178,7 @@ static const float velocityx = 4;
     }
 }
 
-- (void)stopAnimation {
-    [texture pauseActions];
-    animate = NO;
-}
-
-- (void)startAnimation {
-    animate = YES;
-    [texture resumeActions];
-}
+#pragma mark - Jump methods
 
 - (void) jump:(float)intensity {
     
@@ -201,6 +189,25 @@ static const float velocityx = 4;
     //stop the animation
     
     [self stopAnimation];
+}
+
+- (void)stopAnimation {
+    [texture pauseActions];
+    animate = NO;
+}
+
+- (void)startAnimation {
+    animate = YES;
+    [texture resumeActions];
+}
+
+#pragma mark - Dealloc
+
+-(void)dealloc {
+    
+    body = NULL;
+    
+    [super dealloc];
 }
 
 @end

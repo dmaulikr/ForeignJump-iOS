@@ -8,7 +8,7 @@
 
 
 // Background
-#import "cocos2d.h"
+
 #import "Hero.h"
 #import "InGame.h"
 
@@ -21,8 +21,6 @@
 @property (nonatomic, strong) CCSprite* sun;
 @property (nonatomic, readwrite) BOOL animation;
 
-- (void) pauseBG;
-- (void) resumeBG;
 - (void) initWithHero:(Hero*)hero_ andWorldWidth:(float)width;
 
 @end
