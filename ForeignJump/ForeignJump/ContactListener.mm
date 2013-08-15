@@ -47,6 +47,18 @@ void ContactListener::BeginContact(b2Contact* contact)
         textureB.visible = NO;
         [Data setDead:YES];
     }
+    
+    // hero & bombe
+    if (textureA.tag == 11 && textureB.tag == 9)
+    {
+        textureA.visible = NO;
+        [Data setDead:YES];
+    }
+    else if (textureA.tag == 9 && textureB.tag == 11)
+    {
+        textureB.visible = NO;
+        [Data setDead:YES];
+    }
 }
 
 void ContactListener::EndContact(b2Contact* contact)

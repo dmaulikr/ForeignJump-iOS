@@ -37,11 +37,16 @@
             texture.tag = 1;
             break;
         }
-        
         case Piece:
         {
             [self createPhysicsCoin];
             texture.tag = 5;
+            break;
+        }
+        case Bombe:
+        {
+            [self createPhysicsBomb];
+            texture.tag = 9;
             break;
         }
             
@@ -95,5 +100,25 @@
     spriteShapeDef.isSensor = true;
     body->CreateFixture(&spriteShapeDef);
 }
+
+-(void) createPhysicsBomb {
+    //create body
+    b2BodyDef spriteBodyDef;
+    spriteBodyDef.type = b2_staticBody;
+    spriteBodyDef.position.Set(position.x/PTM_RATIO, position.y/PTM_RATIO);
+    b2Body *body = world ->CreateBody(&spriteBodyDef);
+    body->SetUserData(texture);
+    
+    //create circular shape
+    b2CircleShape spriteShape;
+    spriteShape.m_radius = 0.39f;
+    
+    //create shape definition and add it to the body
+    b2FixtureDef spriteShapeDef;
+    spriteShapeDef.shape = &spriteShape;
+    spriteShapeDef.isSensor = true;
+    body->CreateFixture(&spriteShapeDef);
+}
+
 
 @end

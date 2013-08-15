@@ -180,9 +180,13 @@ Background *background;
         CCCallFunc *smokeAction = [CCCallFunc actionWithTarget:self selector:@selector(releaseSmoke)];
         
         CCSequence *sequence = [CCSequence actions:explodeAction, delay, smokeAction, nil];
-        exploded = true;
         
         [self runAction:sequence];
+        
+        exploded = true;
+        
+        [hero unschedule:@selector(update:)];
+        hero.body->SetLinearVelocity(b2Vec2(0,0));
     }
     
     if ([Data isCoinTouched])

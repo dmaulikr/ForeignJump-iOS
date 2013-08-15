@@ -52,7 +52,12 @@
                 {
                     [object initWithSpriteFile:@"Map/piece.png" andType:Piece atPosition:ccp(i*25,size.height - j*25) andWorld:world];
                     [self addChild:object.texture];
-                    //[coins addObject:object];
+                    break;
+                }
+                case '3':
+                {
+                    [object initWithSpriteFile:@"Map/bomb.png" andType:Bombe atPosition:ccp(i*25,size.height - j*25) andWorld:world];
+                    [self addChild:object.texture];
                     break;
                 }
                 default:
