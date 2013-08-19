@@ -10,7 +10,7 @@
 
 @implementation Tile
 {
-    b2World* world;
+    b2World *world;
 }
 
 #pragma mark - synthesize
@@ -19,16 +19,16 @@
 @synthesize position;
 
 #pragma mark - Init method
--(void) initWithSpriteFile:(NSString*)texture_ andType:(TypeCase)type_ atPosition:(CGPoint)position_ andWorld:(b2World*)world_ {
+- (void) initWithSpriteFile:(NSString *)texture_ andType:(TypeCase)type_ atPosition:(CGPoint)position_ andWorld:(b2World *)world_ {
 
-        // Create block and add it to the layer
-        texture = [CCSprite spriteWithFile:texture_];
+    // Create block and add it to the layer
+    texture = [CCSprite spriteWithFile:texture_];
     
-        type = type_;
+    type = type_;
     
-        position = position_;
+    position = position_;
     
-        world = world_;
+    world = world_;
     
     switch (type) {
         case Terre:
@@ -60,7 +60,7 @@
 
 #pragma mark - Init Physics
 
--(void) createPhysicsTerre {
+- (void) createPhysicsTerre {
     // Create block body
     b2BodyDef blockBodyDef;
     blockBodyDef.type = b2_staticBody;
@@ -82,7 +82,7 @@
     body->CreateFixture(&blockShapeDef);
 }
 
--(void) createPhysicsCoin {
+- (void) createPhysicsCoin {
     //create body
     b2BodyDef spriteBodyDef;
     spriteBodyDef.type = b2_staticBody;
@@ -101,7 +101,7 @@
     body->CreateFixture(&spriteShapeDef);
 }
 
--(void) createPhysicsBomb {
+- (void) createPhysicsBomb {
     //create body
     b2BodyDef spriteBodyDef;
     spriteBodyDef.type = b2_staticBody;

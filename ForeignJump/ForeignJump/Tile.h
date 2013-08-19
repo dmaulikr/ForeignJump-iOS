@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import "Box2D.h"
 
 enum TypeCase {
@@ -22,20 +21,19 @@ enum TypeCase {
     Bombe = 9,
     ACDC = 10,
     HeroType = 11,
-    EnnemiType = 12
+    EnnemyType = 12
     };
 
-@interface Tile : CCNode
-{
-    CCSprite* texture;
+@interface Tile : CCNode {
+    CCSprite *texture;
     TypeCase type;
     CGPoint position;
 }
 
-@property (nonatomic, retain) CCSprite* texture;
+@property (nonatomic, retain) CCSprite *texture;
 @property (nonatomic, readwrite) TypeCase type;
 @property (nonatomic, readwrite) CGPoint position;
 
--(void) initWithSpriteFile:(NSString*)texture_ andType:(TypeCase)type_ atPosition:(CGPoint)position_ andWorld:(b2World*)world_;
+- (void) initWithSpriteFile:(NSString *)texture_ andType:(TypeCase)type_ atPosition:(CGPoint)position_ andWorld:(b2World *)world_;
 
 @end

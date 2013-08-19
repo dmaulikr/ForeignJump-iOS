@@ -8,7 +8,6 @@
 
 
 // HUD
-
 #import "InGame.h"
 
 @interface HUD : CCLayer {

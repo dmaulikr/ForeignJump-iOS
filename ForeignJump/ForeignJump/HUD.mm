@@ -11,9 +11,9 @@
 
 @implementation HUD
 
--(id) init
-{
-	if( (self=[super init])) {
+-(id) init {
+	
+    if( (self=[super init])) {
     
 		scoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", 0] fontName:@"Helvetica" fontSize:30.0];
         scoreLabel.position = ccp(20,300);
@@ -22,7 +22,6 @@
         
         [self schedule:@selector(updateScore)];
 	}
-    
 	return self;
 }
 

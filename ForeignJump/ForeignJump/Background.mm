@@ -9,10 +9,9 @@
 // Import the interfaces
 #import "Background.h"
 
-@implementation Background
-{
+@implementation Background {
     CGSize size;
-    Hero* hero;
+    Hero *hero;
     float worldWidth;
 }
 
@@ -26,6 +25,11 @@
 	if( (self=[super init])) {
 		
         size = [[CCDirector sharedDirector] winSize];
+        
+        hero = [Hero heroInstance];
+        animation = true;
+        
+        worldWidth = [InGame getWorldWidth];
         
         //background
         
@@ -41,16 +45,12 @@
         //end background
         
         [self setupBackgroundImage];
-        
-        animation = true;
-        
 	}
 	return self;
 }
 
-- (void)setupBackgroundImage
-{
-    
+- (void)setupBackgroundImage {
+
     sun = [CCSprite spriteWithFile:@"Background/sun.png"];
     
     sun.position = ccp(size.width, size.height/2);
@@ -59,11 +59,6 @@
     
     //add schedule to move backgrounds
     [self schedule:@selector(moveBackground)];
-}
-
-- (void)initWithHero:(Hero *)hero_ andWorldWidth:(float)wWidth {
-    hero = hero_;
-    worldWidth = wWidth;
 }
 
 #pragma mark - Update methods

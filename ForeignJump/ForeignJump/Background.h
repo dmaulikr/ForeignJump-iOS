@@ -13,14 +13,12 @@
 #import "InGame.h"
 
 @interface Background : CCLayer {
-    CCSprite* background;
-    CCSprite* sun;
+    CCSprite *background;
+    CCSprite *sun;
     BOOL animation;
 }
 
-@property (nonatomic, strong) CCSprite* sun;
+@property (nonatomic, strong) CCSprite *sun;
 @property (nonatomic, readwrite) BOOL animation;
-
-- (void) initWithHero:(Hero*)hero_ andWorldWidth:(float)width;
 
 @end

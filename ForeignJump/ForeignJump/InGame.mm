@@ -14,6 +14,11 @@ static const int mapCols = 120;
 static const int mapRows = 15;
 static const float jumpintensity = 40;
 static const float gravityconst = 28;
+static const CGPoint heroPosition = ccp(90,280);
+static const CGPoint ennemiPosition = ccp(10,280);
+
+static b2World *worldInstance;
+static float worldWidth;
 
 @implementation InGame {
     CGPoint startTouch;
@@ -27,8 +32,7 @@ static const float gravityconst = 28;
     CCParticleSystemQuad *smoke;
     CCParticleSystemQuad *sparkle;
     CCParticleSystemQuad *explosion;
-    bool exploded;
-
+    BOOL exploded;
 }
 
 Map *map;
@@ -36,7 +40,7 @@ Background *background;
 
 #pragma mark - synthesize
 @synthesize hero;
-@synthesize ennemi;
+@synthesize ennemy;
 
 +(CCScene *) scene
 {
@@ -61,6 +65,14 @@ Background *background;
 	return scene;
 }
 
++ (b2World *) getWorld {
+    return worldInstance;
+}
+
++ (float) getWorldWidth {
+    return worldWidth;
+}
+
 #pragma mark - Init Methods
 
 -(id) init
@@ -71,16 +83,18 @@ Background *background;
         
         worldSize = CGSizeMake(25 * mapCols, 25 * mapRows);
         
-        exploded = false;
+        exploded = NO;
+        
+        worldWidth = worldSize.width;
         
         //init hero
-        hero = [[Hero alloc] init];
+        hero = [Hero heroWithPosition:heroPosition];
         [self addChild:hero];
         //end init hero
         
-        //init ennemi
-        ennemi = [[Ennemi alloc] init:hero];
-        [self addChild:ennemi];
+        //init ennemy
+        ennemy = [Ennemy ennemyWithPosition:ennemiPosition];
+        [self addChild:ennemy];
         
         //init physics
         [self initPhysics];
@@ -97,16 +111,17 @@ Background *background;
         
         [self runAction: [CCFollow actionWithTarget:hero.texture worldBoundary:CGRectMake(0, 0, worldSize.width, 290)]];
         
-        [background initWithHero:hero andWorldWidth:worldSize.width];
-        
+        //particles init
         explosion = [CCParticleSystemQuad particleWithFile:@"Particle/fire.plist"];
         [explosion stopSystem];
         [self addChild:explosion z:99];
         
+        //coin
         sparkle = [CCParticleSystemQuad particleWithFile:@"Particle/piece.plist"];
         [sparkle stopSystem];
         [self addChild:sparkle z:99];
         
+        //bomb smoke
         smoke = [CCParticleSystemQuad particleWithFile:@"Particle/smoke.plist"];
         [smoke stopSystem];
         [self addChild:smoke z:98];
@@ -118,9 +133,9 @@ Background *background;
     
     [self createWorld:gravityconst]; //create the world
     
-    [hero initPhysics:world]; //init hero's body
+    [hero initPhysics]; //init hero's body
 
-    [ennemi initPhysics:world]; //init ennemy's body
+    [ennemy initPhysics]; //init ennemy's body
     
     [self initScreenEdges];
 
@@ -144,7 +159,9 @@ Background *background;
     b2Vec2 gravity = b2Vec2(0.0f, -intensity);
     world = new b2World(gravity);
     world->SetAllowSleeping(NO);
-    world->SetContinuousPhysics(TRUE);
+    world->SetContinuousPhysics(YES);
+    
+    worldInstance = world;
 }
 
 - (void) initScreenEdges {
@@ -171,41 +188,45 @@ Background *background;
 
 -(void) update: (ccTime) delta {
     
+    
     if ([Data getDead] && !exploded)
     {
-        CCDelayTime *delay = [CCDelayTime actionWithDuration:2];
         
-        CCCallFunc *explodeAction = [CCCallFunc actionWithTarget:self selector:@selector(releaseExplosion)];
-     
-        CCCallFunc *smokeAction = [CCCallFunc actionWithTarget:self selector:@selector(releaseSmoke)];
-        
-        CCSequence *sequence = [CCSequence actions:explodeAction, delay, smokeAction, nil];
-        
-        [self runAction:sequence];
-        
-        exploded = true;
-        
-        [hero unschedule:@selector(update:)];
-        hero.body->SetLinearVelocity(b2Vec2(0,0));
     }
     
     if ([Data isCoinTouched])
     {
-        sparkle.position = [Data getTouchPoint];
+        sparkle.position = [Data getCoinPoint];
         [sparkle resetSystem];
-        [Data setCoinTouch:NO];
+        [Data setCoinState:NO];
+    }
+    
+    if ([Data isBombTouched] && !exploded)
+    {
+        CCDelayTime *delay = [CCDelayTime actionWithDuration:0];
+        
+        CCCallFunc *explodeAction = [CCCallFunc actionWithTarget:self selector:@selector(releaseExplosion)];
+        
+        CCCallFunc *smokeAction = [CCCallFunc actionWithTarget:self selector:@selector(releaseSmoke)];
+        
+        CCSequence *bombsequence = [CCSequence actions:explodeAction, delay, smokeAction, nil];
+
+        [self runAction:bombsequence];
+        
+        [hero unschedule:@selector(update:)];
+        hero.body->SetLinearVelocity(b2Vec2(0,0));
+        
+        exploded = YES;
     }
 }
 
 - (void)releaseExplosion {
-    CGPoint pnt = hero.position;
-    explosion.position = pnt;
+    explosion.position = [Data getBombPoint];
     [explosion resetSystem];
 }
 
 - (void)releaseSmoke {
-    CGPoint pnt = hero.position;
-    smoke.position = ccp(pnt.x, pnt.y - hero.texture.height/3);
+    smoke.position = [Data getBombPoint];
     [smoke resetSystem];
 }
 
@@ -250,7 +271,7 @@ Background *background;
     
     [hero dealloc];
     
-    [ennemi dealloc];
+    [ennemy dealloc];
     
     delete contactListener;
     

@@ -14,6 +14,9 @@ static BOOL dead;
 static CGPoint coinTouchPoint;
 static BOOL coinTouched;
 
+static CGPoint bombTouchPoint;
+static BOOL bombTouched;
+
 @implementation Data
 
 #pragma mark - Score
@@ -43,7 +46,7 @@ static BOOL coinTouched;
 }
 
 #pragma mark - Coin
-+(void) setCoinTouch:(BOOL)state {
++(void) setCoinState:(BOOL)state {
     coinTouched = state;
 }
 
@@ -55,8 +58,25 @@ static BOOL coinTouched;
     coinTouchPoint = point;
 }
 
-+(CGPoint) getTouchPoint {
++(CGPoint) getCoinPoint {
     return coinTouchPoint;
+}
+
+#pragma mark - Bomb
++(void) setBombState:(BOOL)state {
+    bombTouched = state;
+}
+
++(BOOL) isBombTouched {
+    return bombTouched;
+}
+
++(void) startBombParticle:(CGPoint)point {
+    bombTouchPoint = point;
+}
+
++(CGPoint) getBombPoint {
+    return bombTouchPoint;
 }
 
 @end

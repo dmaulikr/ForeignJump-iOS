@@ -6,16 +6,22 @@
 //  Copyright (c) 2013 Epimac. All rights reserved.
 //
 #import "Hero.h"
+#import "InGame.h"
 
 #pragma mark - Constant declaration
 static const float densityconst = 1.85f;
 static const float velocityx = 4;
+static NSString * const heroPlist = @"Hero/hero.plist";
+static NSString * const heroTexture = @"Hero/hero.png";
+
+//only one Hero instance per game
+static Hero *instance;
 
 @implementation Hero {
     BOOL animate;
     CCAction *walkAction;
     float delta;
-    b2World* world_;
+    b2World *world_;
 }
 
 #pragma mark - synthesize
@@ -26,43 +32,37 @@ static const float velocityx = 4;
 
 #pragma mark - Init methods
 
--(id)init
-{
++ (Hero *) heroInstance {
+    return instance;
+}
+
++ (id) heroWithPosition:(CGPoint)position_ {
+    return [[[Hero alloc] initWithPosition:position_] autorelease];
+}
+
+- (id) initWithPosition:(CGPoint)position_ {
+    
     if ((self = [super init]))
     {
-        [self initWithPosition:ccp(90,280)];
+        position = position_;
         
-        CCSpriteBatchNode* spriteSheet = [self initWithPlist:@"Hero/hero.plist" andTexture:@"Hero/hero.png"];
+        animate = YES;
         
-        [self addChild:spriteSheet];
+        type = HeroType;
         
-        [self initByAddingSprite:spriteSheet];
+        instance = self;
         
+        [self initSprite:heroPlist andTexture:heroTexture];
     }
-    return self;
-}
-
--(id)initWithPosition:(CGPoint)position_ {
-    
-    position = position_;
-    
-    animate = YES;
-    
-    type = HeroType;
     
     return self;
 }
 
--(CCSpriteBatchNode*)initWithPlist:(NSString *)plist andTexture:(NSString *)texture_ {
+- (void) initSprite:(NSString *)plist andTexture:(NSString *)texture_ {
     
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:plist];
     
     CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:texture_];
-    
-    return spriteSheet;
-}
-
-- (void)initByAddingSprite:(CCSpriteBatchNode*) spriteSheet {
     
     NSMutableArray *walkAnimFrames = [NSMutableArray array];
     
@@ -79,13 +79,14 @@ static const float velocityx = 4;
     [texture runAction:walkAction];
     
     texture.position = position;
-    texture.tag = 11;
+    texture.tag = HeroType;
     [spriteSheet addChild:texture];
+    
+    [self addChild:spriteSheet];
 }
 
--(void) initPhysics:(b2World*)world
-{
-    world_ = world;
+- (void) initPhysics {
+    world_ = [InGame getWorld];
     
     // Create hero body and shape
     b2BodyDef heroBodyDef;
@@ -117,7 +118,6 @@ static const float velocityx = 4;
         b2Vec2(17.0f / PTM_RATIO , 17.500 /PTM_RATIO)
     };
     shape2.Set(vertices2,num2);
-
     
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &shape;
@@ -191,19 +191,19 @@ static const float velocityx = 4;
     [self stopAnimation];
 }
 
-- (void)stopAnimation {
+- (void) stopAnimation {
     [texture pauseActions];
     animate = NO;
 }
 
-- (void)startAnimation {
+- (void) startAnimation {
     animate = YES;
     [texture resumeActions];
 }
 
 #pragma mark - Dealloc
 
--(void)dealloc {
+- (void) dealloc {
     
     body = NULL;
     

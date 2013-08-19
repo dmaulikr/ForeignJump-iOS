@@ -11,72 +11,53 @@
 #import "InGame.h"
 #import "Hero.h"
 
-void ContactListener::BeginContact(b2Contact* contact)
+void ContactListener::BeginContact(b2Contact *contact)
 {
+    b2Body *bodyA = contact->GetFixtureA()->GetBody();
+    b2Body *bodyB = contact->GetFixtureB()->GetBody();
     
-    b2Body* bodyA = contact->GetFixtureA()->GetBody();
-    b2Body* bodyB = contact->GetFixtureB()->GetBody();
-    
-    CCSprite *textureA = (CCSprite*)bodyA->GetUserData();
-    CCSprite *textureB = (CCSprite*)bodyB->GetUserData();
+    CCSprite *textureA = (CCSprite *)bodyA->GetUserData();
+    CCSprite *textureB = (CCSprite *)bodyB->GetUserData();
     
     // hero & pièce
-    if (textureA.tag == 11 && textureB.tag == 5)
+    if (textureA.tag == HeroType && textureB.tag == Piece)
     {
         textureB.visible = NO;
         [Data scorePlusPlus];
         [Data startCoinParticle:textureA.position];
-        [Data setCoinTouch:YES];
+        [Data setCoinState:YES];
     }
-    else if (textureA.tag == 5 && textureB.tag == 11)
+    else if (textureA.tag == Piece && textureB.tag == HeroType)
     {
         textureA.visible = NO;
         [Data scorePlusPlus];
         [Data startCoinParticle:textureA.position];
-        [Data setCoinTouch:YES];
+        [Data setCoinState:YES];
     }
     
-    // hero & ennemi
-    if (textureA.tag == 11 && textureB.tag == 12)
+    // hero & ennemy
+    if (textureA.tag == HeroType && textureB.tag == EnnemyType)
     {
         textureA.visible = NO;
         [Data setDead:YES];
     }
-    else if (textureA.tag == 12 && textureB.tag == 11)
+    else if (textureA.tag == EnnemyType && textureB.tag == HeroType)
     {
         textureB.visible = NO;
         [Data setDead:YES];
     }
     
     // hero & bombe
-    if (textureA.tag == 11 && textureB.tag == 9)
+    if (textureA.tag == HeroType && textureB.tag == Bombe)
     {
         textureA.visible = NO;
-        [Data setDead:YES];
+        [Data startBombParticle:textureB.position];
+        [Data setBombState:YES];
     }
-    else if (textureA.tag == 9 && textureB.tag == 11)
+    else if (textureA.tag == Bombe && textureB.tag == HeroType)
     {
         textureB.visible = NO;
-        [Data setDead:YES];
+        [Data startBombParticle:textureA.position];
+        [Data setBombState:YES];
     }
-}
-
-void ContactListener::EndContact(b2Contact* contact)
-{
-    b2Body* bodyA = contact->GetFixtureA()->GetBody();
-    b2Body* bodyB = contact->GetFixtureB()->GetBody();
-    
-    CCSprite *textureA = (CCSprite*)bodyA->GetUserData();
-    CCSprite *textureB = (CCSprite*)bodyB->GetUserData();
-    
-    // hero & pièce
-    if (textureA.tag == 11 && textureB.tag == 5)
-    {
-        //bodyA->GetWorld()->DestroyBody(bodyB);
-    }
-    else if (textureA.tag == 5 && textureB.tag == 11)
-    {
-        //bodyB->GetWorld()->DestroyBody(bodyA);
-    }
-    
 }

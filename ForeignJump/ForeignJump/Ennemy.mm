@@ -1,22 +1,28 @@
 //
-//  ennemi.m
+//  ennemy.m
 //  ForeignJump
 //
 //  Created by Francis Visoiu Mistrih on 29/07/13.
 //  Copyright (c) 2013 Epimac. All rights reserved.
 //
 
-#import "Ennemi.h"
+#import "Ennemy.h"
+#import "InGame.h"
 
 #pragma mark - Constant declaration
 static const float densityconst = 1.85f;
+static NSString * const ennemyPlist = @"Ennemy/ennemy.plist";
+static NSString * const ennemyTexture = @"Ennemy/ennemy.png";
 
-@implementation Ennemi {
+static Ennemy *instance;
+
+@implementation Ennemy {
     BOOL animate;
     CCAction *walkAction;
     float delta;
-    b2World* world_;
+    b2World *world_;
     float velocityx;
+    Hero* hero;
 }
 
 #pragma mark - synthesize
@@ -26,45 +32,39 @@ static const float densityconst = 1.85f;
 
 
 #pragma mark - Init methods
--(id)init:(Hero*)hero_
-{
++ (Ennemy *) ennemyInstance {
+    return instance;
+}
+
++ (id) ennemyWithPosition:(CGPoint)position_ {
+    return [[[Ennemy alloc] initWithPosition:position_] autorelease];
+}
+
+-(id)initWithPosition:(CGPoint)position_ {
+    
     if ((self = [super init]))
     {
-        [self initWithPosition:ccp(10,280) andHero:hero_];
+        position = position_;
         
-        CCSpriteBatchNode* spriteSheet = [self initWithPlist:@"Ennemi/ennemi.plist" andTexture:@"Ennemi/ennemi.png"];
+        animate = YES;
         
-        [self addChild:spriteSheet];
+        type = EnnemyType;
         
-        [self initByAddingSprite:spriteSheet];
+        hero = [Hero heroInstance];
         
+        instance = self;
+        
+        [self initSprite:ennemyPlist andTexture:ennemyTexture];
     }
-    return self;
-}
-
--(id)initWithPosition:(CGPoint)position_ andHero:(Hero *)hero_ {
-    
-    position = position_;
-    
-    animate = YES;
-    
-    type = EnnemiType;
-    
-    hero = hero_;
     
     return self;
 }
 
--(CCSpriteBatchNode*)initWithPlist:(NSString *)plist andTexture:(NSString *)texture_ {
+- (void) initSprite:(NSString *)plist andTexture:(NSString *)texture_ {
     
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:plist];
     
     CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:texture_];
-    
-    return spriteSheet;
-}
-
-- (void)initByAddingSprite:(CCSpriteBatchNode*) spriteSheet {
     
     NSMutableArray *walkAnimFrames = [NSMutableArray array];
     
@@ -81,20 +81,21 @@ static const float densityconst = 1.85f;
     [texture runAction:walkAction];
     
     texture.position = position;
-    texture.tag = 12;
+    texture.tag = EnnemyType;
     [spriteSheet addChild:texture];
+    
+    [self addChild:spriteSheet];
 }
 
--(void) initPhysics:(b2World*)world
-{
-    world_ = world;
+-(void) initPhysics {
+    world_ = [InGame getWorld];
     
-    // Create ennemi body and shape
-    b2BodyDef ennemiBodyDef;
-    ennemiBodyDef.fixedRotation = true;
-    ennemiBodyDef.type = b2_dynamicBody;
-    ennemiBodyDef.position.Set(position.x/PTM_RATIO, position.y/PTM_RATIO);
-    body = world_->CreateBody(&ennemiBodyDef);
+    // Create ennemy body and shape
+    b2BodyDef ennemyBodyDef;
+    ennemyBodyDef.fixedRotation = true;
+    ennemyBodyDef.type = b2_dynamicBody;
+    ennemyBodyDef.position.Set(position.x/PTM_RATIO, position.y/PTM_RATIO);
+    body = world_->CreateBody(&ennemyBodyDef);
     body->SetUserData(texture);
     
     b2PolygonShape shape;
@@ -120,21 +121,20 @@ static const float densityconst = 1.85f;
     };
     shape2.Set(vertices2,num2);
     
-    
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &shape;
     
     b2FixtureDef fixtureDef2;
     fixtureDef2.shape = &shape2;
     
-    b2FixtureDef ennemiShapeDef;
-    ennemiShapeDef.shape = &shape;
-    ennemiShapeDef.density = densityconst;
-    body->CreateFixture(&ennemiShapeDef);
+    b2FixtureDef ennemyShapeDef;
+    ennemyShapeDef.shape = &shape;
+    ennemyShapeDef.density = densityconst;
+    body->CreateFixture(&ennemyShapeDef);
     
-    b2FixtureDef ennemiShapeDef2;
-    ennemiShapeDef2.shape = &shape2;
-    body->CreateFixture(&ennemiShapeDef2);
+    b2FixtureDef ennemyShapeDef2;
+    ennemyShapeDef2.shape = &shape2;
+    body->CreateFixture(&ennemyShapeDef2);
     
     velocityx = hero.body->GetLinearVelocity().x;
     

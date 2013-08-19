@@ -9,23 +9,24 @@
 #import "Map.h"
 
 @implementation Map {
-    NSString * data;
-    b2World* world;
+    NSString *data;
+    b2World *world;
 }
 
--(id) initWithFile:(NSString*)file {
+-(id) initWithFile:(NSString *)file {
     
     if( (self=[super init])) {
         
         NSError *error = nil;
         
-        data = [[NSString alloc] initWithContentsOfFile:file encoding:NSUTF8StringEncoding error:&error];
+        data = [[[NSString alloc] initWithContentsOfFile:file encoding:NSUTF8StringEncoding error:&error] autorelease];
     }
     
     return self;
 }
 
--(void) loadMap:(b2World*)world_ {
+-(void) loadMap:(b2World *)world_ {
+    
     CGSize size = [[CCDirector sharedDirector] winSize];
     
     world = world_;

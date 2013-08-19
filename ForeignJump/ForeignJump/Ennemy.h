@@ -1,5 +1,5 @@
 //
-//  Hero.h
+//  Ennemy.h
 //  ForeignJump
 //
 //  Created by Francis Visoiu Mistrih on 29/07/13.
@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import "Box2D.h"
 #import "Tile.h"
+#import "Hero.h"
 
-@interface Hero : CCNode {
+@interface Ennemy : CCNode {
     CCSprite *texture;
     CGPoint position;
     b2Body *body;
@@ -20,15 +22,14 @@
 @property (nonatomic, readonly) CCSprite *texture;
 @property (nonatomic, readwrite) b2Body *body;
 @property (nonatomic, readwrite) TypeCase type;
-@property (nonatomic, readwrite) CGPoint position;
 
-+ (Hero *) heroInstance;
++ (Ennemy *) ennemyInstance;
 
-+ (id) heroWithPosition:(CGPoint)position_;
++ (id) ennemyWithPosition:(CGPoint)position_;
 
 - (id) initWithPosition:(CGPoint)position_;
 
-- (void) initSprite:(NSString *)plist andTexture:(NSString *)texture;
+- (void) initSprite:(NSString *)plist andTexture:(NSString *)texture_;
 
 - (void) initPhysics;
 

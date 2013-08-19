@@ -10,17 +10,22 @@
 
 @interface Data : NSObject
 
-+(int) getScore;
-+(void) setScore:(int)score_;
-+(void) addScore:(int)score_;
-+(void) scorePlusPlus;
++ (int) getScore;
++ (void) setScore:(int)score_;
++ (void) addScore:(int)score_;
++ (void) scorePlusPlus;
 
-+(BOOL) getDead;
-+(void) setDead:(BOOL)dead_;
++ (BOOL) getDead;
++ (void) setDead:(BOOL)dead_;
 
-+(void) setCoinTouch:(BOOL)state;
-+(BOOL) isCoinTouched;
-+(void) startCoinParticle:(CGPoint)point;
-+(CGPoint) getTouchPoint;
++ (void) setCoinState:(BOOL)state;
++ (BOOL) isCoinTouched;
++ (void) startCoinParticle:(CGPoint)point;
++ (CGPoint) getCoinPoint;
+
++ (void) setBombState:(BOOL)state;
++ (BOOL) isBombTouched;
++ (void) startBombParticle:(CGPoint)point;
++ (CGPoint) getBombPoint;
 
 @end
