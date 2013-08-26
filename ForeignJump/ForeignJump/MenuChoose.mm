@@ -39,25 +39,38 @@ CGSize winSize;
         //background
         CCSprite *background = [CCSprite spriteWithFile:@"Menu/menuchoosebg.png"];
         background.position = ccp(winSize.width/2, winSize.height/2);
-        
         [self addChild:background z:0];
         //end background
         
-        CCSprite *roumainChar = [CCSprite spriteWithFile:@"Menu/Choose/roumain.png"];
-        CCSprite *indienChar = [CCSprite spriteWithFile:@"Menu/Choose/indien.png"];
-        CCSprite *renoiChar = [CCSprite spriteWithFile:@"Menu/Choose/renoi.png"];
-        CCSprite *reunionnaisChar = [CCSprite spriteWithFile:@"Menu/Choose/reunionnais.png"];
-        CCSprite *roumainChar2 = [CCSprite spriteWithFile:@"Menu/Choose/roumain.png"];
-        CCSprite *indienChar2 = [CCSprite spriteWithFile:@"Menu/Choose/indien.png"];
-        CCSprite *renoiChar2 = [CCSprite spriteWithFile:@"Menu/Choose/renoi.png"];
-        CCSprite *reunionnaisChar2 = [CCSprite spriteWithFile:@"Menu/Choose/reunionnais.png"];
+        //menu
         
+        //sprites
+        CCSprite *roumainChar = [CCSprite spriteWithFile:@"Menu/Choose/roumain.png"];
+        CCSprite *roumainChar2 = [CCSprite spriteWithFile:@"Menu/Choose/roumain.png"];
+        roumainChar2.color = ccc3(100,100,100);
+        
+        CCSprite *indienChar = [CCSprite spriteWithFile:@"Menu/Choose/indien.png"];
+        CCSprite *indienChar2 = [CCSprite spriteWithFile:@"Menu/Choose/indien.png"];
+        indienChar2.color = ccc3(100,100,100);
+        
+        CCSprite *renoiChar = [CCSprite spriteWithFile:@"Menu/Choose/renoi.png"];
+        CCSprite *renoiChar2 = [CCSprite spriteWithFile:@"Menu/Choose/renoi.png"];
+        renoiChar2.color = ccc3(100,100,100);
+        
+        CCSprite *reunionnaisChar = [CCSprite spriteWithFile:@"Menu/Choose/reunionnais.png"];
+        CCSprite *reunionnaisChar2 = [CCSprite spriteWithFile:@"Menu/Choose/reunionnais.png"];
+        reunionnaisChar2.color = ccc3(100,100,100);
+        
+        //menuItems
         CCMenuItemSprite *roumain = [CCMenuItemSprite itemWithNormalSprite:roumainChar selectedSprite:roumainChar2 target:self selector:@selector(goToGame:)];
         roumain.tag = Roumain;
+        
         CCMenuItemSprite *indien = [CCMenuItemSprite itemWithNormalSprite:indienChar selectedSprite:indienChar2 target:self selector:@selector(goToGame:)];
         indien.tag = Indien;
+        
         CCMenuItemSprite *renoi = [CCMenuItemSprite itemWithNormalSprite:renoiChar selectedSprite:renoiChar2 target:self selector:@selector(goToGame:)];
         renoi.tag = Renoi;
+        
         CCMenuItemSprite *reunionnais = [CCMenuItemSprite itemWithNormalSprite:reunionnaisChar selectedSprite:reunionnaisChar2 target:self selector:@selector(goToGame:)];
         reunionnais.tag = Reunionnais;
         
@@ -67,6 +80,7 @@ CGSize winSize;
         menu.position = ccp(winSize.width/2, winSize.height/2 - 40);
         
         [self addChild:menu];
+        //end menu
     }
     return self;
 }
