@@ -20,7 +20,7 @@
 		<key>10.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{90,2},{86,158}}</string>
+			<string>{{88,2},{86,158}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -33,7 +33,7 @@
 		<key>11.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{178,2},{86,158}}</string>
+			<string>{{174,2},{86,158}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -46,7 +46,7 @@
 		<key>12.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{266,2},{86,158}}</string>
+			<string>{{260,2},{86,158}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -59,7 +59,7 @@
 		<key>2.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{354,2},{86,158}}</string>
+			<string>{{346,2},{86,158}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -72,7 +72,7 @@
 		<key>3.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{2,162},{86,158}}</string>
+			<string>{{2,160},{86,158}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -85,7 +85,7 @@
 		<key>4.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{90,162},{86,158}}</string>
+			<string>{{88,160},{86,158}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -98,7 +98,7 @@
 		<key>5.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{178,162},{86,158}}</string>
+			<string>{{174,160},{86,158}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -111,7 +111,7 @@
 		<key>6.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{266,162},{86,158}}</string>
+			<string>{{260,160},{86,158}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -124,7 +124,7 @@
 		<key>7.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{354,162},{86,158}}</string>
+			<string>{{346,160},{86,158}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -137,7 +137,7 @@
 		<key>8.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{2,322},{86,158}}</string>
+			<string>{{2,318},{86,158}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -150,7 +150,7 @@
 		<key>9.png</key>
 		<dict>
 			<key>frame</key>
-			<string>{{90,322},{86,158}}</string>
+			<string>{{88,318},{86,158}}</string>
 			<key>offset</key>
 			<string>{0,0}</string>
 			<key>rotated</key>
@@ -170,7 +170,7 @@
 		<key>size</key>
 		<string>{512,512}</string>
 		<key>smartupdate</key>
-		<string>$TexturePacker:SmartUpdate:6f215ac30feed78c9934e0dfa09cd5ce$</string>
+		<string>$TexturePacker:SmartUpdate:931068c727bef97078a755568a9c63b5:1/1$</string>
 		<key>textureFileName</key>
 		<string>Roumain_ennemy-hd.png</string>
 	</dict>

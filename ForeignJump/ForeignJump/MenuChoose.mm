@@ -91,22 +91,22 @@ CGSize winSize;
     switch (sender.tag) {
         case Roumain:
         {
-            [Character setCharacter:@"Andrei" andType:Roumain andHeroTexture:@"Roumain_hero.png" andHeroPlist:@"Roumain_hero.plist" andEnnemyTexture:@"Roumain_ennemy.png" andEnnemyPlist:@"Roumain_ennemy.plist" andMap:@"Roumain_map.txt" andMapTerre:@"Roumain_terre.png" andMapSousTerre:@"Roumain_sousterre.png" andMapObstacle:@"Roumain_obstacle.png" andMapPiece:@"Roumain_piece.png" andMapBomb:@"Roumain_bomb.png" andBackground:@"Roumain_bg.png" andBackgroundSun:@"Roumain_sun.png"];
+            [Character setCharacter:@"Andrei" andType:Roumain andHeroTexture:@"Perso/Roumain/Hero/Roumain_hero.png" andHeroPlist:@"Perso/Roumain/Hero/Roumain_hero.plist" andEnnemyTexture:@"Perso/Roumain/Ennemy/Roumain_ennemy.png" andEnnemyPlist:@"Perso/Roumain/Ennemy/Roumain_ennemy.plist" andMap:@"Perso/Roumain/Map/Roumain_map.txt" andMapTerre:@"Perso/Roumain/Map/Roumain_terre.png" andMapSousTerre:@"Perso/Roumain/Map/Roumain_sousterre.png" andMapObstacle:@"Perso/Roumain/Map/Roumain_obstacle.png" andMapPiece:@"Perso/Roumain/Map/Roumain_piece.png" andMapBomb:@"Perso/Roumain/Map/Roumain_bomb.png" andBackground:@"Perso/Roumain/Background/Roumain_bg.png" andBackgroundSun:@"Perso/Roumain/Background/Roumain_sun.png"];
             break;
         }
         case Reunionnais:
         {
-            [Character setCharacter:@"Andrei" andType:Reunionnais andHeroTexture:@"Reunionnais_hero.png" andHeroPlist:@"Reunionnais_hero.plist" andEnnemyTexture:@"Reunionnais_ennemy.png" andEnnemyPlist:@"Reunionnais_ennemy.plist" andMap:@"Reunionnais_map.txt" andMapTerre:@"Reunionnais_terre.png" andMapSousTerre:@"Reunionnais_sousterre.png" andMapObstacle:@"Reunionnais_obstacle.png" andMapPiece:@"Reunionnais_piece.png" andMapBomb:@"Reunionnais_bomb.png" andBackground:@"Reunionnais_bg.png" andBackgroundSun:@"Reunionnais_sun.png"];
+            [Character setCharacter:@"Andrei" andType:Reunionnais andHeroTexture:@"Perso/Reunionnais/Hero/Reunionnais_hero.png" andHeroPlist:@"Perso/Reunionnais/Hero/Reunionnais_hero.plist" andEnnemyTexture:@"Perso/Reunionnais/Ennemy/Reunionnais_ennemy.png" andEnnemyPlist:@"Perso/Reunionnais/Ennemy/Reunionnais_ennemy.plist" andMap:@"Perso/Reunionnais/Map/Reunionnais_map.txt" andMapTerre:@"Perso/Reunionnais/Map/Reunionnais_terre.png" andMapSousTerre:@"Perso/Reunionnais/Map/Reunionnais_sousterre.png" andMapObstacle:@"Perso/Reunionnais/Map/Reunionnais_obstacle.png" andMapPiece:@"Perso/Reunionnais/Map/Reunionnais_piece.png" andMapBomb:@"Perso/Reunionnais/Map/Reunionnais_bomb.png" andBackground:@"Perso/Reunionnais/Background/Reunionnais_bg.png" andBackgroundSun:@"Perso/Reunionnais/Background/Reunionnais_sun.png"];
             break;
         }
         case Renoi:
         {
-            [Character setCharacter:@"Andrei" andType:Renoi andHeroTexture:@"Renoi_hero.png" andHeroPlist:@"Renoi_hero.plist" andEnnemyTexture:@"Renoi_ennemy.png" andEnnemyPlist:@"Renoi_ennemy.plist" andMap:@"Renoi_map.txt" andMapTerre:@"Renoi_terre.png" andMapSousTerre:@"Renoi_sousterre.png" andMapObstacle:@"Renoi_obstacle.png" andMapPiece:@"Renoi_piece.png" andMapBomb:@"Renoi_bomb.png" andBackground:@"Renoi_bg.png" andBackgroundSun:@"Renoi_sun.png"];
+            [Character setCharacter:@"Andrei" andType:Renoi andHeroTexture:@"Perso/Renoi/Hero/Renoi_hero.png" andHeroPlist:@"Perso/Renoi/Hero/Renoi_hero.plist" andEnnemyTexture:@"Perso/Renoi/Ennemy/Renoi_ennemy.png" andEnnemyPlist:@"Perso/Renoi/Ennemy/Renoi_ennemy.plist" andMap:@"Perso/Renoi/Map/Renoi_map.txt" andMapTerre:@"Perso/Renoi/Map/Renoi_terre.png" andMapSousTerre:@"Perso/Renoi/Map/Renoi_sousterre.png" andMapObstacle:@"Perso/Renoi/Map/Renoi_obstacle.png" andMapPiece:@"Perso/Renoi/Map/Renoi_piece.png" andMapBomb:@"Perso/Renoi/Map/Renoi_bomb.png" andBackground:@"Perso/Renoi/Background/Renoi_bg.png" andBackgroundSun:@"Perso/Renoi/Background/Renoi_sun.png"];
             break;
         }
         case Indien:
         {
-            [Character setCharacter:@"Andrei" andType:Indien andHeroTexture:@"Indien_hero.png" andHeroPlist:@"Indien_hero.plist" andEnnemyTexture:@"Indien_ennemy.png" andEnnemyPlist:@"Indien_ennemy.plist" andMap:@"Indien_map.txt" andMapTerre:@"Indien_terre.png" andMapSousTerre:@"Indien_sousterre.png" andMapObstacle:@"Indien_obstacle.png" andMapPiece:@"Indien_piece.png" andMapBomb:@"Indien_bomb.png" andBackground:@"Indien_bg.png" andBackgroundSun:@"Indien_sun.png"];
+            [Character setCharacter:@"Andrei" andType:Indien andHeroTexture:@"Perso/Indien/Hero/Indien_hero.png" andHeroPlist:@"Perso/Indien/Hero/Indien_hero.plist" andEnnemyTexture:@"Perso/Indien/Ennemy/Indien_ennemy.png" andEnnemyPlist:@"Perso/Indien/Ennemy/Indien_ennemy.plist" andMap:@"Perso/Indien/Map/Indien_map.txt" andMapTerre:@"Perso/Indien/Map/Indien_terre.png" andMapSousTerre:@"Perso/Indien/Map/Indien_sousterre.png" andMapObstacle:@"Perso/Indien/Map/Indien_obstacle.png" andMapPiece:@"Perso/Indien/Map/Indien_piece.png" andMapBomb:@"Perso/Indien/Map/Indien_bomb.png" andBackground:@"Perso/Indien/Background/Indien_bg.png" andBackgroundSun:@"Perso/Indien/Background/Indien_sun.png"];
             break;
         }
         default:

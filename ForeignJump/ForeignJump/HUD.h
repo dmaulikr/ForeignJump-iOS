@@ -12,6 +12,8 @@
 
 @interface HUD : CCLayer {
     CCLabelTTF *scoreLabel;
+    CCSprite *flag;
+    CCSprite *coins;
 }
 
 @end

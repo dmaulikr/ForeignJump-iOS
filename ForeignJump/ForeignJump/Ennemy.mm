@@ -134,7 +134,7 @@ static Ennemy *instance;
     ennemyShapeDef2.shape = &shape2;
     body->CreateFixture(&ennemyShapeDef2);
     
-    velocityx = hero.body->GetLinearVelocity().x;
+    velocityx = hero.body->GetLinearVelocity().x - 0.1;
     
     //set constant velocity
     body->SetLinearVelocity(b2Vec2(velocityx, 0));

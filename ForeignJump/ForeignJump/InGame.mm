@@ -291,7 +291,7 @@ CCSprite *gameOver;
     
     if (![Data getDead]) {
     
-        if (startTouch.y > stopTouch.y)
+        if (startTouch.y > stopTouch.y + 50)
         {
             [hero jump:jumpintensity];
         }
