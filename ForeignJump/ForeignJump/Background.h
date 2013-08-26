@@ -10,7 +10,6 @@
 // Background
 
 #import "Hero.h"
-#import "InGame.h"
 
 @interface Background : CCLayer {
     CCSprite *background;
@@ -21,4 +20,6 @@
 @property (nonatomic, strong) CCSprite *sun;
 @property (nonatomic, readwrite) BOOL animation;
 
+- (void) setHero;
+    
 @end

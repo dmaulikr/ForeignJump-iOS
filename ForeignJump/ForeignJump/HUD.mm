@@ -28,6 +28,10 @@
 -(void) updateScore {
     int score = [Data getScore];
     [scoreLabel setString:[NSString stringWithFormat:@"%i", score]];
+    
+    if ([Data getDead]) {
+        [self unscheduleAllSelectors];
+    }
 }
 
 @end

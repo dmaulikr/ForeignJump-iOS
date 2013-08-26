@@ -17,7 +17,22 @@ static BOOL coinTouched;
 static CGPoint bombTouchPoint;
 static BOOL bombTouched;
 
+static BOOL killedByEnnemy;
+
 @implementation Data
+
++ (void)resetData {
+    score = 0;
+    dead = NO;
+    
+    coinTouchPoint = ccp(0,0);
+    coinTouched = NO;
+    
+    bombTouchPoint = ccp(0,0);
+    bombTouched = NO;
+    
+    killedByEnnemy = NO;
+}
 
 #pragma mark - Score
 +(int)getScore {
@@ -77,6 +92,14 @@ static BOOL bombTouched;
 
 +(CGPoint) getBombPoint {
     return bombTouchPoint;
+}
+
++(void) setEnnemyKilledState:(BOOL)state {
+    killedByEnnemy = state;
+}
+
++(BOOL) isKilledByEnnemy {
+    return killedByEnnemy;
 }
 
 @end

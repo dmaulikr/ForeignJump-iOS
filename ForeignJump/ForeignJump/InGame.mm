@@ -8,9 +8,11 @@
 
 #import "InGame.h"
 #import "CCTouchDispatcher.h"
+#import "MainMenu.h"
+#import "Character.h"
 
 #pragma mark - Constant declaration
-static const int mapCols = 120;
+static const int mapCols = 110;
 static const int mapRows = 15;
 static const float jumpintensity = 40;
 static const float gravityconst = 28;
@@ -33,10 +35,11 @@ static float worldWidth;
     CCParticleSystemQuad *sparkle;
     CCParticleSystemQuad *explosion;
     BOOL exploded;
+    BOOL killed;
 }
 
-Map *map;
 Background *background;
+CCSprite *gameOver;
 
 #pragma mark - synthesize
 @synthesize hero;
@@ -51,15 +54,17 @@ Background *background;
     background = [Background node];
     [scene addChild: background z: 0];
     
-    // add map layer
-    map = [Map node];
-    
 	// add game layer
 	InGame *layer = [InGame node];
-	[scene addChild: layer z:2];
+	[scene addChild: layer z:1];
     
     HUD* hud = [HUD node];
-    [scene addChild:hud z: 3];
+    [scene addChild:hud z: 2];
+    
+    //game over
+    gameOver = [CCSprite spriteWithFile:@"Menu/GameOver.png"];
+    [gameOver setOpacity:0];
+    [scene addChild:gameOver z:3 tag:9999];
 	
 	// return the scene
 	return scene;
@@ -87,44 +92,39 @@ Background *background;
         
         worldWidth = worldSize.width;
         
+        //enable touch
+        [self setTouchEnabled:YES];
+        
         //init hero
         hero = [Hero heroWithPosition:heroPosition];
-        [self addChild:hero];
-        //end init hero
+        [self addChild:hero z:0];
+        
+        //set hero instance
+        [background setHero];
         
         //init ennemy
         ennemy = [Ennemy ennemyWithPosition:ennemiPosition];
-        [self addChild:ennemy];
+        [self addChild:ennemy z:0];
         
-        //init physics
+        //init physics (hero, ennemy...)
         [self initPhysics];
         
-        //set up update
-        [self scheduleUpdate];
-        
-        //enable touch
-        [self setTouchEnabled:YES];
-        [self setAccelerometerEnabled:YES];
-		      
-        //init map
-        [self initMap];
-        
+        // add map layer from txt
+        map = [Map mapWithFile:GetFullPath([Character map])];
+        [self addChild: map z: 1];
+
+        //follow the hero on the map
         [self runAction: [CCFollow actionWithTarget:hero.texture worldBoundary:CGRectMake(0, 0, worldSize.width, 290)]];
         
-        //particles init
-        explosion = [CCParticleSystemQuad particleWithFile:@"Particle/fire.plist"];
-        [explosion stopSystem];
-        [self addChild:explosion z:99];
+        //set up update method
+        [self scheduleUpdate];
         
-        //coin
-        sparkle = [CCParticleSystemQuad particleWithFile:@"Particle/piece.plist"];
-        [sparkle stopSystem];
-        [self addChild:sparkle z:99];
+        //preload sounds
+        [self preloadSounds];
         
-        //bomb smoke
-        smoke = [CCParticleSystemQuad particleWithFile:@"Particle/smoke.plist"];
-        [smoke stopSystem];
-        [self addChild:smoke z:98];
+        //load all particles systems (piece, smoke, eplosion)
+        [self loadParticles];
+
 }
 	return self;
 }
@@ -142,16 +142,6 @@ Background *background;
     //setup contactlistener
     contactListener = new ContactListener();
     world->SetContactListener(contactListener);
-}
-
--(void) initMap {
-    
-#define GetFullPath(_filePath_) [[NSBundle mainBundle] pathForResource:[_filePath_ lastPathComponent] ofType:nil inDirectory:[_filePath_ stringByDeletingLastPathComponent]]
-    
-    [map initWithFile:GetFullPath(@"Map/map.txt")];
-    [map loadMap:world];
-
-    [self addChild: map z: 1];
 }
 
 - (void) createWorld:(float)intensity {
@@ -188,10 +178,13 @@ Background *background;
 
 -(void) update: (ccTime) delta {
     
-    
-    if ([Data getDead] && !exploded)
-    {
-        
+    world->Step(delta, 60, 60);
+    for(b2Body *b = world->GetBodyList(); b; b=b->GetNext()) {
+        if (b->GetUserData() != NULL && b->GetType() == b2_dynamicBody)
+        {
+            CCSprite *data = (CCSprite*)b->GetUserData();
+            data.position = ccp(b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO);
+        }
     }
     
     if ([Data isCoinTouched])
@@ -203,20 +196,42 @@ Background *background;
     
     if ([Data isBombTouched] && !exploded)
     {
-        CCDelayTime *delay = [CCDelayTime actionWithDuration:0];
+        [self stopAll];
+        
+        CCDelayTime *delay = [CCDelayTime actionWithDuration:0.2];
         
         CCCallFunc *explodeAction = [CCCallFunc actionWithTarget:self selector:@selector(releaseExplosion)];
         
         CCCallFunc *smokeAction = [CCCallFunc actionWithTarget:self selector:@selector(releaseSmoke)];
         
         CCSequence *bombsequence = [CCSequence actions:explodeAction, delay, smokeAction, nil];
-
+        
         [self runAction:bombsequence];
         
-        [hero unschedule:@selector(update:)];
-        hero.body->SetLinearVelocity(b2Vec2(0,0));
+        CCFadeOut *fadeOutEnnemy = [CCFadeOut actionWithDuration:1];
         
-        exploded = YES;
+        [ennemy.texture runAction:fadeOutEnnemy];
+    }
+
+    if ([Data isKilledByEnnemy] && !killed)
+    {
+        [self stopAll];
+        
+        CCFadeOut *fadeOutEnnemy = [CCFadeOut actionWithDuration:1];
+        
+        [ennemy.texture runAction:fadeOutEnnemy];
+    }
+    
+    
+    if ([Data getDead])
+    {
+        CCCallFunc *dieAction = [CCCallFunc actionWithTarget:self selector:@selector(die)];
+        
+        CCDelayTime *delay = [CCDelayTime actionWithDuration:0.5];
+        
+        CCSequence *gameOverSequence = [CCSequence actions:delay, dieAction, nil];
+        
+        [self runAction:gameOverSequence];
     }
 }
 
@@ -230,12 +245,40 @@ Background *background;
     [smoke resetSystem];
 }
 
+- (void) die {
+    [gameOver setPosition:ccp(size.width/2, size.height/2)];
+   // [gameOver setVisible:YES];
+    CCFadeIn *fade = [CCFadeIn actionWithDuration:1];
+    [gameOver runAction:fade];
+}
+
+- (void) stopAll {
+    hero.body->SetLinearVelocity(b2Vec2(0,0));
+    
+    killed = YES;
+    [Data setDead:YES];
+    
+    [hero unscheduleAllSelectors];
+    [hero stopAllActions];
+    [ennemy unscheduleAllSelectors];
+    [ennemy.texture stopAllActions];
+    [ennemy stopAllActions];
+    [self stopAllActions];
+    [self unscheduleAllSelectors];
+
+}
+
 #pragma mark - Touch methods
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     
     startTouch = [touch locationInView: [touch view]];
     
+    if ([Data getDead])
+    {
+        //if dead go to main menu
+       [[CCDirector sharedDirector] replaceScene:[MainMenu scene]];
+    }
     //NSLog(@"StartY : %f", startTouch.y);
     
     return YES;
@@ -246,15 +289,44 @@ Background *background;
     stopTouch = [touch locationInView: [touch view]];
     //NSLog(@"StopY : %f", stopTouch.y);
     
-    if (startTouch.y > stopTouch.y)
-    {
-        [hero jump:jumpintensity];
-    }
+    if (![Data getDead]) {
     
-    if (startTouch.y < stopTouch.y)
-    {
-        [hero jump:-jumpintensity];
+        if (startTouch.y > stopTouch.y)
+        {
+            [hero jump:jumpintensity];
+        }
+    
+        if (startTouch.y < stopTouch.y)
+        {
+            [hero jump:-jumpintensity];
+        }
     }
+}
+
+#pragma mark - Load methods
+
+- (void) loadParticles {
+    //particles init
+    explosion = [CCParticleSystemQuad particleWithFile:@"Particle/fire.plist"];
+    [explosion stopSystem];
+    [self addChild:explosion z:99];
+    
+    //coin
+    sparkle = [CCParticleSystemQuad particleWithFile:@"Particle/piece.plist"];
+    [sparkle stopSystem];
+    [self addChild:sparkle z:99];
+    
+    //bomb smoke
+    smoke = [CCParticleSystemQuad particleWithFile:@"Particle/smoke.plist"];
+    [smoke stopSystem];
+    [self addChild:smoke z:98];
+}
+
+- (void) preloadSounds {
+    //preload sound effects
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"Sounds/coin.caf"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"Sounds/bomb.caf"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"Sounds/jump.caf"];
 }
 
 -(void) registerWithTouchDispatcher
@@ -269,15 +341,51 @@ Background *background;
 	delete world;
 	world = NULL;
     
-    [hero dealloc];
-    
-    [ennemy dealloc];
-    
     delete contactListener;
     
 	delete m_debugDraw;
 	m_debugDraw = NULL;
+    
+    worldInstance = NULL;
+    worldWidth = NULL;
+    
+    [self unscheduleAllSelectors];
+    [self stopAllActions];
+    
+    [Data resetData];
 	
+    [[CCSpriteFrameCache sharedSpriteFrameCache] removeSpriteFrames];
+    [CCSpriteFrameCache purgeSharedSpriteFrameCache];
+    
 	[super dealloc];
 }
+
+-(void) draw
+{
+    /*
+	//
+	// IMPORTANT:
+	// This is only for debug purposes
+	// It is recommend to disable it
+	//
+	[super draw];
+	
+	ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
+	
+	kmGLPushMatrix();
+	
+	world->DrawDebugData();
+	
+	kmGLPopMatrix();
+    
+    //Initialize debug drawing
+    m_debugDraw = new GLESDebugDraw( 32 );
+    world->SetDebugDraw(m_debugDraw);
+    uint32 flags = 0;
+    flags += GLESDebugDraw::e_shapeBit;
+    m_debugDraw->SetFlags(flags);
+    */
+}
+
+
 @end

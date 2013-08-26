@@ -7,63 +7,74 @@
 //
 
 #import "Map.h"
+#import "InGame.h"
 
 @implementation Map {
     NSString *data;
     b2World *world;
 }
 
--(id) initWithFile:(NSString *)file {
++ (id) mapWithFile:(NSString *)file {
+    return [[[self node] initWithFile:file] loadMap];
+}
+
+- (id) initWithFile:(NSString *)file {
     
     if( (self=[super init])) {
         
-        NSError *error = nil;
-        
-        data = [[[NSString alloc] initWithContentsOfFile:file encoding:NSUTF8StringEncoding error:&error] autorelease];
+        data = [[[NSString alloc] initWithContentsOfFile:file encoding:NSUTF8StringEncoding error:nil] autorelease];
     }
-    
     return self;
 }
 
--(void) loadMap:(b2World *)world_ {
+-(id) loadMap {
     
     CGSize size = [[CCDirector sharedDirector] winSize];
     
-    world = world_;
+    world = [InGame getWorld];
     
     int i = 0, j = 0;
     
     for (NSString *line in [data componentsSeparatedByString:@"\n"])
     {
-        
         for (int ch = 0; ch < line.length; ch++) {
             
             char chara = [line characterAtIndex:ch];
             
-            Tile *object = [[[Tile alloc] init] autorelease];
-            
             switch (chara) {
                 case '1':
                 {
-                    [object initWithSpriteFile:@"Map/obstacle.png" andType:Terre atPosition:ccp(i*25,size.height - j*25) andWorld:world];
+                    Tile *object = [Tile tileWithSpriteFile:[Character mapTerre] andType:Terre atPosition:ccp(i*25,size.height - j*25)];
                     [self addChild:object.texture];
                     break;
                 }
                 case '2':
                 {
-                    [object initWithSpriteFile:@"Map/piece.png" andType:Piece atPosition:ccp(i*25,size.height - j*25) andWorld:world];
+                    Tile *object = [Tile tileWithSpriteFile:[Character mapPiece] andType:Piece atPosition:ccp(i*25,size.height - j*25)];
                     [self addChild:object.texture];
                     break;
                 }
                 case '3':
                 {
-                    [object initWithSpriteFile:@"Map/bomb.png" andType:Bombe atPosition:ccp(i*25,size.height - j*25) andWorld:world];
+                    Tile *object = [Tile tileWithSpriteFile:[Character mapBomb] andType:Bombe atPosition:ccp(i*25,size.height - j*25)];
+                    [self addChild:object.texture];
+                    break;
+                }
+                case '4':
+                {
+                    Tile *object = [Tile tileWithSpriteFile:[Character mapObstacle] andType:Obstacle atPosition:ccp(i*25,size.height - j*25)];
+                    [self addChild:object.texture];
+                    break;
+                }
+                case '8':
+                {
+                    Tile *object = [Tile tileWithSpriteFile:[Character mapSousTerre] andType:Sousterre atPosition:ccp(i*25,size.height - j*25)];
                     [self addChild:object.texture];
                     break;
                 }
                 default:
                 {
-                    [object initWithSpriteFile:@"Map/rien.png" andType:Null atPosition:ccp(i*25,size.height - j*25) andWorld:world];
+                    Tile *object = [Tile tileWithSpriteFile:@"Map/rien.png" andType:Null atPosition:ccp(i*25,size.height - j*25)];
                     [self addChild:object.texture];
                     break;
                 }
@@ -73,6 +84,7 @@
         i = 0;
         j++;
     }
+    return self;
 }
 
 @end

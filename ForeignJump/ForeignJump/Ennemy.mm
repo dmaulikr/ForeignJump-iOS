@@ -11,8 +11,6 @@
 
 #pragma mark - Constant declaration
 static const float densityconst = 1.85f;
-static NSString * const ennemyPlist = @"Ennemy/ennemy.plist";
-static NSString * const ennemyTexture = @"Ennemy/ennemy.png";
 
 static Ennemy *instance;
 
@@ -54,7 +52,7 @@ static Ennemy *instance;
         
         instance = self;
         
-        [self initSprite:ennemyPlist andTexture:ennemyTexture];
+        [self initSprite:[Character ennemyPlist] andTexture:[Character ennemyTexture]];
     }
     
     return self;
@@ -149,7 +147,8 @@ static Ennemy *instance;
 - (void) update:(ccTime)dt {
     //get actual velocity
     b2Vec2 vel = body->GetLinearVelocity();
-    NSLog(@"%f", vel.x);
+    
+    //NSLog(@"%f", vel.x);
     //NSLog(@"%f , %f", vel.x, vel.y);
     
     //set velocity.x to const value
@@ -164,7 +163,7 @@ static Ennemy *instance;
         [self startAnimation];
     }
     
-    if (vel.x >= -0.41 && vel.x <= 0.001 && animate)
+    if (vel.x >= -0.91 && vel.x <= 0.001 && animate)
     {
         [self stopAnimation];
         [self jump:40];
@@ -199,6 +198,8 @@ static Ennemy *instance;
 -(void)dealloc {
     
     body = NULL;
+    
+    instance = NULL;
     
     [super dealloc];
 }

@@ -10,6 +10,7 @@
 #import "Map.h"
 #import "InGame.h"
 #import "Hero.h"
+#import "SimpleAudioEngine.h"
 
 void ContactListener::BeginContact(b2Contact *contact)
 {
@@ -23,27 +24,29 @@ void ContactListener::BeginContact(b2Contact *contact)
     if (textureA.tag == HeroType && textureB.tag == Piece)
     {
         textureB.visible = NO;
-        [Data scorePlusPlus];
-        [Data startCoinParticle:textureA.position];
-        [Data setCoinState:YES];
+        [Data startCoinParticle:textureB.position];
+        
+        activateCoin();
     }
     else if (textureA.tag == Piece && textureB.tag == HeroType)
     {
         textureA.visible = NO;
-        [Data scorePlusPlus];
         [Data startCoinParticle:textureA.position];
-        [Data setCoinState:YES];
+
+        activateCoin();
     }
     
     // hero & ennemy
     if (textureA.tag == HeroType && textureB.tag == EnnemyType)
     {
         textureA.visible = NO;
+        [Data setEnnemyKilledState:YES];
         [Data setDead:YES];
     }
     else if (textureA.tag == EnnemyType && textureB.tag == HeroType)
     {
         textureB.visible = NO;
+        [Data setEnnemyKilledState:YES];
         [Data setDead:YES];
     }
     
@@ -52,12 +55,27 @@ void ContactListener::BeginContact(b2Contact *contact)
     {
         textureA.visible = NO;
         [Data startBombParticle:textureB.position];
-        [Data setBombState:YES];
+        activateBomb();
     }
     else if (textureA.tag == Bombe && textureB.tag == HeroType)
     {
         textureB.visible = NO;
         [Data startBombParticle:textureA.position];
-        [Data setBombState:YES];
+        activateBomb();
     }
+}
+
+void ContactListener::activateBomb()
+{
+    [Data setBombState:YES];
+    [Data setDead:YES];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/bomb.caf"];
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+}
+
+void ContactListener::activateCoin()
+{
+    [Data setCoinState:YES];
+    [Data scorePlusPlus];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/coin.caf"];
 }

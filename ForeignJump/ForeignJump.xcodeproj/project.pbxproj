@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2205DFA17C2523600594EE4 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = D2205DF917C2523600594EE4 /* Sounds */; };
 		D222790717B921D900421B00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D222790617B921D900421B00 /* QuartzCore.framework */; };
 		D222790917B921D900421B00 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D222790817B921D900421B00 /* OpenGLES.framework */; };
 		D222790B17B921D900421B00 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D222790A17B921D900421B00 /* OpenAL.framework */; };
@@ -184,10 +185,109 @@
 		D2227B3717B921DB00421B00 /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2227B3617B921DB00421B00 /* b2Rope.cpp */; };
 		D2227B3D17B921DB00421B00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2227B3C17B921DB00421B00 /* main.m */; };
 		D2227B4017B921DB00421B00 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2227B3F17B921DB00421B00 /* AppDelegate.mm */; };
+		D23E7C5A17CADAC10096CD5D /* Indien_bg-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BE417CADAC00096CD5D /* Indien_bg-hd.png */; };
+		D23E7C5B17CADAC10096CD5D /* Indien_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BE517CADAC00096CD5D /* Indien_bg.png */; };
+		D23E7C5C17CADAC10096CD5D /* Indien_sun-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BE617CADAC00096CD5D /* Indien_sun-hd.png */; };
+		D23E7C5D17CADAC10096CD5D /* Indien_sun.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BE717CADAC00096CD5D /* Indien_sun.png */; };
+		D23E7C5E17CADAC10096CD5D /* Indien_ennemy-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BE917CADAC00096CD5D /* Indien_ennemy-hd.plist */; };
+		D23E7C5F17CADAC10096CD5D /* Indien_ennemy-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BEA17CADAC00096CD5D /* Indien_ennemy-hd.png */; };
+		D23E7C6017CADAC10096CD5D /* Indien_ennemy.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BEB17CADAC00096CD5D /* Indien_ennemy.plist */; };
+		D23E7C6117CADAC10096CD5D /* Indien_ennemy.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BEC17CADAC00096CD5D /* Indien_ennemy.png */; };
+		D23E7C6217CADAC10096CD5D /* Indien_hero-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BEE17CADAC00096CD5D /* Indien_hero-hd.plist */; };
+		D23E7C6317CADAC10096CD5D /* Indien_hero-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BEF17CADAC00096CD5D /* Indien_hero-hd.png */; };
+		D23E7C6417CADAC10096CD5D /* Indien_hero.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BF017CADAC00096CD5D /* Indien_hero.plist */; };
+		D23E7C6517CADAC10096CD5D /* Indien_hero.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BF117CADAC00096CD5D /* Indien_hero.png */; };
+		D23E7C6617CADAC10096CD5D /* Indien_bomb-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BF317CADAC00096CD5D /* Indien_bomb-hd.png */; };
+		D23E7C6717CADAC10096CD5D /* Indien_bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BF417CADAC00096CD5D /* Indien_bomb.png */; };
+		D23E7C6817CADAC10096CD5D /* Indien_map.txt in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BF517CADAC00096CD5D /* Indien_map.txt */; };
+		D23E7C6917CADAC10096CD5D /* Indien_obstacle-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BF617CADAC00096CD5D /* Indien_obstacle-hd.png */; };
+		D23E7C6A17CADAC10096CD5D /* Indien_obstacle.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BF717CADAC00096CD5D /* Indien_obstacle.png */; };
+		D23E7C6B17CADAC10096CD5D /* Indien_piece-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BF817CADAC00096CD5D /* Indien_piece-hd.png */; };
+		D23E7C6C17CADAC10096CD5D /* Indien_piece.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BF917CADAC00096CD5D /* Indien_piece.png */; };
+		D23E7C6D17CADAC10096CD5D /* Indien_rien-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BFA17CADAC00096CD5D /* Indien_rien-hd.png */; };
+		D23E7C6E17CADAC10096CD5D /* Indien_rien.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BFB17CADAC00096CD5D /* Indien_rien.png */; };
+		D23E7C6F17CADAC10096CD5D /* Indien_sousterre-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BFC17CADAC00096CD5D /* Indien_sousterre-hd.png */; };
+		D23E7C7017CADAC10096CD5D /* Indien_sousterre.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BFD17CADAC00096CD5D /* Indien_sousterre.png */; };
+		D23E7C7117CADAC10096CD5D /* Indien_terre-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BFE17CADAC00096CD5D /* Indien_terre-hd.png */; };
+		D23E7C7217CADAC10096CD5D /* Indien_terre.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7BFF17CADAC00096CD5D /* Indien_terre.png */; };
+		D23E7C7317CADAC10096CD5D /* Renoi_bg-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C0217CADAC00096CD5D /* Renoi_bg-hd.png */; };
+		D23E7C7417CADAC10096CD5D /* Renoi_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C0317CADAC00096CD5D /* Renoi_bg.png */; };
+		D23E7C7517CADAC10096CD5D /* Renoi_sun-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C0417CADAC00096CD5D /* Renoi_sun-hd.png */; };
+		D23E7C7617CADAC10096CD5D /* Renoi_sun.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C0517CADAC00096CD5D /* Renoi_sun.png */; };
+		D23E7C7717CADAC10096CD5D /* Renoi_ennemy-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C0717CADAC00096CD5D /* Renoi_ennemy-hd.plist */; };
+		D23E7C7817CADAC10096CD5D /* Renoi_ennemy-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C0817CADAC00096CD5D /* Renoi_ennemy-hd.png */; };
+		D23E7C7917CADAC10096CD5D /* Renoi_ennemy.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C0917CADAC00096CD5D /* Renoi_ennemy.plist */; };
+		D23E7C7A17CADAC10096CD5D /* Renoi_ennemy.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C0A17CADAC00096CD5D /* Renoi_ennemy.png */; };
+		D23E7C7B17CADAC10096CD5D /* Renoi_hero-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C0C17CADAC00096CD5D /* Renoi_hero-hd.plist */; };
+		D23E7C7C17CADAC10096CD5D /* Renoi_hero-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C0D17CADAC00096CD5D /* Renoi_hero-hd.png */; };
+		D23E7C7D17CADAC10096CD5D /* Renoi_hero.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C0E17CADAC00096CD5D /* Renoi_hero.plist */; };
+		D23E7C7E17CADAC10096CD5D /* Renoi_hero.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C0F17CADAC00096CD5D /* Renoi_hero.png */; };
+		D23E7C7F17CADAC10096CD5D /* Renoi_bomb-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C1117CADAC00096CD5D /* Renoi_bomb-hd.png */; };
+		D23E7C8017CADAC10096CD5D /* Renoi_bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C1217CADAC00096CD5D /* Renoi_bomb.png */; };
+		D23E7C8117CADAC10096CD5D /* Renoi_map.txt in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C1317CADAC00096CD5D /* Renoi_map.txt */; };
+		D23E7C8217CADAC10096CD5D /* Renoi_obstacle-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C1417CADAC00096CD5D /* Renoi_obstacle-hd.png */; };
+		D23E7C8317CADAC10096CD5D /* Renoi_obstacle.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C1517CADAC00096CD5D /* Renoi_obstacle.png */; };
+		D23E7C8417CADAC10096CD5D /* Renoi_piece-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C1617CADAC00096CD5D /* Renoi_piece-hd.png */; };
+		D23E7C8517CADAC10096CD5D /* Renoi_piece.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C1717CADAC00096CD5D /* Renoi_piece.png */; };
+		D23E7C8617CADAC10096CD5D /* Renoi_rien-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C1817CADAC00096CD5D /* Renoi_rien-hd.png */; };
+		D23E7C8717CADAC10096CD5D /* Renoi_rien.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C1917CADAC00096CD5D /* Renoi_rien.png */; };
+		D23E7C8817CADAC10096CD5D /* Renoi_sousterre-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C1A17CADAC00096CD5D /* Renoi_sousterre-hd.png */; };
+		D23E7C8917CADAC10096CD5D /* Renoi_sousterre.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C1B17CADAC00096CD5D /* Renoi_sousterre.png */; };
+		D23E7C8A17CADAC10096CD5D /* Renoi_terre-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C1C17CADAC00096CD5D /* Renoi_terre-hd.png */; };
+		D23E7C8B17CADAC10096CD5D /* Renoi_terre.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C1D17CADAC00096CD5D /* Renoi_terre.png */; };
+		D23E7C8C17CADAC10096CD5D /* Reunionnais_bg-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C2017CADAC00096CD5D /* Reunionnais_bg-hd.png */; };
+		D23E7C8D17CADAC10096CD5D /* Reunionnais_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C2117CADAC00096CD5D /* Reunionnais_bg.png */; };
+		D23E7C8E17CADAC10096CD5D /* Reunionnais_sun-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C2217CADAC00096CD5D /* Reunionnais_sun-hd.png */; };
+		D23E7C8F17CADAC10096CD5D /* Reunionnais_sun.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C2317CADAC00096CD5D /* Reunionnais_sun.png */; };
+		D23E7C9017CADAC10096CD5D /* Reunionnais_ennemy-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C2517CADAC00096CD5D /* Reunionnais_ennemy-hd.plist */; };
+		D23E7C9117CADAC10096CD5D /* Reunionnais_ennemy-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C2617CADAC00096CD5D /* Reunionnais_ennemy-hd.png */; };
+		D23E7C9217CADAC10096CD5D /* Reunionnais_ennemy.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C2717CADAC00096CD5D /* Reunionnais_ennemy.plist */; };
+		D23E7C9317CADAC10096CD5D /* Reunionnais_ennemy.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C2817CADAC00096CD5D /* Reunionnais_ennemy.png */; };
+		D23E7C9417CADAC10096CD5D /* Reunionnais_hero-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C2A17CADAC00096CD5D /* Reunionnais_hero-hd.plist */; };
+		D23E7C9517CADAC10096CD5D /* Reunionnais_hero-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C2B17CADAC00096CD5D /* Reunionnais_hero-hd.png */; };
+		D23E7C9617CADAC10096CD5D /* Reunionnais_hero.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C2C17CADAC00096CD5D /* Reunionnais_hero.plist */; };
+		D23E7C9717CADAC10096CD5D /* Reunionnais_hero.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C2D17CADAC00096CD5D /* Reunionnais_hero.png */; };
+		D23E7C9817CADAC10096CD5D /* Reunionnais_bomb-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C2F17CADAC00096CD5D /* Reunionnais_bomb-hd.png */; };
+		D23E7C9917CADAC10096CD5D /* Reunionnais_bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C3017CADAC00096CD5D /* Reunionnais_bomb.png */; };
+		D23E7C9A17CADAC10096CD5D /* Reunionnais_map.txt in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C3117CADAC00096CD5D /* Reunionnais_map.txt */; };
+		D23E7C9B17CADAC10096CD5D /* Reunionnais_obstacle-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C3217CADAC00096CD5D /* Reunionnais_obstacle-hd.png */; };
+		D23E7C9C17CADAC10096CD5D /* Reunionnais_obstacle.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C3317CADAC00096CD5D /* Reunionnais_obstacle.png */; };
+		D23E7C9D17CADAC10096CD5D /* Reunionnais_piece-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C3417CADAC00096CD5D /* Reunionnais_piece-hd.png */; };
+		D23E7C9E17CADAC10096CD5D /* Reunionnais_piece.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C3517CADAC00096CD5D /* Reunionnais_piece.png */; };
+		D23E7C9F17CADAC10096CD5D /* Reunionnais_rien-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C3617CADAC00096CD5D /* Reunionnais_rien-hd.png */; };
+		D23E7CA017CADAC10096CD5D /* Reunionnais_rien.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C3717CADAC00096CD5D /* Reunionnais_rien.png */; };
+		D23E7CA117CADAC10096CD5D /* Reunionnais_sousterre-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C3817CADAC00096CD5D /* Reunionnais_sousterre-hd.png */; };
+		D23E7CA217CADAC10096CD5D /* Reunionnais_sousterre.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C3917CADAC00096CD5D /* Reunionnais_sousterre.png */; };
+		D23E7CA317CADAC10096CD5D /* Reunionnais_terre-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C3A17CADAC00096CD5D /* Reunionnais_terre-hd.png */; };
+		D23E7CA417CADAC10096CD5D /* Reunionnais_terre.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C3B17CADAC00096CD5D /* Reunionnais_terre.png */; };
+		D23E7CA517CADAC10096CD5D /* Roumain_bg-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C3E17CADAC00096CD5D /* Roumain_bg-hd.png */; };
+		D23E7CA617CADAC10096CD5D /* Roumain_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C3F17CADAC00096CD5D /* Roumain_bg.png */; };
+		D23E7CA717CADAC10096CD5D /* Roumain_sun-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C4017CADAC00096CD5D /* Roumain_sun-hd.png */; };
+		D23E7CA817CADAC10096CD5D /* Roumain_sun.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C4117CADAC00096CD5D /* Roumain_sun.png */; };
+		D23E7CA917CADAC10096CD5D /* Roumain_ennemy-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C4317CADAC10096CD5D /* Roumain_ennemy-hd.plist */; };
+		D23E7CAA17CADAC10096CD5D /* Roumain_ennemy-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C4417CADAC10096CD5D /* Roumain_ennemy-hd.png */; };
+		D23E7CAB17CADAC10096CD5D /* Roumain_ennemy.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C4517CADAC10096CD5D /* Roumain_ennemy.plist */; };
+		D23E7CAC17CADAC10096CD5D /* Roumain_ennemy.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C4617CADAC10096CD5D /* Roumain_ennemy.png */; };
+		D23E7CAD17CADAC10096CD5D /* Roumain_hero-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C4817CADAC10096CD5D /* Roumain_hero-hd.plist */; };
+		D23E7CAE17CADAC10096CD5D /* Roumain_hero-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C4917CADAC10096CD5D /* Roumain_hero-hd.png */; };
+		D23E7CAF17CADAC10096CD5D /* Roumain_hero.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C4A17CADAC10096CD5D /* Roumain_hero.plist */; };
+		D23E7CB017CADAC10096CD5D /* Roumain_hero.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C4B17CADAC10096CD5D /* Roumain_hero.png */; };
+		D23E7CB117CADAC10096CD5D /* Roumain_bomb-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C4D17CADAC10096CD5D /* Roumain_bomb-hd.png */; };
+		D23E7CB217CADAC10096CD5D /* Roumain_bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C4E17CADAC10096CD5D /* Roumain_bomb.png */; };
+		D23E7CB317CADAC10096CD5D /* Roumain_map.txt in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C4F17CADAC10096CD5D /* Roumain_map.txt */; };
+		D23E7CB417CADAC10096CD5D /* Roumain_obstacle-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C5017CADAC10096CD5D /* Roumain_obstacle-hd.png */; };
+		D23E7CB517CADAC10096CD5D /* Roumain_obstacle.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C5117CADAC10096CD5D /* Roumain_obstacle.png */; };
+		D23E7CB617CADAC10096CD5D /* Roumain_piece-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C5217CADAC10096CD5D /* Roumain_piece-hd.png */; };
+		D23E7CB717CADAC10096CD5D /* Roumain_piece.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C5317CADAC10096CD5D /* Roumain_piece.png */; };
+		D23E7CB817CADAC10096CD5D /* Roumain_rien-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C5417CADAC10096CD5D /* Roumain_rien-hd.png */; };
+		D23E7CB917CADAC10096CD5D /* Roumain_rien.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C5517CADAC10096CD5D /* Roumain_rien.png */; };
+		D23E7CBA17CADAC10096CD5D /* Roumain_sousterre-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C5617CADAC10096CD5D /* Roumain_sousterre-hd.png */; };
+		D23E7CBB17CADAC10096CD5D /* Roumain_sousterre.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C5717CADAC10096CD5D /* Roumain_sousterre.png */; };
+		D23E7CBC17CADAC10096CD5D /* Roumain_terre-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C5817CADAC10096CD5D /* Roumain_terre-hd.png */; };
+		D23E7CBD17CADAC10096CD5D /* Roumain_terre.png in Resources */ = {isa = PBXBuildFile; fileRef = D23E7C5917CADAC10096CD5D /* Roumain_terre.png */; };
 		D24F5ADE17BB968E00F312FD /* Particle in Resources */ = {isa = PBXBuildFile; fileRef = D24F5ADD17BB968E00F312FD /* Particle */; };
-		D272409C17B9239B00DCAFBF /* Background in Resources */ = {isa = PBXBuildFile; fileRef = D272409917B9239B00DCAFBF /* Background */; };
-		D272409D17B9239B00DCAFBF /* Hero in Resources */ = {isa = PBXBuildFile; fileRef = D272409A17B9239B00DCAFBF /* Hero */; };
-		D272409E17B9239B00DCAFBF /* Map in Resources */ = {isa = PBXBuildFile; fileRef = D272409B17B9239B00DCAFBF /* Map */; };
+		D25EE21817CA2789009FE704 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = D25EE21717CA2789009FE704 /* Character.m */; };
+		D25EE21B17CA3082009FE704 /* MenuChoose.mm in Sources */ = {isa = PBXBuildFile; fileRef = D25EE21A17CA3082009FE704 /* MenuChoose.mm */; };
 		D27240AF17B923CE00DCAFBF /* Background.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240A017B923CE00DCAFBF /* Background.mm */; };
 		D27240B017B923CE00DCAFBF /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240A217B923CE00DCAFBF /* ContactListener.mm */; };
 		D27240B217B923CE00DCAFBF /* Hero.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240A617B923CE00DCAFBF /* Hero.mm */; };
@@ -197,11 +297,13 @@
 		D27240B917B9241400DCAFBF /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240B817B9241400DCAFBF /* GLES-Render.mm */; };
 		D27240C117B994AE00DCAFBF /* HUD.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240C017B994AE00DCAFBF /* HUD.mm */; };
 		D2837C3917B9B728008FCC59 /* Ennemy.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2837C3817B9B728008FCC59 /* Ennemy.mm */; };
-		D2837C3B17B9B73F008FCC59 /* Ennemy in Resources */ = {isa = PBXBuildFile; fileRef = D2837C3A17B9B73F008FCC59 /* Ennemy */; };
 		D2D5DBE117BBD10D0071E801 /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5DBE017BBD10D0071E801 /* Data.m */; };
+		D2DEAC2317C300CF00439334 /* MainMenu.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2DEAC2217C300CF00439334 /* MainMenu.mm */; };
+		D2E4FF2117C2FF7700241A4D /* Menu in Resources */ = {isa = PBXBuildFile; fileRef = D2E4FF2017C2FF7700241A4D /* Menu */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D2205DF917C2523600594EE4 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sounds; path = Resources/Sounds; sourceTree = "<group>"; };
 		D222790317B921D900421B00 /* ForeignJump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForeignJump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D222790617B921D900421B00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D222790817B921D900421B00 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -573,10 +675,111 @@
 		D2227B3C17B921DB00421B00 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D2227B3E17B921DB00421B00 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D2227B3F17B921DB00421B00 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		D23E7BE417CADAC00096CD5D /* Indien_bg-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Indien_bg-hd.png"; sourceTree = "<group>"; };
+		D23E7BE517CADAC00096CD5D /* Indien_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Indien_bg.png; sourceTree = "<group>"; };
+		D23E7BE617CADAC00096CD5D /* Indien_sun-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Indien_sun-hd.png"; sourceTree = "<group>"; };
+		D23E7BE717CADAC00096CD5D /* Indien_sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Indien_sun.png; sourceTree = "<group>"; };
+		D23E7BE917CADAC00096CD5D /* Indien_ennemy-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Indien_ennemy-hd.plist"; sourceTree = "<group>"; };
+		D23E7BEA17CADAC00096CD5D /* Indien_ennemy-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Indien_ennemy-hd.png"; sourceTree = "<group>"; };
+		D23E7BEB17CADAC00096CD5D /* Indien_ennemy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Indien_ennemy.plist; sourceTree = "<group>"; };
+		D23E7BEC17CADAC00096CD5D /* Indien_ennemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Indien_ennemy.png; sourceTree = "<group>"; };
+		D23E7BEE17CADAC00096CD5D /* Indien_hero-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Indien_hero-hd.plist"; sourceTree = "<group>"; };
+		D23E7BEF17CADAC00096CD5D /* Indien_hero-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Indien_hero-hd.png"; sourceTree = "<group>"; };
+		D23E7BF017CADAC00096CD5D /* Indien_hero.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Indien_hero.plist; sourceTree = "<group>"; };
+		D23E7BF117CADAC00096CD5D /* Indien_hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Indien_hero.png; sourceTree = "<group>"; };
+		D23E7BF317CADAC00096CD5D /* Indien_bomb-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Indien_bomb-hd.png"; sourceTree = "<group>"; };
+		D23E7BF417CADAC00096CD5D /* Indien_bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Indien_bomb.png; sourceTree = "<group>"; };
+		D23E7BF517CADAC00096CD5D /* Indien_map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Indien_map.txt; sourceTree = "<group>"; };
+		D23E7BF617CADAC00096CD5D /* Indien_obstacle-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Indien_obstacle-hd.png"; sourceTree = "<group>"; };
+		D23E7BF717CADAC00096CD5D /* Indien_obstacle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Indien_obstacle.png; sourceTree = "<group>"; };
+		D23E7BF817CADAC00096CD5D /* Indien_piece-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Indien_piece-hd.png"; sourceTree = "<group>"; };
+		D23E7BF917CADAC00096CD5D /* Indien_piece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Indien_piece.png; sourceTree = "<group>"; };
+		D23E7BFA17CADAC00096CD5D /* Indien_rien-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Indien_rien-hd.png"; sourceTree = "<group>"; };
+		D23E7BFB17CADAC00096CD5D /* Indien_rien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Indien_rien.png; sourceTree = "<group>"; };
+		D23E7BFC17CADAC00096CD5D /* Indien_sousterre-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Indien_sousterre-hd.png"; sourceTree = "<group>"; };
+		D23E7BFD17CADAC00096CD5D /* Indien_sousterre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Indien_sousterre.png; sourceTree = "<group>"; };
+		D23E7BFE17CADAC00096CD5D /* Indien_terre-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Indien_terre-hd.png"; sourceTree = "<group>"; };
+		D23E7BFF17CADAC00096CD5D /* Indien_terre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Indien_terre.png; sourceTree = "<group>"; };
+		D23E7C0217CADAC00096CD5D /* Renoi_bg-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Renoi_bg-hd.png"; sourceTree = "<group>"; };
+		D23E7C0317CADAC00096CD5D /* Renoi_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Renoi_bg.png; sourceTree = "<group>"; };
+		D23E7C0417CADAC00096CD5D /* Renoi_sun-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Renoi_sun-hd.png"; sourceTree = "<group>"; };
+		D23E7C0517CADAC00096CD5D /* Renoi_sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Renoi_sun.png; sourceTree = "<group>"; };
+		D23E7C0717CADAC00096CD5D /* Renoi_ennemy-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Renoi_ennemy-hd.plist"; sourceTree = "<group>"; };
+		D23E7C0817CADAC00096CD5D /* Renoi_ennemy-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Renoi_ennemy-hd.png"; sourceTree = "<group>"; };
+		D23E7C0917CADAC00096CD5D /* Renoi_ennemy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Renoi_ennemy.plist; sourceTree = "<group>"; };
+		D23E7C0A17CADAC00096CD5D /* Renoi_ennemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Renoi_ennemy.png; sourceTree = "<group>"; };
+		D23E7C0C17CADAC00096CD5D /* Renoi_hero-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Renoi_hero-hd.plist"; sourceTree = "<group>"; };
+		D23E7C0D17CADAC00096CD5D /* Renoi_hero-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Renoi_hero-hd.png"; sourceTree = "<group>"; };
+		D23E7C0E17CADAC00096CD5D /* Renoi_hero.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Renoi_hero.plist; sourceTree = "<group>"; };
+		D23E7C0F17CADAC00096CD5D /* Renoi_hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Renoi_hero.png; sourceTree = "<group>"; };
+		D23E7C1117CADAC00096CD5D /* Renoi_bomb-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Renoi_bomb-hd.png"; sourceTree = "<group>"; };
+		D23E7C1217CADAC00096CD5D /* Renoi_bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Renoi_bomb.png; sourceTree = "<group>"; };
+		D23E7C1317CADAC00096CD5D /* Renoi_map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Renoi_map.txt; sourceTree = "<group>"; };
+		D23E7C1417CADAC00096CD5D /* Renoi_obstacle-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Renoi_obstacle-hd.png"; sourceTree = "<group>"; };
+		D23E7C1517CADAC00096CD5D /* Renoi_obstacle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Renoi_obstacle.png; sourceTree = "<group>"; };
+		D23E7C1617CADAC00096CD5D /* Renoi_piece-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Renoi_piece-hd.png"; sourceTree = "<group>"; };
+		D23E7C1717CADAC00096CD5D /* Renoi_piece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Renoi_piece.png; sourceTree = "<group>"; };
+		D23E7C1817CADAC00096CD5D /* Renoi_rien-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Renoi_rien-hd.png"; sourceTree = "<group>"; };
+		D23E7C1917CADAC00096CD5D /* Renoi_rien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Renoi_rien.png; sourceTree = "<group>"; };
+		D23E7C1A17CADAC00096CD5D /* Renoi_sousterre-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Renoi_sousterre-hd.png"; sourceTree = "<group>"; };
+		D23E7C1B17CADAC00096CD5D /* Renoi_sousterre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Renoi_sousterre.png; sourceTree = "<group>"; };
+		D23E7C1C17CADAC00096CD5D /* Renoi_terre-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Renoi_terre-hd.png"; sourceTree = "<group>"; };
+		D23E7C1D17CADAC00096CD5D /* Renoi_terre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Renoi_terre.png; sourceTree = "<group>"; };
+		D23E7C2017CADAC00096CD5D /* Reunionnais_bg-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reunionnais_bg-hd.png"; sourceTree = "<group>"; };
+		D23E7C2117CADAC00096CD5D /* Reunionnais_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Reunionnais_bg.png; sourceTree = "<group>"; };
+		D23E7C2217CADAC00096CD5D /* Reunionnais_sun-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reunionnais_sun-hd.png"; sourceTree = "<group>"; };
+		D23E7C2317CADAC00096CD5D /* Reunionnais_sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Reunionnais_sun.png; sourceTree = "<group>"; };
+		D23E7C2517CADAC00096CD5D /* Reunionnais_ennemy-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Reunionnais_ennemy-hd.plist"; sourceTree = "<group>"; };
+		D23E7C2617CADAC00096CD5D /* Reunionnais_ennemy-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reunionnais_ennemy-hd.png"; sourceTree = "<group>"; };
+		D23E7C2717CADAC00096CD5D /* Reunionnais_ennemy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Reunionnais_ennemy.plist; sourceTree = "<group>"; };
+		D23E7C2817CADAC00096CD5D /* Reunionnais_ennemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Reunionnais_ennemy.png; sourceTree = "<group>"; };
+		D23E7C2A17CADAC00096CD5D /* Reunionnais_hero-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Reunionnais_hero-hd.plist"; sourceTree = "<group>"; };
+		D23E7C2B17CADAC00096CD5D /* Reunionnais_hero-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reunionnais_hero-hd.png"; sourceTree = "<group>"; };
+		D23E7C2C17CADAC00096CD5D /* Reunionnais_hero.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Reunionnais_hero.plist; sourceTree = "<group>"; };
+		D23E7C2D17CADAC00096CD5D /* Reunionnais_hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Reunionnais_hero.png; sourceTree = "<group>"; };
+		D23E7C2F17CADAC00096CD5D /* Reunionnais_bomb-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reunionnais_bomb-hd.png"; sourceTree = "<group>"; };
+		D23E7C3017CADAC00096CD5D /* Reunionnais_bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Reunionnais_bomb.png; sourceTree = "<group>"; };
+		D23E7C3117CADAC00096CD5D /* Reunionnais_map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Reunionnais_map.txt; sourceTree = "<group>"; };
+		D23E7C3217CADAC00096CD5D /* Reunionnais_obstacle-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reunionnais_obstacle-hd.png"; sourceTree = "<group>"; };
+		D23E7C3317CADAC00096CD5D /* Reunionnais_obstacle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Reunionnais_obstacle.png; sourceTree = "<group>"; };
+		D23E7C3417CADAC00096CD5D /* Reunionnais_piece-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reunionnais_piece-hd.png"; sourceTree = "<group>"; };
+		D23E7C3517CADAC00096CD5D /* Reunionnais_piece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Reunionnais_piece.png; sourceTree = "<group>"; };
+		D23E7C3617CADAC00096CD5D /* Reunionnais_rien-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reunionnais_rien-hd.png"; sourceTree = "<group>"; };
+		D23E7C3717CADAC00096CD5D /* Reunionnais_rien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Reunionnais_rien.png; sourceTree = "<group>"; };
+		D23E7C3817CADAC00096CD5D /* Reunionnais_sousterre-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reunionnais_sousterre-hd.png"; sourceTree = "<group>"; };
+		D23E7C3917CADAC00096CD5D /* Reunionnais_sousterre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Reunionnais_sousterre.png; sourceTree = "<group>"; };
+		D23E7C3A17CADAC00096CD5D /* Reunionnais_terre-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reunionnais_terre-hd.png"; sourceTree = "<group>"; };
+		D23E7C3B17CADAC00096CD5D /* Reunionnais_terre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Reunionnais_terre.png; sourceTree = "<group>"; };
+		D23E7C3E17CADAC00096CD5D /* Roumain_bg-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Roumain_bg-hd.png"; sourceTree = "<group>"; };
+		D23E7C3F17CADAC00096CD5D /* Roumain_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Roumain_bg.png; sourceTree = "<group>"; };
+		D23E7C4017CADAC00096CD5D /* Roumain_sun-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Roumain_sun-hd.png"; sourceTree = "<group>"; };
+		D23E7C4117CADAC00096CD5D /* Roumain_sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Roumain_sun.png; sourceTree = "<group>"; };
+		D23E7C4317CADAC10096CD5D /* Roumain_ennemy-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Roumain_ennemy-hd.plist"; sourceTree = "<group>"; };
+		D23E7C4417CADAC10096CD5D /* Roumain_ennemy-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Roumain_ennemy-hd.png"; sourceTree = "<group>"; };
+		D23E7C4517CADAC10096CD5D /* Roumain_ennemy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Roumain_ennemy.plist; sourceTree = "<group>"; };
+		D23E7C4617CADAC10096CD5D /* Roumain_ennemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Roumain_ennemy.png; sourceTree = "<group>"; };
+		D23E7C4817CADAC10096CD5D /* Roumain_hero-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Roumain_hero-hd.plist"; sourceTree = "<group>"; };
+		D23E7C4917CADAC10096CD5D /* Roumain_hero-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Roumain_hero-hd.png"; sourceTree = "<group>"; };
+		D23E7C4A17CADAC10096CD5D /* Roumain_hero.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Roumain_hero.plist; sourceTree = "<group>"; };
+		D23E7C4B17CADAC10096CD5D /* Roumain_hero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Roumain_hero.png; sourceTree = "<group>"; };
+		D23E7C4D17CADAC10096CD5D /* Roumain_bomb-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Roumain_bomb-hd.png"; sourceTree = "<group>"; };
+		D23E7C4E17CADAC10096CD5D /* Roumain_bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Roumain_bomb.png; sourceTree = "<group>"; };
+		D23E7C4F17CADAC10096CD5D /* Roumain_map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Roumain_map.txt; sourceTree = "<group>"; };
+		D23E7C5017CADAC10096CD5D /* Roumain_obstacle-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Roumain_obstacle-hd.png"; sourceTree = "<group>"; };
+		D23E7C5117CADAC10096CD5D /* Roumain_obstacle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Roumain_obstacle.png; sourceTree = "<group>"; };
+		D23E7C5217CADAC10096CD5D /* Roumain_piece-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Roumain_piece-hd.png"; sourceTree = "<group>"; };
+		D23E7C5317CADAC10096CD5D /* Roumain_piece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Roumain_piece.png; sourceTree = "<group>"; };
+		D23E7C5417CADAC10096CD5D /* Roumain_rien-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Roumain_rien-hd.png"; sourceTree = "<group>"; };
+		D23E7C5517CADAC10096CD5D /* Roumain_rien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Roumain_rien.png; sourceTree = "<group>"; };
+		D23E7C5617CADAC10096CD5D /* Roumain_sousterre-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Roumain_sousterre-hd.png"; sourceTree = "<group>"; };
+		D23E7C5717CADAC10096CD5D /* Roumain_sousterre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Roumain_sousterre.png; sourceTree = "<group>"; };
+		D23E7C5817CADAC10096CD5D /* Roumain_terre-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Roumain_terre-hd.png"; sourceTree = "<group>"; };
+		D23E7C5917CADAC10096CD5D /* Roumain_terre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Roumain_terre.png; sourceTree = "<group>"; };
 		D24F5ADD17BB968E00F312FD /* Particle */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Particle; path = Resources/Particle; sourceTree = "<group>"; };
-		D272409917B9239B00DCAFBF /* Background */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Background; path = Resources/Background; sourceTree = "<group>"; };
-		D272409A17B9239B00DCAFBF /* Hero */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Hero; path = Resources/Hero; sourceTree = "<group>"; };
-		D272409B17B9239B00DCAFBF /* Map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Map; path = Resources/Map; sourceTree = "<group>"; };
+		D25EE21617CA2789009FE704 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
+		D25EE21717CA2789009FE704 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
+		D25EE21917CA3082009FE704 /* MenuChoose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuChoose.h; sourceTree = "<group>"; };
+		D25EE21A17CA3082009FE704 /* MenuChoose.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MenuChoose.mm; sourceTree = "<group>"; };
 		D272409F17B923CE00DCAFBF /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
 		D27240A017B923CE00DCAFBF /* Background.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Background.mm; sourceTree = "<group>"; };
 		D27240A117B923CE00DCAFBF /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
@@ -595,9 +798,11 @@
 		D27240C017B994AE00DCAFBF /* HUD.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HUD.mm; sourceTree = "<group>"; };
 		D2837C3717B9B728008FCC59 /* Ennemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ennemy.h; sourceTree = "<group>"; };
 		D2837C3817B9B728008FCC59 /* Ennemy.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ennemy.mm; sourceTree = "<group>"; };
-		D2837C3A17B9B73F008FCC59 /* Ennemy */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Ennemy; path = Resources/Ennemy; sourceTree = "<group>"; };
 		D2D5DBDF17BBD10D0071E801 /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		D2D5DBE017BBD10D0071E801 /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
+		D2DEAC2117C300CF00439334 /* MainMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenu.h; path = Menu/MainMenu.h; sourceTree = "<group>"; };
+		D2DEAC2217C300CF00439334 /* MainMenu.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MainMenu.mm; path = Menu/MainMenu.mm; sourceTree = "<group>"; };
+		D2E4FF2017C2FF7700241A4D /* Menu */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Menu; path = Resources/Menu; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -660,6 +865,10 @@
 			children = (
 				D2227B3E17B921DB00421B00 /* AppDelegate.h */,
 				D2227B3F17B921DB00421B00 /* AppDelegate.mm */,
+				D2DEAC2117C300CF00439334 /* MainMenu.h */,
+				D2DEAC2217C300CF00439334 /* MainMenu.mm */,
+				D25EE21917CA3082009FE704 /* MenuChoose.h */,
+				D25EE21A17CA3082009FE704 /* MenuChoose.mm */,
 				D27240A717B923CE00DCAFBF /* InGame.h */,
 				D27240A817B923CE00DCAFBF /* InGame.mm */,
 				D27240A517B923CE00DCAFBF /* Hero.h */,
@@ -680,6 +889,8 @@
 				D27240B817B9241400DCAFBF /* GLES-Render.mm */,
 				D2D5DBDF17BBD10D0071E801 /* Data.h */,
 				D2D5DBE017BBD10D0071E801 /* Data.m */,
+				D25EE21617CA2789009FE704 /* Character.h */,
+				D25EE21717CA2789009FE704 /* Character.m */,
 				D222791B17B921D900421B00 /* Resources */,
 				D222793317B921D900421B00 /* libs */,
 				D2227B3A17B921DB00421B00 /* Supporting Files */,
@@ -690,11 +901,10 @@
 		D222791B17B921D900421B00 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D23E7BE117CADAC00096CD5D /* Perso */,
+				D2E4FF2017C2FF7700241A4D /* Menu */,
+				D2205DF917C2523600594EE4 /* Sounds */,
 				D24F5ADD17BB968E00F312FD /* Particle */,
-				D2837C3A17B9B73F008FCC59 /* Ennemy */,
-				D272409917B9239B00DCAFBF /* Background */,
-				D272409A17B9239B00DCAFBF /* Hero */,
-				D272409B17B9239B00DCAFBF /* Map */,
 				D222791C17B921D900421B00 /* Default.png */,
 				D222791E17B921D900421B00 /* Default@2x.png */,
 				D222792017B921D900421B00 /* Default-568h@2x.png */,
@@ -1231,6 +1441,274 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D23E7BE117CADAC00096CD5D /* Perso */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7BE217CADAC00096CD5D /* Indien */,
+				D23E7C0017CADAC00096CD5D /* Renoi */,
+				D23E7C1E17CADAC00096CD5D /* Reunionnais */,
+				D23E7C3C17CADAC00096CD5D /* Roumain */,
+			);
+			name = Perso;
+			path = Resources/Perso;
+			sourceTree = "<group>";
+		};
+		D23E7BE217CADAC00096CD5D /* Indien */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7BE317CADAC00096CD5D /* Background */,
+				D23E7BE817CADAC00096CD5D /* Ennemy */,
+				D23E7BED17CADAC00096CD5D /* Hero */,
+				D23E7BF217CADAC00096CD5D /* Map */,
+			);
+			path = Indien;
+			sourceTree = "<group>";
+		};
+		D23E7BE317CADAC00096CD5D /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7BE417CADAC00096CD5D /* Indien_bg-hd.png */,
+				D23E7BE517CADAC00096CD5D /* Indien_bg.png */,
+				D23E7BE617CADAC00096CD5D /* Indien_sun-hd.png */,
+				D23E7BE717CADAC00096CD5D /* Indien_sun.png */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
+		D23E7BE817CADAC00096CD5D /* Ennemy */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7BE917CADAC00096CD5D /* Indien_ennemy-hd.plist */,
+				D23E7BEA17CADAC00096CD5D /* Indien_ennemy-hd.png */,
+				D23E7BEB17CADAC00096CD5D /* Indien_ennemy.plist */,
+				D23E7BEC17CADAC00096CD5D /* Indien_ennemy.png */,
+			);
+			path = Ennemy;
+			sourceTree = "<group>";
+		};
+		D23E7BED17CADAC00096CD5D /* Hero */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7BEE17CADAC00096CD5D /* Indien_hero-hd.plist */,
+				D23E7BEF17CADAC00096CD5D /* Indien_hero-hd.png */,
+				D23E7BF017CADAC00096CD5D /* Indien_hero.plist */,
+				D23E7BF117CADAC00096CD5D /* Indien_hero.png */,
+			);
+			path = Hero;
+			sourceTree = "<group>";
+		};
+		D23E7BF217CADAC00096CD5D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7BF317CADAC00096CD5D /* Indien_bomb-hd.png */,
+				D23E7BF417CADAC00096CD5D /* Indien_bomb.png */,
+				D23E7BF517CADAC00096CD5D /* Indien_map.txt */,
+				D23E7BF617CADAC00096CD5D /* Indien_obstacle-hd.png */,
+				D23E7BF717CADAC00096CD5D /* Indien_obstacle.png */,
+				D23E7BF817CADAC00096CD5D /* Indien_piece-hd.png */,
+				D23E7BF917CADAC00096CD5D /* Indien_piece.png */,
+				D23E7BFA17CADAC00096CD5D /* Indien_rien-hd.png */,
+				D23E7BFB17CADAC00096CD5D /* Indien_rien.png */,
+				D23E7BFC17CADAC00096CD5D /* Indien_sousterre-hd.png */,
+				D23E7BFD17CADAC00096CD5D /* Indien_sousterre.png */,
+				D23E7BFE17CADAC00096CD5D /* Indien_terre-hd.png */,
+				D23E7BFF17CADAC00096CD5D /* Indien_terre.png */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		D23E7C0017CADAC00096CD5D /* Renoi */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C0117CADAC00096CD5D /* Background */,
+				D23E7C0617CADAC00096CD5D /* Ennemy */,
+				D23E7C0B17CADAC00096CD5D /* Hero */,
+				D23E7C1017CADAC00096CD5D /* Map */,
+			);
+			path = Renoi;
+			sourceTree = "<group>";
+		};
+		D23E7C0117CADAC00096CD5D /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C0217CADAC00096CD5D /* Renoi_bg-hd.png */,
+				D23E7C0317CADAC00096CD5D /* Renoi_bg.png */,
+				D23E7C0417CADAC00096CD5D /* Renoi_sun-hd.png */,
+				D23E7C0517CADAC00096CD5D /* Renoi_sun.png */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
+		D23E7C0617CADAC00096CD5D /* Ennemy */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C0717CADAC00096CD5D /* Renoi_ennemy-hd.plist */,
+				D23E7C0817CADAC00096CD5D /* Renoi_ennemy-hd.png */,
+				D23E7C0917CADAC00096CD5D /* Renoi_ennemy.plist */,
+				D23E7C0A17CADAC00096CD5D /* Renoi_ennemy.png */,
+			);
+			path = Ennemy;
+			sourceTree = "<group>";
+		};
+		D23E7C0B17CADAC00096CD5D /* Hero */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C0C17CADAC00096CD5D /* Renoi_hero-hd.plist */,
+				D23E7C0D17CADAC00096CD5D /* Renoi_hero-hd.png */,
+				D23E7C0E17CADAC00096CD5D /* Renoi_hero.plist */,
+				D23E7C0F17CADAC00096CD5D /* Renoi_hero.png */,
+			);
+			path = Hero;
+			sourceTree = "<group>";
+		};
+		D23E7C1017CADAC00096CD5D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C1117CADAC00096CD5D /* Renoi_bomb-hd.png */,
+				D23E7C1217CADAC00096CD5D /* Renoi_bomb.png */,
+				D23E7C1317CADAC00096CD5D /* Renoi_map.txt */,
+				D23E7C1417CADAC00096CD5D /* Renoi_obstacle-hd.png */,
+				D23E7C1517CADAC00096CD5D /* Renoi_obstacle.png */,
+				D23E7C1617CADAC00096CD5D /* Renoi_piece-hd.png */,
+				D23E7C1717CADAC00096CD5D /* Renoi_piece.png */,
+				D23E7C1817CADAC00096CD5D /* Renoi_rien-hd.png */,
+				D23E7C1917CADAC00096CD5D /* Renoi_rien.png */,
+				D23E7C1A17CADAC00096CD5D /* Renoi_sousterre-hd.png */,
+				D23E7C1B17CADAC00096CD5D /* Renoi_sousterre.png */,
+				D23E7C1C17CADAC00096CD5D /* Renoi_terre-hd.png */,
+				D23E7C1D17CADAC00096CD5D /* Renoi_terre.png */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		D23E7C1E17CADAC00096CD5D /* Reunionnais */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C1F17CADAC00096CD5D /* Background */,
+				D23E7C2417CADAC00096CD5D /* Ennemy */,
+				D23E7C2917CADAC00096CD5D /* Hero */,
+				D23E7C2E17CADAC00096CD5D /* Map */,
+			);
+			path = Reunionnais;
+			sourceTree = "<group>";
+		};
+		D23E7C1F17CADAC00096CD5D /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C2017CADAC00096CD5D /* Reunionnais_bg-hd.png */,
+				D23E7C2117CADAC00096CD5D /* Reunionnais_bg.png */,
+				D23E7C2217CADAC00096CD5D /* Reunionnais_sun-hd.png */,
+				D23E7C2317CADAC00096CD5D /* Reunionnais_sun.png */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
+		D23E7C2417CADAC00096CD5D /* Ennemy */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C2517CADAC00096CD5D /* Reunionnais_ennemy-hd.plist */,
+				D23E7C2617CADAC00096CD5D /* Reunionnais_ennemy-hd.png */,
+				D23E7C2717CADAC00096CD5D /* Reunionnais_ennemy.plist */,
+				D23E7C2817CADAC00096CD5D /* Reunionnais_ennemy.png */,
+			);
+			path = Ennemy;
+			sourceTree = "<group>";
+		};
+		D23E7C2917CADAC00096CD5D /* Hero */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C2A17CADAC00096CD5D /* Reunionnais_hero-hd.plist */,
+				D23E7C2B17CADAC00096CD5D /* Reunionnais_hero-hd.png */,
+				D23E7C2C17CADAC00096CD5D /* Reunionnais_hero.plist */,
+				D23E7C2D17CADAC00096CD5D /* Reunionnais_hero.png */,
+			);
+			path = Hero;
+			sourceTree = "<group>";
+		};
+		D23E7C2E17CADAC00096CD5D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C2F17CADAC00096CD5D /* Reunionnais_bomb-hd.png */,
+				D23E7C3017CADAC00096CD5D /* Reunionnais_bomb.png */,
+				D23E7C3117CADAC00096CD5D /* Reunionnais_map.txt */,
+				D23E7C3217CADAC00096CD5D /* Reunionnais_obstacle-hd.png */,
+				D23E7C3317CADAC00096CD5D /* Reunionnais_obstacle.png */,
+				D23E7C3417CADAC00096CD5D /* Reunionnais_piece-hd.png */,
+				D23E7C3517CADAC00096CD5D /* Reunionnais_piece.png */,
+				D23E7C3617CADAC00096CD5D /* Reunionnais_rien-hd.png */,
+				D23E7C3717CADAC00096CD5D /* Reunionnais_rien.png */,
+				D23E7C3817CADAC00096CD5D /* Reunionnais_sousterre-hd.png */,
+				D23E7C3917CADAC00096CD5D /* Reunionnais_sousterre.png */,
+				D23E7C3A17CADAC00096CD5D /* Reunionnais_terre-hd.png */,
+				D23E7C3B17CADAC00096CD5D /* Reunionnais_terre.png */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		D23E7C3C17CADAC00096CD5D /* Roumain */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C3D17CADAC00096CD5D /* Background */,
+				D23E7C4217CADAC00096CD5D /* Ennemy */,
+				D23E7C4717CADAC10096CD5D /* Hero */,
+				D23E7C4C17CADAC10096CD5D /* Map */,
+			);
+			path = Roumain;
+			sourceTree = "<group>";
+		};
+		D23E7C3D17CADAC00096CD5D /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C3E17CADAC00096CD5D /* Roumain_bg-hd.png */,
+				D23E7C3F17CADAC00096CD5D /* Roumain_bg.png */,
+				D23E7C4017CADAC00096CD5D /* Roumain_sun-hd.png */,
+				D23E7C4117CADAC00096CD5D /* Roumain_sun.png */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
+		D23E7C4217CADAC00096CD5D /* Ennemy */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C4317CADAC10096CD5D /* Roumain_ennemy-hd.plist */,
+				D23E7C4417CADAC10096CD5D /* Roumain_ennemy-hd.png */,
+				D23E7C4517CADAC10096CD5D /* Roumain_ennemy.plist */,
+				D23E7C4617CADAC10096CD5D /* Roumain_ennemy.png */,
+			);
+			path = Ennemy;
+			sourceTree = "<group>";
+		};
+		D23E7C4717CADAC10096CD5D /* Hero */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C4817CADAC10096CD5D /* Roumain_hero-hd.plist */,
+				D23E7C4917CADAC10096CD5D /* Roumain_hero-hd.png */,
+				D23E7C4A17CADAC10096CD5D /* Roumain_hero.plist */,
+				D23E7C4B17CADAC10096CD5D /* Roumain_hero.png */,
+			);
+			path = Hero;
+			sourceTree = "<group>";
+		};
+		D23E7C4C17CADAC10096CD5D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D23E7C4D17CADAC10096CD5D /* Roumain_bomb-hd.png */,
+				D23E7C4E17CADAC10096CD5D /* Roumain_bomb.png */,
+				D23E7C4F17CADAC10096CD5D /* Roumain_map.txt */,
+				D23E7C5017CADAC10096CD5D /* Roumain_obstacle-hd.png */,
+				D23E7C5117CADAC10096CD5D /* Roumain_obstacle.png */,
+				D23E7C5217CADAC10096CD5D /* Roumain_piece-hd.png */,
+				D23E7C5317CADAC10096CD5D /* Roumain_piece.png */,
+				D23E7C5417CADAC10096CD5D /* Roumain_rien-hd.png */,
+				D23E7C5517CADAC10096CD5D /* Roumain_rien.png */,
+				D23E7C5617CADAC10096CD5D /* Roumain_sousterre-hd.png */,
+				D23E7C5717CADAC10096CD5D /* Roumain_sousterre.png */,
+				D23E7C5817CADAC10096CD5D /* Roumain_terre-hd.png */,
+				D23E7C5917CADAC10096CD5D /* Roumain_terre.png */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1287,23 +1765,121 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23E7C8A17CADAC10096CD5D /* Renoi_terre-hd.png in Resources */,
 				D222792D17B921D900421B00 /* Icon.png in Resources */,
+				D23E7C7917CADAC10096CD5D /* Renoi_ennemy.plist in Resources */,
 				D2227A8B17B921DA00421B00 /* ChangeLog in Resources */,
-				D2837C3B17B9B73F008FCC59 /* Ennemy in Resources */,
+				D23E7C6917CADAC10096CD5D /* Indien_obstacle-hd.png in Resources */,
+				D23E7CA717CADAC10096CD5D /* Roumain_sun-hd.png in Resources */,
+				D23E7C9917CADAC10096CD5D /* Reunionnais_bomb.png in Resources */,
+				D23E7C7317CADAC10096CD5D /* Renoi_bg-hd.png in Resources */,
+				D23E7C9517CADAC10096CD5D /* Reunionnais_hero-hd.png in Resources */,
 				D222791F17B921D900421B00 /* Default@2x.png in Resources */,
+				D23E7C8617CADAC10096CD5D /* Renoi_rien-hd.png in Resources */,
+				D23E7C8817CADAC10096CD5D /* Renoi_sousterre-hd.png in Resources */,
+				D23E7C8017CADAC10096CD5D /* Renoi_bomb.png in Resources */,
+				D23E7C8417CADAC10096CD5D /* Renoi_piece-hd.png in Resources */,
+				D23E7CB017CADAC10096CD5D /* Roumain_hero.png in Resources */,
+				D23E7C8317CADAC10096CD5D /* Renoi_obstacle.png in Resources */,
+				D23E7CB117CADAC10096CD5D /* Roumain_bomb-hd.png in Resources */,
+				D23E7C7417CADAC10096CD5D /* Renoi_bg.png in Resources */,
 				D222792917B921D900421B00 /* Icon-Small.png in Resources */,
+				D23E7CAD17CADAC10096CD5D /* Roumain_hero-hd.plist in Resources */,
 				D222792517B921D900421B00 /* Icon-72.png in Resources */,
+				D23E7CBC17CADAC10096CD5D /* Roumain_terre-hd.png in Resources */,
+				D23E7C8B17CADAC10096CD5D /* Renoi_terre.png in Resources */,
+				D23E7C7217CADAC10096CD5D /* Indien_terre.png in Resources */,
+				D23E7C9C17CADAC10096CD5D /* Reunionnais_obstacle.png in Resources */,
+				D23E7CAE17CADAC10096CD5D /* Roumain_hero-hd.png in Resources */,
+				D23E7C7A17CADAC10096CD5D /* Renoi_ennemy.png in Resources */,
+				D23E7C7017CADAC10096CD5D /* Indien_sousterre.png in Resources */,
+				D23E7C7F17CADAC10096CD5D /* Renoi_bomb-hd.png in Resources */,
+				D23E7CB217CADAC10096CD5D /* Roumain_bomb.png in Resources */,
+				D23E7C9E17CADAC10096CD5D /* Reunionnais_piece.png in Resources */,
+				D23E7CAB17CADAC10096CD5D /* Roumain_ennemy.plist in Resources */,
 				D222791D17B921D900421B00 /* Default.png in Resources */,
+				D23E7C8F17CADAC10096CD5D /* Reunionnais_sun.png in Resources */,
+				D23E7C9617CADAC10096CD5D /* Reunionnais_hero.plist in Resources */,
+				D23E7CA517CADAC10096CD5D /* Roumain_bg-hd.png in Resources */,
+				D23E7C6F17CADAC10096CD5D /* Indien_sousterre-hd.png in Resources */,
+				D23E7C6217CADAC10096CD5D /* Indien_hero-hd.plist in Resources */,
+				D23E7CA217CADAC10096CD5D /* Reunionnais_sousterre.png in Resources */,
+				D23E7C5D17CADAC10096CD5D /* Indien_sun.png in Resources */,
+				D23E7C9A17CADAC10096CD5D /* Reunionnais_map.txt in Resources */,
 				D222792717B921D900421B00 /* Icon-Small-50.png in Resources */,
+				D23E7CA017CADAC10096CD5D /* Reunionnais_rien.png in Resources */,
+				D23E7CA317CADAC10096CD5D /* Reunionnais_terre-hd.png in Resources */,
+				D23E7C6117CADAC10096CD5D /* Indien_ennemy.png in Resources */,
+				D23E7C9017CADAC10096CD5D /* Reunionnais_ennemy-hd.plist in Resources */,
+				D23E7C8917CADAC10096CD5D /* Renoi_sousterre.png in Resources */,
+				D23E7CB817CADAC10096CD5D /* Roumain_rien-hd.png in Resources */,
+				D23E7CB517CADAC10096CD5D /* Roumain_obstacle.png in Resources */,
+				D23E7C5B17CADAC10096CD5D /* Indien_bg.png in Resources */,
+				D23E7C6517CADAC10096CD5D /* Indien_hero.png in Resources */,
+				D23E7C7C17CADAC10096CD5D /* Renoi_hero-hd.png in Resources */,
 				D222793217B921D900421B00 /* iTunesArtwork in Resources */,
+				D23E7C8C17CADAC10096CD5D /* Reunionnais_bg-hd.png in Resources */,
+				D23E7C9F17CADAC10096CD5D /* Reunionnais_rien-hd.png in Resources */,
+				D23E7CAA17CADAC10096CD5D /* Roumain_ennemy-hd.png in Resources */,
+				D23E7C8717CADAC10096CD5D /* Renoi_rien.png in Resources */,
+				D23E7C5F17CADAC10096CD5D /* Indien_ennemy-hd.png in Resources */,
+				D23E7C8217CADAC10096CD5D /* Renoi_obstacle-hd.png in Resources */,
+				D23E7C5E17CADAC10096CD5D /* Indien_ennemy-hd.plist in Resources */,
+				D23E7C6A17CADAC10096CD5D /* Indien_obstacle.png in Resources */,
+				D23E7CB917CADAC10096CD5D /* Roumain_rien.png in Resources */,
+				D2E4FF2117C2FF7700241A4D /* Menu in Resources */,
 				D222792B17B921D900421B00 /* Icon-Small@2x.png in Resources */,
 				D24F5ADE17BB968E00F312FD /* Particle in Resources */,
+				D23E7C9317CADAC10096CD5D /* Reunionnais_ennemy.png in Resources */,
+				D23E7C9B17CADAC10096CD5D /* Reunionnais_obstacle-hd.png in Resources */,
+				D23E7C6B17CADAC10096CD5D /* Indien_piece-hd.png in Resources */,
 				D222792317B921D900421B00 /* Default-Landscape~ipad.png in Resources */,
+				D23E7C6617CADAC10096CD5D /* Indien_bomb-hd.png in Resources */,
+				D23E7C7717CADAC10096CD5D /* Renoi_ennemy-hd.plist in Resources */,
+				D23E7C6417CADAC10096CD5D /* Indien_hero.plist in Resources */,
+				D23E7C9217CADAC10096CD5D /* Reunionnais_ennemy.plist in Resources */,
+				D23E7C6317CADAC10096CD5D /* Indien_hero-hd.png in Resources */,
+				D23E7C9817CADAC10096CD5D /* Reunionnais_bomb-hd.png in Resources */,
+				D2205DFA17C2523600594EE4 /* Sounds in Resources */,
+				D23E7CA917CADAC10096CD5D /* Roumain_ennemy-hd.plist in Resources */,
 				D222792117B921D900421B00 /* Default-568h@2x.png in Resources */,
+				D23E7C6717CADAC10096CD5D /* Indien_bomb.png in Resources */,
+				D23E7C9117CADAC10096CD5D /* Reunionnais_ennemy-hd.png in Resources */,
+				D23E7CA617CADAC10096CD5D /* Roumain_bg.png in Resources */,
+				D23E7C7B17CADAC10096CD5D /* Renoi_hero-hd.plist in Resources */,
+				D23E7CB617CADAC10096CD5D /* Roumain_piece-hd.png in Resources */,
+				D23E7C7617CADAC10096CD5D /* Renoi_sun.png in Resources */,
+				D23E7C6C17CADAC10096CD5D /* Indien_piece.png in Resources */,
+				D23E7CBD17CADAC10096CD5D /* Roumain_terre.png in Resources */,
+				D23E7C6E17CADAC10096CD5D /* Indien_rien.png in Resources */,
+				D23E7C9717CADAC10096CD5D /* Reunionnais_hero.png in Resources */,
+				D23E7CB717CADAC10096CD5D /* Roumain_piece.png in Resources */,
+				D23E7C6D17CADAC10096CD5D /* Indien_rien-hd.png in Resources */,
+				D23E7C6817CADAC10096CD5D /* Indien_map.txt in Resources */,
 				D222792F17B921D900421B00 /* Icon@2x.png in Resources */,
-				D272409E17B9239B00DCAFBF /* Map in Resources */,
-				D272409D17B9239B00DCAFBF /* Hero in Resources */,
-				D272409C17B9239B00DCAFBF /* Background in Resources */,
+				D23E7C7817CADAC10096CD5D /* Renoi_ennemy-hd.png in Resources */,
+				D23E7C5C17CADAC10096CD5D /* Indien_sun-hd.png in Resources */,
+				D23E7CA817CADAC10096CD5D /* Roumain_sun.png in Resources */,
+				D23E7C8D17CADAC10096CD5D /* Reunionnais_bg.png in Resources */,
+				D23E7C8117CADAC10096CD5D /* Renoi_map.txt in Resources */,
+				D23E7CB417CADAC10096CD5D /* Roumain_obstacle-hd.png in Resources */,
+				D23E7C7D17CADAC10096CD5D /* Renoi_hero.plist in Resources */,
+				D23E7C8517CADAC10096CD5D /* Renoi_piece.png in Resources */,
+				D23E7CBB17CADAC10096CD5D /* Roumain_sousterre.png in Resources */,
+				D23E7CA417CADAC10096CD5D /* Reunionnais_terre.png in Resources */,
+				D23E7CAC17CADAC10096CD5D /* Roumain_ennemy.png in Resources */,
+				D23E7C9417CADAC10096CD5D /* Reunionnais_hero-hd.plist in Resources */,
+				D23E7C8E17CADAC10096CD5D /* Reunionnais_sun-hd.png in Resources */,
+				D23E7C7E17CADAC10096CD5D /* Renoi_hero.png in Resources */,
+				D23E7C5A17CADAC10096CD5D /* Indien_bg-hd.png in Resources */,
+				D23E7C6017CADAC10096CD5D /* Indien_ennemy.plist in Resources */,
+				D23E7C7517CADAC10096CD5D /* Renoi_sun-hd.png in Resources */,
+				D23E7CAF17CADAC10096CD5D /* Roumain_hero.plist in Resources */,
+				D23E7C9D17CADAC10096CD5D /* Reunionnais_piece-hd.png in Resources */,
+				D23E7CB317CADAC10096CD5D /* Roumain_map.txt in Resources */,
+				D23E7CA117CADAC10096CD5D /* Reunionnais_sousterre-hd.png in Resources */,
+				D23E7CBA17CADAC10096CD5D /* Roumain_sousterre-hd.png in Resources */,
+				D23E7C7117CADAC10096CD5D /* Indien_terre-hd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1337,6 +1913,7 @@
 				D2227A0617B921DA00421B00 /* CCTMXXMLParser.m in Sources */,
 				D2227AF917B921DB00421B00 /* b2ChainAndCircleContact.cpp in Sources */,
 				D2227AFF17B921DB00421B00 /* b2CircleContact.cpp in Sources */,
+				D2DEAC2317C300CF00439334 /* MainMenu.mm in Sources */,
 				D2227A9D17B921DB00421B00 /* ray2.c in Sources */,
 				D2227A3817B921DA00421B00 /* base64.c in Sources */,
 				D222795B17B921D900421B00 /* CCActionTween.m in Sources */,
@@ -1464,6 +2041,7 @@
 				D2227A4217B921DA00421B00 /* CCFileUtils.m in Sources */,
 				D2227AE517B921DB00421B00 /* b2Body.cpp in Sources */,
 				D27240B517B923CE00DCAFBF /* Map.mm in Sources */,
+				D25EE21817CA2789009FE704 /* Character.m in Sources */,
 				D2227A2F17B921DA00421B00 /* CCEventDispatcher.m in Sources */,
 				D22279E517B921DA00421B00 /* CCSpriteBatchNode.m in Sources */,
 				D222796E17B921D900421B00 /* CCConfiguration.m in Sources */,
@@ -1477,6 +2055,7 @@
 				D222798317B921D900421B00 /* CCGLProgram.m in Sources */,
 				D2227A7317B921DA00421B00 /* SimpleAudioEngine.m in Sources */,
 				D2227A2517B921DA00421B00 /* CCTouchDispatcher.m in Sources */,
+				D25EE21B17CA3082009FE704 /* MenuChoose.mm in Sources */,
 				D2227B3D17B921DB00421B00 /* main.m in Sources */,
 				D22279A817B921DA00421B00 /* CCNode.m in Sources */,
 			);
@@ -1529,6 +2108,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -1542,6 +2122,7 @@
 				);
 				HEADER_SEARCH_PATHS = "\"ForeignJump/libs/kazmath/include\"";
 				INFOPLIST_FILE = ForeignJump/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
@@ -1549,6 +2130,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"ForeignJump/libs\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1558,6 +2140,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -1570,6 +2153,7 @@
 				);
 				HEADER_SEARCH_PATHS = "\"ForeignJump/libs/kazmath/include\"";
 				INFOPLIST_FILE = ForeignJump/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
@@ -1577,6 +2161,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"ForeignJump/libs\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

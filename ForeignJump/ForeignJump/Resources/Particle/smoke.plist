@@ -39,7 +39,7 @@
 	<key>gravityy</key>
 	<real>12</real>
 	<key>maxParticles</key>
-	<integer>250</integer>
+	<integer>100</integer>
 	<key>maxRadius</key>
 	<integer>100</integer>
 	<key>maxRadiusVariance</key>

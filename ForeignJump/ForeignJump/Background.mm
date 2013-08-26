@@ -8,6 +8,7 @@
 
 // Import the interfaces
 #import "Background.h"
+#import "InGame.h"
 
 @implementation Background {
     CGSize size;
@@ -20,38 +21,33 @@
 @synthesize animation;
 
 #pragma mark - Init methods
+
 -(id) init
 {
 	if( (self=[super init])) {
 		
         size = [[CCDirector sharedDirector] winSize];
-        
-        hero = [Hero heroInstance];
         animation = true;
-        
-        worldWidth = [InGame getWorldWidth];
         
         //background
         
 		if( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ) {
-			background = [CCSprite spriteWithFile:@"Background/bg.png"];
+            background = [CCSprite spriteWithFile:[Character backgroundTexture]];
 		} else {
-			background = [CCSprite spriteWithFile:@"Background/bg.png"];
+			background = [CCSprite spriteWithFile:[Character backgroundTexture]];
 		}
 		background.position = ccp(size.width/2, size.height/2);
         
         [self addChild: background z: 0];
 
         //end background
-        
-        [self setupBackgroundImage];
 	}
 	return self;
 }
 
-- (void)setupBackgroundImage {
+- (void) setupBackgroundImage {
 
-    sun = [CCSprite spriteWithFile:@"Background/sun.png"];
+    sun = [CCSprite spriteWithFile:[Character backgroundSun]];
     
     sun.position = ccp(size.width, size.height/2);
 
@@ -61,10 +57,23 @@
     [self schedule:@selector(moveBackground)];
 }
 
-#pragma mark - Update methods
-- (void)moveBackground {
-    float hpos = hero.texture.position.x;
-    float xpos = (worldWidth - hpos)/7;
-    sun.position = ccp(xpos, sun.position.y);
+- (void) setHero {
+    hero = [Hero heroInstance];
+    worldWidth = [InGame getWorldWidth];
+    [self setupBackgroundImage];
 }
+
+#pragma mark - Update methods
+- (void) moveBackground {
+    if ([Data getDead]) {
+        [self unscheduleAllSelectors];
+    }
+    else
+    {
+        float hpos = hero.texture.position.x;
+        float xpos = (worldWidth - hpos)/7;
+        sun.position = ccp(xpos, sun.position.y);
+    }
+}
+
 @end

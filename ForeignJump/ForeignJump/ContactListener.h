@@ -13,4 +13,6 @@ class ContactListener : public b2ContactListener
 {
 private:
     void BeginContact(b2Contact *contact);
+    void activateBomb();
+    void activateCoin();
 };

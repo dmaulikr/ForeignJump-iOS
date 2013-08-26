@@ -11,8 +11,6 @@
 #pragma mark - Constant declaration
 static const float densityconst = 1.85f;
 static const float velocityx = 4;
-static NSString * const heroPlist = @"Hero/hero.plist";
-static NSString * const heroTexture = @"Hero/hero.png";
 
 //only one Hero instance per game
 static Hero *instance;
@@ -22,6 +20,8 @@ static Hero *instance;
     CCAction *walkAction;
     float delta;
     b2World *world_;
+    
+    CCSpriteBatchNode *spriteSheet;
 }
 
 #pragma mark - synthesize
@@ -50,11 +50,11 @@ static Hero *instance;
         
         type = HeroType;
         
-        instance = self;
+        NSString *tr = [Character heroPlist];
+        [self initSprite:[Character heroPlist] andTexture:[Character heroTexture]];
         
-        [self initSprite:heroPlist andTexture:heroTexture];
+        instance = self;
     }
-    
     return self;
 }
 
@@ -62,7 +62,7 @@ static Hero *instance;
     
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:plist];
     
-    CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:texture_];
+    spriteSheet = [CCSpriteBatchNode batchNodeWithFile:texture_];
     
     NSMutableArray *walkAnimFrames = [NSMutableArray array];
     
@@ -139,21 +139,13 @@ static Hero *instance;
     
     //update position
     [self schedule:@selector(update:)];
+    
+    instance = self;
 }
 
 #pragma mark - Update
 
 - (void) update:(ccTime)dt {
-    
-    world_->Step(dt, 60, 60);
-    for(b2Body *b = world_->GetBodyList(); b; b=b->GetNext()) {
-        
-        if (b->GetUserData() != NULL) {
-            CCSprite *data = (CCSprite*)b->GetUserData();
-            data.position =ccp(b->GetPosition().x * PTM_RATIO,
-                               b->GetPosition().y * PTM_RATIO);
-        }
-    }
     
     //get actual velocity
     b2Vec2 vel = body->GetLinearVelocity();
@@ -186,8 +178,10 @@ static Hero *instance;
     b2Vec2 force = b2Vec2(0, intensity);
     //apply the force
     body->ApplyLinearImpulse(force, body->GetPosition());
-    //stop the animation
     
+    [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/jump.caf"];
+    
+    //stop the animation
     [self stopAnimation];
 }
 
@@ -197,8 +191,8 @@ static Hero *instance;
 }
 
 - (void) startAnimation {
-    animate = YES;
     [texture resumeActions];
+    animate = YES;
 }
 
 #pragma mark - Dealloc
@@ -206,6 +200,8 @@ static Hero *instance;
 - (void) dealloc {
     
     body = NULL;
+    
+    instance = NULL;
     
     [super dealloc];
 }

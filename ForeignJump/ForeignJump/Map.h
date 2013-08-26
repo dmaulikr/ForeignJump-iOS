@@ -11,8 +11,10 @@
 
 @interface Map : CCLayer
 
--(id) initWithFile:(NSString *)file;
--(void) loadMap:(b2World *)world;
++ (id) mapWithFile:(NSString *)file;
+
+- (id) initWithFile:(NSString *)file;
+- (id) loadMap;
 
 @end
  

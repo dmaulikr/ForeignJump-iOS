@@ -34,6 +34,8 @@ enum TypeCase {
 @property (nonatomic, readwrite) TypeCase type;
 @property (nonatomic, readwrite) CGPoint position;
 
-- (void) initWithSpriteFile:(NSString *)texture_ andType:(TypeCase)type_ atPosition:(CGPoint)position_ andWorld:(b2World *)world_;
++ (id) tileWithSpriteFile:(NSString *)texture_ andType:(TypeCase)type_ atPosition:(CGPoint)position_;
+
+- (id) initWithSpriteFile:(NSString *)texture_ andType:(TypeCase)type_ atPosition:(CGPoint)position_;
 
 @end

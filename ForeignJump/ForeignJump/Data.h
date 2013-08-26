@@ -10,6 +10,8 @@
 
 @interface Data : NSObject
 
++ (void) resetData;
+
 + (int) getScore;
 + (void) setScore:(int)score_;
 + (void) addScore:(int)score_;
@@ -27,5 +29,8 @@
 + (BOOL) isBombTouched;
 + (void) startBombParticle:(CGPoint)point;
 + (CGPoint) getBombPoint;
+
++ (void) setEnnemyKilledState:(BOOL)state;
++ (BOOL) isKilledByEnnemy;
 
 @end

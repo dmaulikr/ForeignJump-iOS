@@ -7,6 +7,10 @@
 //
 
 #import "Tile.h"
+#import "InGame.h"
+
+static const float bombRadius = 0.39f;
+static const float coinRadius = 0.39f;
 
 @implementation Tile
 {
@@ -19,43 +23,60 @@
 @synthesize position;
 
 #pragma mark - Init method
-- (void) initWithSpriteFile:(NSString *)texture_ andType:(TypeCase)type_ atPosition:(CGPoint)position_ andWorld:(b2World *)world_ {
++ (id) tileWithSpriteFile:(NSString *)texture_ andType:(TypeCase)type_ atPosition:(CGPoint)position_ {
+    return [[[Tile alloc] initWithSpriteFile:texture_ andType:type_ atPosition:position_ ] autorelease];
+}
 
-    // Create block and add it to the layer
-    texture = [CCSprite spriteWithFile:texture_];
+- (id) initWithSpriteFile:(NSString *)texture_ andType:(TypeCase)type_ atPosition:(CGPoint)position_ {
     
-    type = type_;
+    if( (self=[super init])) {
+
+        position = position_;
     
-    position = position_;
+        texture = [CCSprite spriteWithFile:texture_];
     
-    world = world_;
+        texture.position = position;
     
-    switch (type) {
-        case Terre:
-        {
-            [self createPhysicsTerre];
-            texture.tag = 1;
-            break;
-        }
-        case Piece:
-        {
-            [self createPhysicsCoin];
-            texture.tag = 5;
-            break;
-        }
-        case Bombe:
-        {
-            [self createPhysicsBomb];
-            texture.tag = 9;
-            break;
-        }
+        type = type_;
+    
+        world = [InGame getWorld];
+    
+        texture.tag = type;
+        
+        switch (type) {
+            case Terre:
+            {
+                [self createPhysicsTerre];
+                break;
+            }
+            case Obstacle:
+            {
+                [self createPhysicsTerre];
+                break;
+            }
+            case Sousterre:
+            {
+                //[self createPhysicsTerre];
+                break;
+            }
+            case Piece:
+            {
+                [self createPhysicsCoin];
+                break;
+            }
+            case Bombe:
+            {
+                [self createPhysicsBomb];
+                break;
+            }
             
-        default:
-        {
-            texture.tag = 4;
-            break;
+            default:
+            {
+                break;
+            }
         }
     }
+    return self;
 }
 
 #pragma mark - Init Physics
@@ -78,7 +99,7 @@
     b2FixtureDef blockShapeDef;
     blockShapeDef.shape = &blockShape;
     blockShapeDef.friction = 0.0f;
-    blockShapeDef.restitution = 0.01f;
+    blockShapeDef.restitution = 0.2f;
     body->CreateFixture(&blockShapeDef);
 }
 
@@ -92,7 +113,7 @@
     
     //create circular shape
     b2CircleShape spriteShape;
-    spriteShape.m_radius = 0.39f;
+    spriteShape.m_radius = coinRadius;
     
     //create shape definition and add it to the body
     b2FixtureDef spriteShapeDef;
@@ -111,7 +132,7 @@
     
     //create circular shape
     b2CircleShape spriteShape;
-    spriteShape.m_radius = 0.39f;
+    spriteShape.m_radius = bombRadius;
     
     //create shape definition and add it to the body
     b2FixtureDef spriteShapeDef;
@@ -119,6 +140,4 @@
     spriteShapeDef.isSensor = true;
     body->CreateFixture(&spriteShapeDef);
 }
-
-
 @end
