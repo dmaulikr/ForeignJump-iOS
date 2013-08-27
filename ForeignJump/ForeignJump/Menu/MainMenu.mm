@@ -10,7 +10,7 @@
 #import "MenuOptions.h"
 
 @implementation MainMenu {
-    
+
 }
 
 CGSize size;
@@ -33,6 +33,8 @@ CGSize size;
 - (id) init {
     
    	if( (self = [super init])) {
+        
+        [[SimpleAudioEngine sharedEngine] setEffectsVolume:0.3f];
         
         //background
         CCSprite *background = [CCSprite spriteWithFile:@"Menu/menubg.png"];
@@ -76,7 +78,7 @@ CGSize size;
 }
 
 - (void) dealloc {
-    
+
     [super dealloc];
 }
 

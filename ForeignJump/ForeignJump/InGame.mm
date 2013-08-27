@@ -12,6 +12,7 @@
 #import "MainMenu.h"
 #import "Character.h"
 #import "Ennemy.h"
+#import "MenuPause.h"
 
 #pragma mark - Constant declaration
 static const int mapCols = 110;
@@ -42,6 +43,8 @@ static float worldWidth;
 
 Background *background;
 CCSprite *gameOver;
+MenuPause *menuPause;
+
 
 #pragma mark - synthesize
 @synthesize hero;
@@ -68,6 +71,10 @@ CCSprite *gameOver;
     [gameOver setOpacity:0];
     [scene addChild:gameOver z:3 tag:9999];
 	
+    menuPause = [MenuPause node];
+    [menuPause setVisible:NO];
+    [scene addChild:menuPause z: 4];
+    
 	// return the scene
 	return scene;
 }
@@ -78,6 +85,21 @@ CCSprite *gameOver;
 
 + (float) getWorldWidth {
     return worldWidth;
+}
+
++ (void) pauseAll {
+    if ([[CCDirector sharedDirector] isPaused])
+    {
+        [[CCDirector sharedDirector] resume];
+        [menuPause setVisible:NO];
+        [menuPause.volumeSlider setHidden:YES];
+    }
+    else
+    {
+        [[CCDirector sharedDirector] pause];
+        [menuPause setVisible:YES];
+        [menuPause.volumeSlider setHidden:NO];
+    }
 }
 
 #pragma mark - Init Methods

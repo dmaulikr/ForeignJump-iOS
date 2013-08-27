@@ -9,7 +9,8 @@
 #import "MainMenu.h"
 
 @implementation MenuOptions {
-    CGSize winSize;
+    CGSize size;
+    UISlider *volumeSlider;
 }
 
 + (CCScene *) scene
@@ -29,11 +30,11 @@
     
    	if( (self = [super init])) {
         
-        winSize = [[CCDirector sharedDirector] winSize];
+        size = [[CCDirector sharedDirector] winSize];
         
         //background
         CCSprite *background = [CCSprite spriteWithFile:@"Menu/Options/menubg.png"];
-        [background setPosition:ccp(winSize.width/2, winSize.height/2)];
+        [background setPosition:ccp(size.width/2, size.height/2)];
         
         [self addChild:background z:0];
         //end background
@@ -63,7 +64,7 @@
         
         menu = [CCMenu menuWithItems: sound,nil];
         [menu alignItemsHorizontallyWithPadding:25];
-        [menu setPosition:ccp(winSize.width/2, winSize.height/2 - 40)];
+        [menu setPosition:ccp(size.width/2, size.height/2 - 20)];
         
         [self addChild:menu];
         //end menu
@@ -80,8 +81,23 @@
         
         [self addChild:backMenu];
         //end back menu
+        
+        //volume slider
+        volumeSlider = [[UISlider alloc] initWithFrame:CGRectMake(size.width/2 - 75, size.height/2 + 60, 150, 50)];
+        [volumeSlider setMaximumValue:100];
+        [volumeSlider setMinimumValue:0];
+        [volumeSlider setValue:([[SimpleAudioEngine sharedEngine] effectsVolume] * 100)];
+        
+        [[[CCDirector sharedDirector] view] addSubview:volumeSlider];
+        
+        [self scheduleUpdate];
+        //volume slider
     }
     return self;
+}
+
+- (void) update:(ccTime)delta {
+    [[SimpleAudioEngine sharedEngine] setEffectsVolume:([volumeSlider value] / 100)];
 }
 
 - (void) mute {
@@ -101,6 +117,14 @@
 - (void) backToMenu {
     [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/ok.caf"];
     [[CCDirector sharedDirector] replaceScene:[MainMenu scene]];
+}
+
+- (void) dealloc {
+    [volumeSlider removeFromSuperview];
+    [volumeSlider release];
+    [self unscheduleUpdate];
+    
+    [super dealloc];
 }
 
 @end

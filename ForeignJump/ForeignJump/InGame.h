@@ -37,4 +37,6 @@
 
 + (float) getWorldWidth;
 
++ (void) pauseAll;
+
 @end

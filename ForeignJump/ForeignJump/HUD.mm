@@ -6,6 +6,7 @@
 //  Copyright Epimac 2013. All rights reserved.
 //
 #import "HUD.h"
+#import "InGame.h"
 
 @implementation HUD {
     CGSize size;
@@ -21,6 +22,8 @@
         [scoreLabel setPosition:ccp(64,284)];
         [scoreLabel setColor:ccc3(0,0,0)];
         [self addChild:scoreLabel];
+        
+        [self schedule:@selector(updateScore)];
         
         coins = [CCSprite spriteWithFile:@"HUD/coins.png"];
         [coins setPosition:ccp(35,290)];
@@ -53,12 +56,27 @@
         [flag setPosition: ccp(size.width - 40,270)];
         [self addChild:flag];
         
-        [self schedule:@selector(updateScore)];
+        //back menu
+        CCSprite *pauseSprite = [CCSprite spriteWithFile:@"Menu/Choose/back.png"];
+        CCSprite *pauseSpriteSelected = [CCSprite spriteWithFile:@"Menu/Choose/back-selected.png"];
+        
+        CCMenuItemSprite *pause = [CCMenuItemSprite itemWithNormalSprite:pauseSprite selectedSprite:pauseSpriteSelected target:self selector:@selector(pauseAll)];
+        [pause setPosition:ccp(30,30)];
+        
+        CCMenu *pauseMenu = [CCMenu menuWithItems:pause, nil];
+        [pauseMenu setPosition:ccp(0,0)];
+        
+        [self addChild:pauseMenu];
+        //end back menu
 	}
 	return self;
 }
 
--(void) updateScore {
+- (void) pauseAll {
+    [InGame pauseAll];
+}
+
+- (void) updateScore {
     int score = [Data getScore];
     [scoreLabel setString:[NSString stringWithFormat:@"%i", score]];
     

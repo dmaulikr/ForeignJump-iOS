@@ -197,6 +197,7 @@
 		D27240B917B9241400DCAFBF /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240B817B9241400DCAFBF /* GLES-Render.mm */; };
 		D27240C117B994AE00DCAFBF /* HUD.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240C017B994AE00DCAFBF /* HUD.mm */; };
 		D2837C3917B9B728008FCC59 /* Ennemy.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2837C3817B9B728008FCC59 /* Ennemy.mm */; };
+		D29F406617CCD34B009F3E68 /* MenuPause.mm in Sources */ = {isa = PBXBuildFile; fileRef = D29F406517CCD34A009F3E68 /* MenuPause.mm */; };
 		D2D5DBE117BBD10D0071E801 /* Data.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D5DBE017BBD10D0071E801 /* Data.m */; };
 		D2DEAC2317C300CF00439334 /* MainMenu.mm in Sources */ = {isa = PBXBuildFile; fileRef = D2DEAC2217C300CF00439334 /* MainMenu.mm */; };
 		D2E4FF2117C2FF7700241A4D /* Menu in Resources */ = {isa = PBXBuildFile; fileRef = D2E4FF2017C2FF7700241A4D /* Menu */; };
@@ -602,6 +603,8 @@
 		D27240C017B994AE00DCAFBF /* HUD.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HUD.mm; sourceTree = "<group>"; };
 		D2837C3717B9B728008FCC59 /* Ennemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ennemy.h; sourceTree = "<group>"; };
 		D2837C3817B9B728008FCC59 /* Ennemy.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ennemy.mm; sourceTree = "<group>"; };
+		D29F406417CCD34A009F3E68 /* MenuPause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuPause.h; sourceTree = "<group>"; };
+		D29F406517CCD34A009F3E68 /* MenuPause.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MenuPause.mm; sourceTree = "<group>"; };
 		D2D5DBDF17BBD10D0071E801 /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		D2D5DBE017BBD10D0071E801 /* Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.m; sourceTree = "<group>"; };
 		D2DEAC2117C300CF00439334 /* MainMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenu.h; path = Menu/MainMenu.h; sourceTree = "<group>"; };
@@ -696,6 +699,8 @@
 				D27240A017B923CE00DCAFBF /* Background.mm */,
 				D27240BF17B994AE00DCAFBF /* HUD.h */,
 				D27240C017B994AE00DCAFBF /* HUD.mm */,
+				D29F406417CCD34A009F3E68 /* MenuPause.h */,
+				D29F406517CCD34A009F3E68 /* MenuPause.mm */,
 				D27240B717B9241400DCAFBF /* GLES-Render.h */,
 				D27240B817B9241400DCAFBF /* GLES-Render.mm */,
 				D2D5DBDF17BBD10D0071E801 /* Data.h */,
@@ -1439,6 +1444,7 @@
 				D2227AD417B921DB00421B00 /* b2Draw.cpp in Sources */,
 				D2227A2117B921DA00421B00 /* CCGLView.m in Sources */,
 				D2227A4E17B921DA00421B00 /* CGPointExtension.m in Sources */,
+				D29F406617CCD34B009F3E68 /* MenuPause.mm in Sources */,
 				D27240C117B994AE00DCAFBF /* HUD.mm in Sources */,
 				D27240B917B9241400DCAFBF /* GLES-Render.mm in Sources */,
 				D222795217B921D900421B00 /* CCActionPageTurn3D.m in Sources */,
