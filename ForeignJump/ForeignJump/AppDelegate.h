@@ -5,10 +5,7 @@
 //  Created by Francis Visoiu Mistrih on 25/07/13.
 //  Copyright Epimac 2013. All rights reserved.
 //
-
-#import <UIKit/UIKit.h>
 #import <GameKit/GameKit.h>
-
 
 // Added only for iOS 6 support
 @interface MyNavigationController : UINavigationController <CCDirectorDelegate>

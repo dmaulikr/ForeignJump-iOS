@@ -5,8 +5,6 @@
 //  Created by Francis Visoiu Mistrih on 29/07/13.
 //  Copyright (c) 2013 Epimac. All rights reserved.
 //
-
-#import <Foundation/Foundation.h>
 #import "Box2D.h"
 #import "Tile.h"
 

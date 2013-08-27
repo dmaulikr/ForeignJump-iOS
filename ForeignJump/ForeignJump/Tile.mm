@@ -7,6 +7,7 @@
 //
 
 #import "Tile.h"
+#import "Box2D.h"
 #import "InGame.h"
 
 static const float bombRadius = 0.39f;
@@ -35,13 +36,13 @@ static const float coinRadius = 0.39f;
     
         texture = [CCSprite spriteWithFile:texture_];
     
-        texture.position = position;
+        [texture setPosition:position];
     
         type = type_;
     
         world = [InGame getWorld];
     
-        texture.tag = type;
+        [texture setTag:type];
         
         switch (type) {
             case Terre:

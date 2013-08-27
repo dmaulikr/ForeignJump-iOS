@@ -6,9 +6,6 @@
 //  Copyright (c) 2013 Epimac. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "Tile.h"
-
 @interface Map : CCLayer
 
 + (id) mapWithFile:(NSString *)file;

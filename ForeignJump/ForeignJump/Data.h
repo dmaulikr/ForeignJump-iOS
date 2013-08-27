@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Epimac. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface Data : NSObject
 
 + (void) resetData;

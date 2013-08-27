@@ -5,8 +5,6 @@
 //  Created by Francis Visoiu Mistrih on 25/07/13.
 //  Copyright Epimac 2013. All rights reserved.
 //
-
-// Import the interfaces
 #import "HUD.h"
 
 @implementation HUD {
@@ -20,12 +18,12 @@
         size = [[CCDirector sharedDirector] winSize];
     
 		scoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", 0] fontName:@"HUD/SCRATCH.TTF" fontSize:30.0];
-        scoreLabel.position = ccp(64,284);
-        scoreLabel.color = ccc3(0,0,0);
+        [scoreLabel setPosition:ccp(64,284)];
+        [scoreLabel setColor:ccc3(0,0,0)];
         [self addChild:scoreLabel];
         
         coins = [CCSprite spriteWithFile:@"HUD/coins.png"];
-        coins.position = ccp(35,290);
+        [coins setPosition:ccp(35,290)];
         [self addChild:coins];
         
         CCSprite *benin = [CCSprite spriteWithFile:@"HUD/benin_flag.png"];
@@ -50,8 +48,9 @@
                 NSLog(@"Unknown character type.");
                 break;
         }
-        flag.scale = 0.7;
-        flag.position = ccp(size.width - 40,270);
+        
+        [flag setScale: 0.7];
+        [flag setPosition: ccp(size.width - 40,270)];
         [self addChild:flag];
         
         [self schedule:@selector(updateScore)];

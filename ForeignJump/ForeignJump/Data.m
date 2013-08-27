@@ -5,7 +5,6 @@
 //  Created by Francis Visoiu Mistrih on 14/08/13.
 //  Copyright (c) 2013 Epimac. All rights reserved.
 //
-
 #import "Data.h"
 
 static int score;

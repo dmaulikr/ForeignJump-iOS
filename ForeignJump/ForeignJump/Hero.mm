@@ -50,7 +50,6 @@ static Hero *instance;
         
         type = HeroType;
         
-        NSString *tr = [Character heroPlist];
         [self initSprite:[Character heroPlist] andTexture:[Character heroTexture]];
         
         instance = self;
@@ -78,8 +77,8 @@ static Hero *instance;
     walkAction = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:walkAnim]];
     [texture runAction:walkAction];
     
-    texture.position = position;
-    texture.tag = HeroType;
+    [texture setPosition:position];
+    [texture setTag:HeroType];
     [spriteSheet addChild:texture];
     
     [self addChild:spriteSheet];

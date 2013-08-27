@@ -5,8 +5,6 @@
 //  Created by Francis Visoiu Mistrih on 25/07/13.
 //  Copyright Epimac 2013. All rights reserved.
 //
-
-// Import the interfaces
 #import "Background.h"
 #import "InGame.h"
 
@@ -25,31 +23,24 @@
 -(id) init
 {
 	if( (self=[super init])) {
-		
+        
         size = [[CCDirector sharedDirector] winSize];
-        animation = true;
+        animation = YES;
         
         //background
-        
-		if( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ) {
-            background = [CCSprite spriteWithFile:[Character backgroundTexture]];
-		} else {
-			background = [CCSprite spriteWithFile:[Character backgroundTexture]];
-		}
-		background.position = ccp(size.width/2, size.height/2);
+        background = [CCSprite spriteWithFile:[Character backgroundTexture]];
+		[background setPosition:ccp(size.width/2, size.height/2)];
         
         [self addChild: background z: 0];
-
         //end background
 	}
 	return self;
 }
 
 - (void) setupBackgroundImage {
-
-    sun = [CCSprite spriteWithFile:[Character backgroundSun]];
     
-    sun.position = ccp(size.width, size.height/2);
+    sun = [CCSprite spriteWithFile:[Character backgroundSun]];
+    [sun setPosition:ccp(size.width, size.height/2)];
 
     [self addChild:sun z:1];
     
@@ -58,6 +49,7 @@
 }
 
 - (void) setHero {
+    
     hero = [Hero heroInstance];
     worldWidth = [InGame getWorldWidth];
     [self setupBackgroundImage];
@@ -65,6 +57,7 @@
 
 #pragma mark - Update methods
 - (void) moveBackground {
+    
     if ([Data getDead]) {
         [self unscheduleAllSelectors];
     }
@@ -72,7 +65,7 @@
     {
         float hpos = hero.texture.position.x;
         float xpos = (worldWidth - hpos)/7;
-        sun.position = ccp(xpos, sun.position.y);
+        [sun setPosition:ccp(xpos, sun.position.y)];
     }
 }
 

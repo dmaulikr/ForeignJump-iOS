@@ -6,9 +6,6 @@
 //  Copyright 2013 Epimac. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "cocos2d.h"
-
 enum CharCase {
     Roumain = 1,
     Indien = 2,

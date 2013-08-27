@@ -5,11 +5,13 @@
 //  Created by Francis Visoiu Mistrih on 25/07/13.
 //  Copyright Epimac 2013. All rights reserved.
 //
-
 #import "InGame.h"
 #import "CCTouchDispatcher.h"
+#import "HUD.h"
+#import "Background.h"
 #import "MainMenu.h"
 #import "Character.h"
+#import "Ennemy.h"
 
 #pragma mark - Constant declaration
 static const int mapCols = 110;
@@ -183,7 +185,7 @@ CCSprite *gameOver;
         if (b->GetUserData() != NULL && b->GetType() == b2_dynamicBody)
         {
             CCSprite *data = (CCSprite*)b->GetUserData();
-            data.position = ccp(b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO);
+            [data setPosition:ccp(b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO)];
         }
     }
     
@@ -236,12 +238,12 @@ CCSprite *gameOver;
 }
 
 - (void)releaseExplosion {
-    explosion.position = [Data getBombPoint];
+    [explosion setPosition:[Data getBombPoint]];
     [explosion resetSystem];
 }
 
 - (void)releaseSmoke {
-    smoke.position = [Data getBombPoint];
+    [smoke setPosition:[Data getBombPoint]];
     [smoke resetSystem];
 }
 
@@ -277,7 +279,7 @@ CCSprite *gameOver;
     if ([Data getDead])
     {
         //if dead go to main menu
-       [[CCDirector sharedDirector] replaceScene:[MainMenu scene]];
+       [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[MainMenu scene]]];
     }
     //NSLog(@"StartY : %f", startTouch.y);
     

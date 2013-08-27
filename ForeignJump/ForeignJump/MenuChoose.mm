@@ -5,10 +5,8 @@
 //  Created by Francis Visoiu Mistrih on 25/08/13.
 //  Copyright 2013 Epimac. All rights reserved.
 //
-
 #import "MenuChoose.h"
 #import "InGame.h"
-#import "Character.h"
 #import "MainMenu.h"
 
 @implementation MenuChoose {
@@ -37,8 +35,9 @@ CGSize winSize;
    	if( (self = [super init])) {
         
         //background
-        CCSprite *background = [CCSprite spriteWithFile:@"Menu/menuchoosebg.png"];
-        background.position = ccp(winSize.width/2, winSize.height/2);
+        CCSprite *background = [CCSprite spriteWithFile:@"Menu/Choose/menubg.png"];
+        [background setPosition:ccp(winSize.width/2, winSize.height/2)];
+
         [self addChild:background z:0];
         //end background
         
@@ -47,45 +46,64 @@ CGSize winSize;
         //sprites
         CCSprite *roumainChar = [CCSprite spriteWithFile:@"Menu/Choose/roumain.png"];
         CCSprite *roumainChar2 = [CCSprite spriteWithFile:@"Menu/Choose/roumain.png"];
-        roumainChar2.color = ccc3(100,100,100);
+        [roumainChar2 setColor:ccc3(100,100,100)];
+        
         
         CCSprite *indienChar = [CCSprite spriteWithFile:@"Menu/Choose/indien.png"];
         CCSprite *indienChar2 = [CCSprite spriteWithFile:@"Menu/Choose/indien.png"];
-        indienChar2.color = ccc3(100,100,100);
+        [indienChar2 setColor:ccc3(100,100,100)];
         
         CCSprite *renoiChar = [CCSprite spriteWithFile:@"Menu/Choose/renoi.png"];
         CCSprite *renoiChar2 = [CCSprite spriteWithFile:@"Menu/Choose/renoi.png"];
-        renoiChar2.color = ccc3(100,100,100);
+        [renoiChar2 setColor:ccc3(100,100,100)];
         
         CCSprite *reunionnaisChar = [CCSprite spriteWithFile:@"Menu/Choose/reunionnais.png"];
         CCSprite *reunionnaisChar2 = [CCSprite spriteWithFile:@"Menu/Choose/reunionnais.png"];
-        reunionnaisChar2.color = ccc3(100,100,100);
+        [reunionnaisChar2 setColor:ccc3(100,100,100)];
         
         //menuItems
         CCMenuItemSprite *roumain = [CCMenuItemSprite itemWithNormalSprite:roumainChar selectedSprite:roumainChar2 target:self selector:@selector(goToGame:)];
-        roumain.tag = Roumain;
+        [roumain setTag:Roumain];
         
         CCMenuItemSprite *indien = [CCMenuItemSprite itemWithNormalSprite:indienChar selectedSprite:indienChar2 target:self selector:@selector(goToGame:)];
-        indien.tag = Indien;
+        [indien setTag:Indien];
         
         CCMenuItemSprite *renoi = [CCMenuItemSprite itemWithNormalSprite:renoiChar selectedSprite:renoiChar2 target:self selector:@selector(goToGame:)];
-        renoi.tag = Renoi;
+        [renoi setTag:Renoi];
         
         CCMenuItemSprite *reunionnais = [CCMenuItemSprite itemWithNormalSprite:reunionnaisChar selectedSprite:reunionnaisChar2 target:self selector:@selector(goToGame:)];
-        reunionnais.tag = Reunionnais;
-        
+        [reunionnais setTag:Reunionnais];
         
         menu = [CCMenu menuWithItems:roumain, indien, renoi, reunionnais, nil];
         [menu alignItemsHorizontallyWithPadding:25];
-        menu.position = ccp(winSize.width/2, winSize.height/2 - 40);
-        
+        [menu setPosition:ccp(winSize.width/2, winSize.height/2 - 40)];
+
         [self addChild:menu];
         //end menu
+        
+        //back menu
+        CCSprite *backSprite = [CCSprite spriteWithFile:@"Menu/Choose/back.png"];
+        CCSprite *backSpriteSelected = [CCSprite spriteWithFile:@"Menu/Choose/back-selected.png"];
+        
+        CCMenuItemSprite *back = [CCMenuItemSprite itemWithNormalSprite:backSprite selectedSprite:backSpriteSelected target:self selector:@selector(backToMenu)];
+        [back setPosition:ccp(30,30)];
+        
+        CCMenu *backMenu = [CCMenu menuWithItems:back, nil];
+        [backMenu setPosition:ccp(0,0)];
+        
+        [self addChild:backMenu];
+        //end back menu
     }
     return self;
 }
 
+- (void) backToMenu {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/ok.caf"];
+    [[CCDirector sharedDirector] replaceScene:[MainMenu scene]];
+}
+
 - (void) goToGame:(CCMenuItemSprite *)sender_ {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/ok.caf"];
     CCMenuItemSprite *sender = sender_;
     
     switch (sender.tag) {
@@ -116,7 +134,7 @@ CGSize winSize;
         }
     }
     
-    [[CCDirector sharedDirector] replaceScene:[InGame scene]];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[InGame scene]]];
 }
 
 

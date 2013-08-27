@@ -5,11 +5,7 @@
 //  Created by Francis Visoiu Mistrih on 25/07/13.
 //  Copyright Epimac 2013. All rights reserved.
 //
-
-
-
 #import "AppDelegate.h"
-#import "InGame.h"
 #import "MainMenu.h"
 
 @implementation MyNavigationController

@@ -6,10 +6,6 @@
 //  Copyright Epimac 2013. All rights reserved.
 //
 
-
-// HUD
-#import "InGame.h"
-
 @interface HUD : CCLayer {
     CCLabelTTF *scoreLabel;
     CCSprite *flag;

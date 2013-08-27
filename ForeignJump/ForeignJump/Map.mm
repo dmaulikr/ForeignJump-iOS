@@ -8,6 +8,7 @@
 
 #import "Map.h"
 #import "InGame.h"
+#import "Tile.h"
 
 @implementation Map {
     NSString *data;

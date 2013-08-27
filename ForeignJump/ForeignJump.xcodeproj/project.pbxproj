@@ -202,6 +202,8 @@
 		D2E4FF2117C2FF7700241A4D /* Menu in Resources */ = {isa = PBXBuildFile; fileRef = D2E4FF2017C2FF7700241A4D /* Menu */; };
 		D2EC7FF717CBC58B004D58E5 /* HUD in Resources */ = {isa = PBXBuildFile; fileRef = D2EC7FF517CBC58B004D58E5 /* HUD */; };
 		D2EC7FF817CBC58B004D58E5 /* Perso in Resources */ = {isa = PBXBuildFile; fileRef = D2EC7FF617CBC58B004D58E5 /* Perso */; };
+		D2EC7FFA17CBF184004D58E5 /* Map in Resources */ = {isa = PBXBuildFile; fileRef = D2EC7FF917CBF184004D58E5 /* Map */; };
+		D2EC7FFD17CC2D04004D58E5 /* MenuOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EC7FFC17CC2D04004D58E5 /* MenuOptions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -607,6 +609,9 @@
 		D2E4FF2017C2FF7700241A4D /* Menu */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Menu; path = Resources/Menu; sourceTree = "<group>"; };
 		D2EC7FF517CBC58B004D58E5 /* HUD */ = {isa = PBXFileReference; lastKnownFileType = folder; name = HUD; path = Resources/HUD; sourceTree = "<group>"; };
 		D2EC7FF617CBC58B004D58E5 /* Perso */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Perso; path = Resources/Perso; sourceTree = "<group>"; };
+		D2EC7FF917CBF184004D58E5 /* Map */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Map; path = Resources/Map; sourceTree = "<group>"; };
+		D2EC7FFB17CC2D04004D58E5 /* MenuOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuOptions.h; sourceTree = "<group>"; };
+		D2EC7FFC17CC2D04004D58E5 /* MenuOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuOptions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -673,6 +678,8 @@
 				D2DEAC2217C300CF00439334 /* MainMenu.mm */,
 				D25EE21917CA3082009FE704 /* MenuChoose.h */,
 				D25EE21A17CA3082009FE704 /* MenuChoose.mm */,
+				D2EC7FFB17CC2D04004D58E5 /* MenuOptions.h */,
+				D2EC7FFC17CC2D04004D58E5 /* MenuOptions.m */,
 				D27240A717B923CE00DCAFBF /* InGame.h */,
 				D27240A817B923CE00DCAFBF /* InGame.mm */,
 				D27240A517B923CE00DCAFBF /* Hero.h */,
@@ -705,6 +712,7 @@
 		D222791B17B921D900421B00 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2EC7FF917CBF184004D58E5 /* Map */,
 				D2EC7FF517CBC58B004D58E5 /* HUD */,
 				D2EC7FF617CBC58B004D58E5 /* Perso */,
 				D2E4FF2017C2FF7700241A4D /* Menu */,
@@ -1311,6 +1319,7 @@
 				D222791D17B921D900421B00 /* Default.png in Resources */,
 				D222792717B921D900421B00 /* Icon-Small-50.png in Resources */,
 				D2EC7FF817CBC58B004D58E5 /* Perso in Resources */,
+				D2EC7FFA17CBF184004D58E5 /* Map in Resources */,
 				D222793217B921D900421B00 /* iTunesArtwork in Resources */,
 				D2E4FF2117C2FF7700241A4D /* Menu in Resources */,
 				D222792B17B921D900421B00 /* Icon-Small@2x.png in Resources */,
@@ -1348,6 +1357,7 @@
 				D2227B3317B921DB00421B00 /* b2WheelJoint.cpp in Sources */,
 				D22279A517B921DA00421B00 /* CCNode+Debug.m in Sources */,
 				D222798017B921D900421B00 /* ccFPSImages.m in Sources */,
+				D2EC7FFD17CC2D04004D58E5 /* MenuOptions.m in Sources */,
 				D2227AFC17B921DB00421B00 /* b2ChainAndPolygonContact.cpp in Sources */,
 				D2227A0617B921DA00421B00 /* CCTMXXMLParser.m in Sources */,
 				D2227AF917B921DB00421B00 /* b2ChainAndCircleContact.cpp in Sources */,

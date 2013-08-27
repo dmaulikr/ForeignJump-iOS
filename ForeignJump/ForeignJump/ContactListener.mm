@@ -10,7 +10,7 @@
 #import "Map.h"
 #import "InGame.h"
 #import "Hero.h"
-#import "SimpleAudioEngine.h"
+
 
 void ContactListener::BeginContact(b2Contact *contact)
 {
@@ -23,14 +23,14 @@ void ContactListener::BeginContact(b2Contact *contact)
     // hero & pièce
     if (textureA.tag == HeroType && textureB.tag == Piece)
     {
-        textureB.visible = NO;
+        [textureB setVisible:NO];
         [Data startCoinParticle:textureB.position];
         
         activateCoin();
     }
     else if (textureA.tag == Piece && textureB.tag == HeroType)
     {
-        textureA.visible = NO;
+        [textureA setVisible:NO];
         [Data startCoinParticle:textureA.position];
 
         activateCoin();
@@ -39,13 +39,15 @@ void ContactListener::BeginContact(b2Contact *contact)
     // hero & ennemy
     if (textureA.tag == HeroType && textureB.tag == EnnemyType)
     {
-        textureA.visible = NO;
+        [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/gameover.caf"];
+        [textureA setVisible:NO];
         [Data setEnnemyKilledState:YES];
         [Data setDead:YES];
     }
     else if (textureA.tag == EnnemyType && textureB.tag == HeroType)
     {
-        textureB.visible = NO;
+        [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/gameover.caf"];
+        [textureB setVisible:NO];
         [Data setEnnemyKilledState:YES];
         [Data setDead:YES];
     }
@@ -53,13 +55,13 @@ void ContactListener::BeginContact(b2Contact *contact)
     // hero & bombe
     if (textureA.tag == HeroType && textureB.tag == Bombe)
     {
-        textureA.visible = NO;
+        [textureA setVisible:NO];
         [Data startBombParticle:textureB.position];
         activateBomb();
     }
     else if (textureA.tag == Bombe && textureB.tag == HeroType)
     {
-        textureB.visible = NO;
+        [textureB setVisible:NO];
         [Data startBombParticle:textureA.position];
         activateBomb();
     }

@@ -5,8 +5,8 @@
 //  Created by Francis Visoiu Mistrih on 29/07/13.
 //  Copyright (c) 2013 Epimac. All rights reserved.
 //
-
 #import "Ennemy.h"
+#import "Hero.h"
 #import "InGame.h"
 
 #pragma mark - Constant declaration
@@ -78,8 +78,8 @@ static Ennemy *instance;
     walkAction = [CCRepeatForever actionWithAction: [CCAnimate actionWithAnimation:walkAnim]];
     [texture runAction:walkAction];
     
-    texture.position = position;
-    texture.tag = EnnemyType;
+    [texture setPosition:position];
+    [texture setTag:EnnemyType];
     [spriteSheet addChild:texture];
     
     [self addChild:spriteSheet];

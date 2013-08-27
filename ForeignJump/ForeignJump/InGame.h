@@ -5,15 +5,11 @@
 //  Created by Francis Visoiu Mistrih on 25/07/13.
 //  Copyright Epimac 2013. All rights reserved.
 //
-
-#import "GLES-Render.h"
 #import "Hero.h"
-#import "Ennemy.h"
-#import "Background.h"
-#import "HUD.h"
+#import "GLES-Render.h"
 #import "Map.h"
+#import "Ennemy.h"
 #import "ContactListener.h"
-#import "SimpleAudioEngine.h"
 
 //Pixel to metres ratio. Box2D uses metres as the unit for measurement.
 //This ratio defines how many pixels correspond to 1 Box2D "metre"
@@ -27,7 +23,7 @@
     Ennemy *ennemy;
     b2World *world;
     Map *map;
-    ContactListener *contactListener; //detect coin collision
+    b2ContactListener *contactListener; //detect collision
 }
 
 @property (nonatomic, strong) Hero *hero;

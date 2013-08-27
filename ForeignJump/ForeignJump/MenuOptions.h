@@ -1,12 +1,12 @@
 //
-//  MenuChoose.h
+//  MenuOptions.h
 //  ForeignJump
 //
-//  Created by Francis Visoiu Mistrih on 25/08/13.
+//  Created by Francis Visoiu Mistrih on 27/08/13.
 //  Copyright 2013 Epimac. All rights reserved.
 //
 
-@interface MenuChoose : CCLayer {
+@interface MenuOptions : CCLayer {
     CCMenu *menu;
 }
 
