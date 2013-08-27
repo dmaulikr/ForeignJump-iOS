@@ -13,6 +13,7 @@
 #import "Character.h"
 #import "Ennemy.h"
 #import "MenuPause.h"
+#import "GameOver.h"
 
 #pragma mark - Constant declaration
 static const int mapCols = 110;
@@ -42,9 +43,9 @@ static float worldWidth;
 }
 
 Background *background;
-CCSprite *gameOver;
+GameOver *gameOver;
 MenuPause *menuPause;
-
+HUD* hud;
 
 #pragma mark - synthesize
 @synthesize hero;
@@ -63,13 +64,11 @@ MenuPause *menuPause;
 	InGame *layer = [InGame node];
 	[scene addChild: layer z:1];
     
-    HUD* hud = [HUD node];
+    hud = [HUD node];
     [scene addChild:hud z: 2];
     
-    //game over
-    gameOver = [CCSprite spriteWithFile:@"Menu/GameOver.png"];
-    [gameOver setOpacity:0];
-    [scene addChild:gameOver z:3 tag:9999];
+    gameOver = [GameOver node];
+    [scene addChild:gameOver z: 9999];
 	
     menuPause = [MenuPause node];
     [menuPause setVisible:NO];
@@ -107,6 +106,8 @@ MenuPause *menuPause;
 -(id) init
 {
 	if( (self=[super init])) {
+        
+        [[SimpleAudioEngine sharedEngine] pauseBackgroundMusic];
         
         size = [[CCDirector sharedDirector] winSize];
         
@@ -270,13 +271,13 @@ MenuPause *menuPause;
 }
 
 - (void) die {
-    [gameOver setPosition:ccp(size.width/2, size.height/2)];
-   // [gameOver setVisible:YES];
+
     CCFadeIn *fade = [CCFadeIn actionWithDuration:1];
-    [gameOver runAction:fade];
+    [gameOver.bg runAction:fade];
 }
 
 - (void) stopAll {
+    
     hero.body->SetLinearVelocity(b2Vec2(0,0));
     
     killed = YES;
@@ -289,7 +290,6 @@ MenuPause *menuPause;
     [ennemy stopAllActions];
     [self stopAllActions];
     [self unscheduleAllSelectors];
-
 }
 
 #pragma mark - Touch methods
@@ -355,7 +355,7 @@ MenuPause *menuPause;
 
 -(void) registerWithTouchDispatcher
 {
-	[[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
+	[[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:1 swallowsTouches:YES];
 }
 
 #pragma mark - Dealloc

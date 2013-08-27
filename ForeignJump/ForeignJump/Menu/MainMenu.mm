@@ -34,8 +34,6 @@ CGSize size;
     
    	if( (self = [super init])) {
         
-        [[SimpleAudioEngine sharedEngine] setEffectsVolume:0.3f];
-        
         //background
         CCSprite *background = [CCSprite spriteWithFile:@"Menu/menubg.png"];
         [background setPosition:ccp(size.width/2, size.height/2)];
@@ -63,6 +61,9 @@ CGSize size;
         //end menu
         
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"Sounds/ok.caf"];
+        [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"Sounds/menuMusic.mp3"];
+        
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Sounds/menuMusic.mp3" loop:YES];
     }
     return self;
 }

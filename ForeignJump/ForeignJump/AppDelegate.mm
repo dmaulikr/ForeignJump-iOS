@@ -136,8 +136,13 @@
 	// make main window visible
 	[window_ makeKeyAndVisible];
     
-    [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    //save mute preferences
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    BOOL mute = [prefs boolForKey:@"mute"];
+    float volume = [prefs floatForKey:@"volume"];
+    
+    [[SimpleAudioEngine sharedEngine] setEffectsVolume:volume];
+    [[SimpleAudioEngine sharedEngine] setMute:mute];
     
  	return YES;
 }
@@ -172,6 +177,15 @@
 // application will be killed
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    BOOL mute = [[SimpleAudioEngine sharedEngine] mute];
+    float volume = [[SimpleAudioEngine sharedEngine] effectsVolume];
+    
+    [defaults setBool:mute forKey:@"mute"];
+    [defaults setFloat:volume forKey:@"volume"];
+    [defaults synchronize]; // this method is optional
+    
 	CC_DIRECTOR_END();
 }
 

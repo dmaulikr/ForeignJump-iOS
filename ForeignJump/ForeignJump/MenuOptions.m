@@ -82,11 +82,14 @@
         [self addChild:backMenu];
         //end back menu
         
+        float vol = [[SimpleAudioEngine sharedEngine] effectsVolume];
+        NSLog(@"%f", vol);
+        
         //volume slider
         volumeSlider = [[UISlider alloc] initWithFrame:CGRectMake(size.width/2 - 75, size.height/2 + 60, 150, 50)];
         [volumeSlider setMaximumValue:100];
         [volumeSlider setMinimumValue:0];
-        [volumeSlider setValue:([[SimpleAudioEngine sharedEngine] effectsVolume] * 100)];
+        [volumeSlider setValue:(vol * 100)];
         
         [[[CCDirector sharedDirector] view] addSubview:volumeSlider];
         

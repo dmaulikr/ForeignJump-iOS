@@ -10,6 +10,7 @@
 
 @implementation HUD {
     CGSize size;
+    CCMenu *pauseMenu;
 }
 
 -(id) init {
@@ -63,7 +64,7 @@
         CCMenuItemSprite *pause = [CCMenuItemSprite itemWithNormalSprite:pauseSprite selectedSprite:pauseSpriteSelected target:self selector:@selector(pauseAll)];
         [pause setPosition:ccp(30,30)];
         
-        CCMenu *pauseMenu = [CCMenu menuWithItems:pause, nil];
+        pauseMenu = [CCMenu menuWithItems:pause, nil];
         [pauseMenu setPosition:ccp(0,0)];
         
         [self addChild:pauseMenu];
@@ -81,6 +82,7 @@
     [scoreLabel setString:[NSString stringWithFormat:@"%i", score]];
     
     if ([Data getDead]) {
+        [pauseMenu setVisible:NO];
         [self unscheduleAllSelectors];
     }
 }

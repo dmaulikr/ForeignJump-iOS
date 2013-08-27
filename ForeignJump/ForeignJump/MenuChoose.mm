@@ -124,7 +124,7 @@ CGSize winSize;
         }
         case Indien:
         {
-            [Character setCharacter:@"Andrei" andType:Indien andHeroTexture:@"Perso/Indien/Hero/Indien_hero.png" andHeroPlist:@"Perso/Indien/Hero/Indien_hero.plist" andEnnemyTexture:@"Perso/Indien/Ennemy/Indien_ennemy.png" andEnnemyPlist:@"Perso/Indien/Ennemy/Indien_ennemy.plist" andMap:@"Perso/Indien/Map/Indien_map.txt" andMapTerre:@"Perso/Indien/Map/Indien_terre.png" andMapSousTerre:@"Perso/Indien/Map/Indien_sousterre.png" andMapObstacle:@"Perso/Indien/Map/Indien_obstacle.png" andMapPiece:@"Perso/Indien/Map/Indien_piece.png" andMapBomb:@"Perso/Indien/Map/Indien_bomb.png" andBackground:@"Perso/Indien/Background/Indien_bg.png" andBackgroundSun:@"Perso/Indien/Background/Indien_sun.png"];
+            [Character setCharacter:@"Rajesh" andType:Indien andHeroTexture:@"Perso/Indien/Hero/Indien_hero.png" andHeroPlist:@"Perso/Indien/Hero/Indien_hero.plist" andEnnemyTexture:@"Perso/Indien/Ennemy/Indien_ennemy.png" andEnnemyPlist:@"Perso/Indien/Ennemy/Indien_ennemy.plist" andMap:@"Perso/Indien/Map/Indien_map.txt" andMapTerre:@"Perso/Indien/Map/Indien_terre.png" andMapSousTerre:@"Perso/Indien/Map/Indien_sousterre.png" andMapObstacle:@"Perso/Indien/Map/Indien_obstacle.png" andMapPiece:@"Perso/Indien/Map/Indien_piece.png" andMapBomb:@"Perso/Indien/Map/Indien_bomb.png" andBackground:@"Perso/Indien/Background/Indien_bg.png" andBackgroundSun:@"Perso/Indien/Background/Indien_sun.png"];
             break;
         }
         default:
