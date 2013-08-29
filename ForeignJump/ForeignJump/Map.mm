@@ -73,6 +73,11 @@
                     [self addChild:object.texture];
                     break;
                 }
+                case'A':
+                {
+                    Tile *object = [Tile tileWithSpriteFile:@"Map/acdcTile.png" andType:ACDC atPosition:ccp(i*25,size.height - j*25)];
+                    [self addChild:object.texture];
+                }
                 default:
                 {
                     Tile *object = [Tile tileWithSpriteFile:@"Map/rien.png" andType:Null atPosition:ccp(i*25,size.height - j*25)];

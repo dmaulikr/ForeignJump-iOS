@@ -25,6 +25,7 @@ void ContactListener::BeginContact(b2Contact *contact)
     {
         [textureB setVisible:NO];
         [Data startCoinParticle:textureB.position];
+        [Data addBodyToDestroy:bodyA];
         
         activateCoin();
     }
@@ -32,6 +33,7 @@ void ContactListener::BeginContact(b2Contact *contact)
     {
         [textureA setVisible:NO];
         [Data startCoinParticle:textureA.position];
+        [Data addBodyToDestroy:bodyB];
 
         activateCoin();
     }
@@ -50,6 +52,25 @@ void ContactListener::BeginContact(b2Contact *contact)
         [textureB setVisible:NO];
         [Data setEnnemyKilledState:YES];
         [Data setDead:YES];
+    }
+    
+    // ennemy & ACDC
+    if ((textureA.tag == EnnemyType && textureB.tag == ACDCType) || (textureA.tag == ACDCType && textureB.tag == EnnemyType))
+    {
+        runWithDelay(@selector(push));
+        runWithDelay(@selector(hide));
+    }
+    
+    // hero & ACDC
+    if (textureA.tag == HeroType && textureB.tag == ACDC)
+    {
+        [textureB setVisible:NO];
+        runWithDelay(@selector(show));
+    }
+    else if (textureA.tag == ACDC && textureB.tag == HeroType)
+    {
+        [textureA setVisible:NO];
+        runWithDelay(@selector(show));
     }
     
     // hero & bombe
@@ -80,4 +101,15 @@ void ContactListener::activateCoin()
     [Data setCoinState:YES];
     [Data scorePlusPlus];
     [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/coin.caf"];
+}
+
+void ContactListener::runWithDelay(SEL method)
+{
+    CCCallFunc *action = [CCCallFunc actionWithTarget:[ACDCHelp acdcInstance] selector:method];
+        
+    CCDelayTime *delay = [CCDelayTime actionWithDuration:0.01];
+        
+    CCSequence *sequence = [CCSequence actions:delay, action, nil];
+        
+    [[ACDCHelp acdcInstance] runAction:sequence];
 }

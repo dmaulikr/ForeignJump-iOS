@@ -81,6 +81,7 @@
 
 - (void) update:(ccTime)delta {
     [[SimpleAudioEngine sharedEngine] setEffectsVolume:([volumeSlider value] / 100)];
+    [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:([volumeSlider value] / 100)];
 }
 
 - (void) dealloc {

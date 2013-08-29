@@ -13,4 +13,5 @@ private:
     void BeginContact(b2Contact *contact);
     void activateBomb();
     void activateCoin();
+    void runWithDelay(SEL method);
 };

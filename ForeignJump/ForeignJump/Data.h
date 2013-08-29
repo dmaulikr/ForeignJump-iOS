@@ -5,6 +5,7 @@
 //  Created by Francis Visoiu Mistrih on 14/08/13.
 //  Copyright (c) 2013 Epimac. All rights reserved.
 //
+#import "Box2D.h"
 
 @interface Data : NSObject
 
@@ -30,5 +31,12 @@
 
 + (void) setEnnemyKilledState:(BOOL)state;
 + (BOOL) isKilledByEnnemy;
+
++ (id) initDestroyArray;
++ (NSMutableArray *) toDestroyArray;
++ (void) destroyAllBodies;
++ (void) addBodyToDestroy:(b2Body *)body;
++ (BOOL) isDestroyArrayEmpty;
++ (BOOL) isDestroyArrayFull;
 
 @end

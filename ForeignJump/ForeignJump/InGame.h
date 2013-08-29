@@ -5,10 +5,11 @@
 //  Created by Francis Visoiu Mistrih on 25/07/13.
 //  Copyright Epimac 2013. All rights reserved.
 //
-#import "Hero.h"
 #import "GLES-Render.h"
 #import "Map.h"
 #import "Ennemy.h"
+#import "Hero.h"
+#import "ACDC.h"
 #import "ContactListener.h"
 
 //Pixel to metres ratio. Box2D uses metres as the unit for measurement.
@@ -21,6 +22,7 @@
 	GLESDebugDraw *m_debugDraw;		// strong ref
     Hero *hero; //the main hero
     Ennemy *ennemy;
+    ACDCHelp *acdc;
     b2World *world;
     Map *map;
     b2ContactListener *contactListener; //detect collision
@@ -28,6 +30,7 @@
 
 @property (nonatomic, strong) Hero *hero;
 @property (nonatomic, strong) Ennemy *ennemy;
+@property (nonatomic, strong) ACDCHelp *acdc;
 
 // returns a CCScene that contains the InGame as the only child
 

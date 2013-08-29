@@ -20,7 +20,7 @@ static const int mapCols = 110;
 static const int mapRows = 15;
 static const float jumpintensity = 40;
 static const float gravityconst = 28;
-static const CGPoint heroPosition = ccp(90,280);
+static const CGPoint heroPosition = ccp(290,280);
 static const CGPoint ennemiPosition = ccp(10,280);
 
 static b2World *worldInstance;
@@ -50,6 +50,7 @@ HUD* hud;
 #pragma mark - synthesize
 @synthesize hero;
 @synthesize ennemy;
+@synthesize acdc = acdc;
 
 +(CCScene *) scene
 {
@@ -131,6 +132,9 @@ HUD* hud;
         ennemy = [Ennemy ennemyWithPosition:ennemiPosition];
         [self addChild:ennemy z:0];
         
+        acdc = [ACDCHelp acdcWithPosition:ccp(heroPosition.x - 40, heroPosition.y)];
+        [self addChild:acdc z:0];
+        
         //init physics (hero, ennemy...)
         [self initPhysics];
         
@@ -161,6 +165,8 @@ HUD* hud;
     [hero initPhysics]; //init hero's body
 
     [ennemy initPhysics]; //init ennemy's body
+    
+    [acdc initPhysics]; //init acdc's body
     
     [self initScreenEdges];
 
@@ -315,7 +321,7 @@ HUD* hud;
     
     if (![Data getDead]) {
     
-        if (startTouch.y > stopTouch.y + 50)
+        if (startTouch.y > stopTouch.y)
         {
             [hero jump:jumpintensity];
         }

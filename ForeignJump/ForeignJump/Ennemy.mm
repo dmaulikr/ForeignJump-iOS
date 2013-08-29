@@ -18,7 +18,7 @@ static Ennemy *instance;
     BOOL animate;
     CCAction *walkAction;
     float delta;
-    b2World *world_;
+    b2World *world;
     float velocityx;
     Hero* hero;
 }
@@ -86,14 +86,14 @@ static Ennemy *instance;
 }
 
 -(void) initPhysics {
-    world_ = [InGame getWorld];
+    world = [InGame getWorld];
     
     // Create ennemy body and shape
     b2BodyDef ennemyBodyDef;
     ennemyBodyDef.fixedRotation = true;
     ennemyBodyDef.type = b2_dynamicBody;
     ennemyBodyDef.position.Set(position.x/PTM_RATIO, position.y/PTM_RATIO);
-    body = world_->CreateBody(&ennemyBodyDef);
+    body = world->CreateBody(&ennemyBodyDef);
     body->SetUserData(texture);
     
     b2PolygonShape shape;
@@ -196,7 +196,8 @@ static Ennemy *instance;
 #pragma mark - Dealloc
 
 -(void)dealloc {
-    
+
+    world->DestroyBody(body);
     body = NULL;
     
     instance = NULL;

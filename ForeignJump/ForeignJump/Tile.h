@@ -17,7 +17,8 @@ enum TypeCase {
     Bombe = 9,
     ACDC = 10,
     HeroType = 11,
-    EnnemyType = 12
+    EnnemyType = 12,
+    ACDCType = 13
     };
 
 @interface Tile : CCNode {

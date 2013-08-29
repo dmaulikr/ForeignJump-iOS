@@ -70,6 +70,11 @@ static const float coinRadius = 0.39f;
                 [self createPhysicsBomb];
                 break;
             }
+            case ACDC:
+            {
+                [self createPhysicsCoin];
+                break;
+            }
             
             default:
             {
