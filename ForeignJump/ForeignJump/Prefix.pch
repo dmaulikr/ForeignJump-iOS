@@ -13,8 +13,8 @@
 #define GetFullPath(_filePath_) [[NSBundle mainBundle] pathForResource:[_filePath_ lastPathComponent] ofType:nil inDirectory:[_filePath_ stringByDeletingLastPathComponent]]
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import "Data.h" //class storing all data (score, dead...)
 #import "Character.h" //class storing current character
 #import "cocos2d.h" //cocos2D import goes for all the classes
 #import "SimpleAudioEngine.h" //audio engine
+
 #endif

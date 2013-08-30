@@ -8,6 +8,8 @@
 #import "Data.h"
 #import "InGame.h"
 
+const int capacity = 1;
+
 static int score;
 static BOOL dead;
 
@@ -35,7 +37,7 @@ static NSMutableArray *toDestroyArray;
     
     killedByEnnemy = NO;
     
-    [toDestroyArray removeAllObjects];
+    [toDestroyArray release];
 }
 
 #pragma mark - Score
@@ -107,11 +109,11 @@ static NSMutableArray *toDestroyArray;
 }
 
 +(id) initDestroyArray {
-    toDestroyArray = [[[NSMutableArray alloc] initWithCapacity:5] autorelease];
+    toDestroyArray = [[NSMutableArray alloc] initWithCapacity:capacity];
     return toDestroyArray;
 }
 
-+(NSMutableArray *) toDestroyArray {
++(NSMutableArray *) getToDestroyArray {
     return toDestroyArray;
 }
 
@@ -126,19 +128,20 @@ static NSMutableArray *toDestroyArray;
         world->DestroyBody(body);
         body = NULL;
     }
+    
+    [toDestroyArray removeAllObjects];
 }
 
 + (void) addBodyToDestroy:(b2Body *)body {
-    [toDestroyArray addObject:[NSValue valueWithPointer:body]];
+ //   [toDestroyArray addObject:[NSValue valueWithPointer:body]];
 }
-
 
 +(BOOL) isDestroyArrayEmpty {
     return [toDestroyArray count] == 0;
 }
 
 +(BOOL) isDestroyArrayFull {
-    return [toDestroyArray count] == 5;
+    return [toDestroyArray count] >= capacity;
 }
 
 @end

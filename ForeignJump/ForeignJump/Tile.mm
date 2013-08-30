@@ -7,7 +7,6 @@
 //
 
 #import "Tile.h"
-#import "Box2D.h"
 #import "InGame.h"
 
 static const float bombRadius = 0.39f;

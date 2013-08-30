@@ -129,14 +129,13 @@ CGSize winSize;
         }
         default:
         {
-            NSLog(@"Character sender tag is wrong.");
+            NSAssert(false, @"Character sender tag is wrong.");
             break;
         }
     }
     
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[InGame scene]]];
 }
-
 
 - (void) dealloc {
     

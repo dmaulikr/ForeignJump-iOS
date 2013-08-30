@@ -33,7 +33,7 @@
 + (BOOL) isKilledByEnnemy;
 
 + (id) initDestroyArray;
-+ (NSMutableArray *) toDestroyArray;
++ (NSMutableArray *) getToDestroyArray;
 + (void) destroyAllBodies;
 + (void) addBodyToDestroy:(b2Body *)body;
 + (BOOL) isDestroyArrayEmpty;

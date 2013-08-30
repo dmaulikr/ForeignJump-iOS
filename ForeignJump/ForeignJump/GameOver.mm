@@ -8,7 +8,7 @@
 
 #import "GameOver.h"
 #import "MainMenu.h"
-
+#import "Data.h"
 
 @implementation GameOver {
     CGSize size;
@@ -42,6 +42,7 @@
         //if dead go to main menu
         [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[MainMenu scene]]];
     }
+    
     return YES;
 }
 

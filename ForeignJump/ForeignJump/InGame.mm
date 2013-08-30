@@ -14,6 +14,7 @@
 #import "Ennemy.h"
 #import "MenuPause.h"
 #import "GameOver.h"
+#import "Data.h"
 
 #pragma mark - Constant declaration
 static const int mapCols = 110;
@@ -93,12 +94,14 @@ HUD* hud;
         [[CCDirector sharedDirector] resume];
         [menuPause setVisible:NO];
         [menuPause.volumeSlider setHidden:YES];
+        [menuPause unscheduleUpdate];
     }
     else
     {
         [[CCDirector sharedDirector] pause];
         [menuPause setVisible:YES];
         [menuPause.volumeSlider setHidden:NO];
+        [menuPause scheduleUpdate];
     }
 }
 
@@ -173,6 +176,8 @@ HUD* hud;
     //setup contactlistener
     contactListener = new ContactListener();
     world->SetContactListener(contactListener);
+    
+    [Data initDestroyArray]; //init the queue for destroying bodies
 }
 
 - (void) createWorld:(float)intensity {
@@ -209,7 +214,7 @@ HUD* hud;
 
 -(void) update: (ccTime) delta {
     
-    world->Step(delta, 60, 60);
+    world->Step(delta, 10, 10);
     for(b2Body *b = world->GetBodyList(); b; b=b->GetNext()) {
         if (b->GetUserData() != NULL && b->GetType() == b2_dynamicBody)
         {
@@ -264,6 +269,14 @@ HUD* hud;
         
         [self runAction:gameOverSequence];
     }
+    
+    NSString *str = [NSString stringWithFormat:@"%i", [[Data getToDestroyArray] count]];
+    
+    if ([Data isDestroyArrayFull])
+    {
+        [Data destroyAllBodies];
+    }
+ 
 }
 
 - (void)releaseExplosion {
@@ -386,6 +399,11 @@ HUD* hud;
 	
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeSpriteFrames];
     [CCSpriteFrameCache purgeSharedSpriteFrameCache];
+    
+    [[SimpleAudioEngine sharedEngine] unloadEffect:@"Sounds/coin.caf"];
+    [[SimpleAudioEngine sharedEngine] unloadEffect:@"Sounds/bomb.caf"];
+    [[SimpleAudioEngine sharedEngine] unloadEffect:@"Sounds/jump.caf"];
+
     
 	[super dealloc];
 }

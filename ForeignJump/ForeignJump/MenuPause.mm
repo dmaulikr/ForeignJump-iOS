@@ -63,10 +63,6 @@
         [[[CCDirector sharedDirector] view] addSubview:volumeSlider];
         [volumeSlider setHidden:YES];
         
-        [self scheduleUpdate];
-        //volume slider
-
-
     }
 	return self;
 }

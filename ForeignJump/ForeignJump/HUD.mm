@@ -7,6 +7,7 @@
 //
 #import "HUD.h"
 #import "InGame.h"
+#import "Data.h"
 
 @implementation HUD {
     CGSize size;
@@ -49,7 +50,7 @@
                 flag = india;
                 break;
             default:
-                NSLog(@"Unknown character type.");
+                NSAssert(false, @"Unknown character type.sw");
                 break;
         }
         

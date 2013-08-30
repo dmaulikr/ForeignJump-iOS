@@ -198,7 +198,6 @@ static Hero *instance;
 
 - (void) dealloc {
     
-    world_->DestroyBody(body);
     body = NULL;
     
     instance = NULL;

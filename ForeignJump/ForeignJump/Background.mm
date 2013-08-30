@@ -7,6 +7,7 @@
 //
 #import "Background.h"
 #import "InGame.h"
+#import "Data.h"
 
 @implementation Background {
     CGSize size;

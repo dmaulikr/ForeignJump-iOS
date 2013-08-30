@@ -5,12 +5,11 @@
 //  Created by Francis Visoiu Mistrih on 12/08/13.
 //  Copyright (c) 2013 Epimac. All rights reserved.
 //
-
 #import "ContactListener.h"
 #import "Map.h"
 #import "InGame.h"
 #import "Hero.h"
-
+#import "Data.h"
 
 void ContactListener::BeginContact(b2Contact *contact)
 {
@@ -25,7 +24,7 @@ void ContactListener::BeginContact(b2Contact *contact)
     {
         [textureB setVisible:NO];
         [Data startCoinParticle:textureB.position];
-        [Data addBodyToDestroy:bodyA];
+        [Data addBodyToDestroy:bodyB];
         
         activateCoin();
     }
@@ -33,7 +32,7 @@ void ContactListener::BeginContact(b2Contact *contact)
     {
         [textureA setVisible:NO];
         [Data startCoinParticle:textureA.position];
-        [Data addBodyToDestroy:bodyB];
+        [Data addBodyToDestroy:bodyA];
 
         activateCoin();
     }
@@ -45,6 +44,7 @@ void ContactListener::BeginContact(b2Contact *contact)
         [textureA setVisible:NO];
         [Data setEnnemyKilledState:YES];
         [Data setDead:YES];
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }
     else if (textureA.tag == EnnemyType && textureB.tag == HeroType)
     {
@@ -52,9 +52,10 @@ void ContactListener::BeginContact(b2Contact *contact)
         [textureB setVisible:NO];
         [Data setEnnemyKilledState:YES];
         [Data setDead:YES];
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }
     
-    // ennemy & ACDC
+    // ennemy & ACDC Type
     if ((textureA.tag == EnnemyType && textureB.tag == ACDCType) || (textureA.tag == ACDCType && textureB.tag == EnnemyType))
     {
         runWithDelay(@selector(push));
@@ -66,11 +67,13 @@ void ContactListener::BeginContact(b2Contact *contact)
     {
         [textureB setVisible:NO];
         runWithDelay(@selector(show));
+        [Data addBodyToDestroy:bodyB];
     }
     else if (textureA.tag == ACDC && textureB.tag == HeroType)
     {
         [textureA setVisible:NO];
         runWithDelay(@selector(show));
+        [Data addBodyToDestroy:bodyA];
     }
     
     // hero & bombe

@@ -147,7 +147,6 @@ static ACDCHelp *instance;
 
 - (void) dealloc {
     
-    world->DestroyBody(body);
     body = NULL;
     
     instance = NULL;
