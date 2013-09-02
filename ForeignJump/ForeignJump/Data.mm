@@ -23,6 +23,8 @@ static BOOL killedByEnnemy;
 
 static NSMutableArray *toDestroyArray;
 
+static BOOL firstTime;
+
 @implementation Data
 
 + (void)resetData {
@@ -41,83 +43,83 @@ static NSMutableArray *toDestroyArray;
 }
 
 #pragma mark - Score
-+(int)getScore {
++ (int) getScore {
     return score;
 }
 
-+(void) setScore:(int)score_ {
++ (void) setScore:(int)score_ {
     score = score_;
 }
 
-+(void) addScore:(int)score_ {
++ (void) addScore:(int)score_ {
     score += score_;
 }
 
-+(void) scorePlusPlus {
++ (void) scorePlusPlus {
     [self addScore:1];
 }
 
 #pragma mark - Dead
-+(BOOL) getDead {
++ (BOOL) isDead {
     return dead;
 }
 
-+(void) setDead:(BOOL)dead_ {
++ (void) setDead:(BOOL)dead_ {
     dead = dead_;
 }
 
 #pragma mark - Coin
-+(void) setCoinState:(BOOL)state {
++ (void) setCoinState:(BOOL)state {
     coinTouched = state;
 }
 
-+(BOOL) isCoinTouched {
++ (BOOL) isCoinTouched {
     return coinTouched;
 }
 
-+(void) startCoinParticle:(CGPoint)point {
++ (void) startCoinParticle:(CGPoint)point {
     coinTouchPoint = point;
 }
 
-+(CGPoint) getCoinPoint {
++ (CGPoint) getCoinPoint {
     return coinTouchPoint;
 }
 
 #pragma mark - Bomb
-+(void) setBombState:(BOOL)state {
++ (void) setBombState:(BOOL)state {
     bombTouched = state;
 }
 
-+(BOOL) isBombTouched {
++ (BOOL) isBombTouched {
     return bombTouched;
 }
 
-+(void) startBombParticle:(CGPoint)point {
++ (void) startBombParticle:(CGPoint)point {
     bombTouchPoint = point;
 }
 
-+(CGPoint) getBombPoint {
++ (CGPoint) getBombPoint {
     return bombTouchPoint;
 }
 
-+(void) setEnnemyKilledState:(BOOL)state {
++ (void) setEnnemyKilledState:(BOOL)state {
     killedByEnnemy = state;
 }
 
-+(BOOL) isKilledByEnnemy {
++ (BOOL) isKilledByEnnemy {
     return killedByEnnemy;
 }
 
-+(id) initDestroyArray {
++ (id) initDestroyArray {
     toDestroyArray = [[NSMutableArray alloc] initWithCapacity:capacity];
     return toDestroyArray;
 }
 
-+(NSMutableArray *) getToDestroyArray {
++ (NSMutableArray *) getToDestroyArray {
     return toDestroyArray;
 }
 
-+(void) destroyAllBodies {
++ (void) destroyAllBodies {
     
     b2World *world = [InGame getWorld];
     
@@ -133,15 +135,23 @@ static NSMutableArray *toDestroyArray;
 }
 
 + (void) addBodyToDestroy:(b2Body *)body {
- //   [toDestroyArray addObject:[NSValue valueWithPointer:body]];
+    [toDestroyArray addObject:[NSValue valueWithPointer:body]];
 }
 
-+(BOOL) isDestroyArrayEmpty {
++ (BOOL) isDestroyArrayEmpty {
     return [toDestroyArray count] == 0;
 }
 
-+(BOOL) isDestroyArrayFull {
++ (BOOL) isDestroyArrayFull {
     return [toDestroyArray count] >= capacity;
+}
+
++ (BOOL) isFirstTime {
+    return !firstTime;
+}
+
++ (void) setFirstTime:(BOOL)state {
+    firstTime = !state;
 }
 
 @end

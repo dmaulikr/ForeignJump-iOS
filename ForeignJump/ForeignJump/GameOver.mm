@@ -37,12 +37,11 @@
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     
-    if ([Data getDead])
+    if ([Data isDead])
     {
         //if dead go to main menu
         [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[MainMenu scene]]];
     }
-    
     return YES;
 }
 

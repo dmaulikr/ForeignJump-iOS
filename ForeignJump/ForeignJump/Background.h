@@ -10,11 +10,9 @@
 @interface Background : CCLayer {
     CCSprite *background;
     CCSprite *sun;
-    BOOL animation;
 }
 
 @property (nonatomic, strong) CCSprite *sun;
-@property (nonatomic, readwrite) BOOL animation;
 
 - (void) setHero;
     

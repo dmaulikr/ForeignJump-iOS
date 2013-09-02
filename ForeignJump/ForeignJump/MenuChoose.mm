@@ -37,7 +37,6 @@ CGSize winSize;
         //background
         CCSprite *background = [CCSprite spriteWithFile:@"Menu/Choose/menubg.png"];
         [background setPosition:ccp(winSize.width/2, winSize.height/2)];
-
         [self addChild:background z:0];
         //end background
         
@@ -104,9 +103,8 @@ CGSize winSize;
 
 - (void) goToGame:(CCMenuItemSprite *)sender_ {
     [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/ok.caf"];
-    CCMenuItemSprite *sender = sender_;
     
-    switch (sender.tag) {
+    switch (sender_.tag) {
         case Roumain:
         {
             [Character setCharacter:@"Andrei" andType:Roumain andHeroTexture:@"Perso/Roumain/Hero/Roumain_hero.png" andHeroPlist:@"Perso/Roumain/Hero/Roumain_hero.plist" andEnnemyTexture:@"Perso/Roumain/Ennemy/Roumain_ennemy.png" andEnnemyPlist:@"Perso/Roumain/Ennemy/Roumain_ennemy.plist" andMap:@"Perso/Roumain/Map/Roumain_map.txt" andMapTerre:@"Perso/Roumain/Map/Roumain_terre.png" andMapSousTerre:@"Perso/Roumain/Map/Roumain_sousterre.png" andMapObstacle:@"Perso/Roumain/Map/Roumain_obstacle.png" andMapPiece:@"Perso/Roumain/Map/Roumain_piece.png" andMapBomb:@"Perso/Roumain/Map/Roumain_bomb.png" andBackground:@"Perso/Roumain/Background/Roumain_bg.png" andBackgroundSun:@"Perso/Roumain/Background/Roumain_sun.png"];
@@ -135,11 +133,6 @@ CGSize winSize;
     }
     
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[InGame scene]]];
-}
-
-- (void) dealloc {
-    
-    [super dealloc];
 }
 
 @end

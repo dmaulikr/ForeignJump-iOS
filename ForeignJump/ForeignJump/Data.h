@@ -16,7 +16,7 @@
 + (void) addScore:(int)score_;
 + (void) scorePlusPlus;
 
-+ (BOOL) getDead;
++ (BOOL) isDead;
 + (void) setDead:(BOOL)dead_;
 
 + (void) setCoinState:(BOOL)state;
@@ -38,5 +38,8 @@
 + (void) addBodyToDestroy:(b2Body *)body;
 + (BOOL) isDestroyArrayEmpty;
 + (BOOL) isDestroyArrayFull;
+
++ (BOOL) isFirstTime;
++ (void) setFirstTime:(BOOL)state;
 
 @end

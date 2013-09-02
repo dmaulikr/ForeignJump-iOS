@@ -81,7 +81,6 @@
 }
 
 - (void) dealloc {
-    
     [volumeSlider removeFromSuperview];
     [volumeSlider release];
     [self unscheduleUpdate];

@@ -201,6 +201,9 @@ static Ennemy *instance;
     
     instance = NULL;
     
+    [self unscheduleAllSelectors];
+    [self stopAllActions];
+    
     [super dealloc];
 }
 

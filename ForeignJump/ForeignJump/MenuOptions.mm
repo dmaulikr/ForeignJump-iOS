@@ -126,7 +126,7 @@
 - (void) dealloc {
     [volumeSlider removeFromSuperview];
     [volumeSlider release];
-    [self unscheduleUpdate];
+    [self unscheduleAllSelectors];
     
     [super dealloc];
 }

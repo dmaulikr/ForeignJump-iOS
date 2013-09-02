@@ -17,7 +17,6 @@
 
 #pragma mark - synthesize
 @synthesize sun;
-@synthesize animation;
 
 #pragma mark - Init methods
 
@@ -26,7 +25,6 @@
 	if( (self=[super init])) {
         
         size = [[CCDirector sharedDirector] winSize];
-        animation = YES;
         
         //background
         background = [CCSprite spriteWithFile:[Character backgroundTexture]];
@@ -59,7 +57,7 @@
 #pragma mark - Update methods
 - (void) moveBackground {
     
-    if ([Data getDead]) {
+    if ([Data isDead]) {
         [self unscheduleAllSelectors];
     }
     else
@@ -68,6 +66,12 @@
         float xpos = (worldWidth - hpos)/7;
         [sun setPosition:ccp(xpos, sun.position.y)];
     }
+}
+
+- (void) dealloc {
+    [self unscheduleAllSelectors];
+    
+    [super dealloc];
 }
 
 @end

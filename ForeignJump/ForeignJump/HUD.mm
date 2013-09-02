@@ -25,7 +25,7 @@
         [scoreLabel setColor:ccc3(0,0,0)];
         [self addChild:scoreLabel];
         
-        [self schedule:@selector(updateScore)];
+        [self scheduleUpdate];
         
         coins = [CCSprite spriteWithFile:@"HUD/coins.png"];
         [coins setPosition:ccp(35,290)];
@@ -78,14 +78,20 @@
     [InGame pauseAll];
 }
 
-- (void) updateScore {
+- (void) update:(ccTime)delta {
     int score = [Data getScore];
     [scoreLabel setString:[NSString stringWithFormat:@"%i", score]];
     
-    if ([Data getDead]) {
+    if ([Data isDead]) {
         [pauseMenu setVisible:NO];
         [self unscheduleAllSelectors];
     }
+}
+
+- (void) dealloc {
+    [self unscheduleAllSelectors];
+    
+    [super dealloc];
 }
 
 @end

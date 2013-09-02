@@ -49,26 +49,6 @@ static NSString *backgroundSun;
     backgroundSun = [NSString stringWithFormat:@"%@",backgroundSun_];
 }
 
-+ (void) resetCharacter {
-    [name release];
-    
-    [heroTexture release];
-    [heroPlist release];
-    
-    [ennemyTexture release];
-    [ennemyPlist release];
-    
-    [map release];
-    [mapTerre release];
-    [mapSousTerre release];
-    [mapObstacle release];
-    [mapPiece release];
-    [mapBomb release];
-
-    [backgroundTexture release];
-    [backgroundSun release];
-}
-
 + (NSString *) name {
     return  name;
 }

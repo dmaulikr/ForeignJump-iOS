@@ -190,6 +190,7 @@
 		D25EE21817CA2789009FE704 /* Character.mm in Sources */ = {isa = PBXBuildFile; fileRef = D25EE21717CA2789009FE704 /* Character.mm */; };
 		D25EE21B17CA3082009FE704 /* MenuChoose.mm in Sources */ = {isa = PBXBuildFile; fileRef = D25EE21A17CA3082009FE704 /* MenuChoose.mm */; };
 		D266A50117CFE45C00AA1E1E /* Data.mm in Sources */ = {isa = PBXBuildFile; fileRef = D266A4FF17CFE31000AA1E1E /* Data.mm */; };
+		D266A50617D2B06E00AA1E1E /* Loading in Resources */ = {isa = PBXBuildFile; fileRef = D266A50517D2B06E00AA1E1E /* Loading */; };
 		D27240AF17B923CE00DCAFBF /* Background.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240A017B923CE00DCAFBF /* Background.mm */; };
 		D27240B017B923CE00DCAFBF /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240A217B923CE00DCAFBF /* ContactListener.mm */; };
 		D27240B217B923CE00DCAFBF /* Hero.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240A617B923CE00DCAFBF /* Hero.mm */; };
@@ -591,6 +592,7 @@
 		D25EE21A17CA3082009FE704 /* MenuChoose.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MenuChoose.mm; sourceTree = "<group>"; };
 		D266A4FE17CFE31000AA1E1E /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		D266A4FF17CFE31000AA1E1E /* Data.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Data.mm; sourceTree = "<group>"; };
+		D266A50517D2B06E00AA1E1E /* Loading */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Loading; path = Resources/Loading; sourceTree = "<group>"; };
 		D272409F17B923CE00DCAFBF /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
 		D27240A017B923CE00DCAFBF /* Background.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Background.mm; sourceTree = "<group>"; };
 		D27240A117B923CE00DCAFBF /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
@@ -727,6 +729,7 @@
 		D222791B17B921D900421B00 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D266A50517D2B06E00AA1E1E /* Loading */,
 				D2EC7FF917CBF184004D58E5 /* Map */,
 				D2EC7FF517CBC58B004D58E5 /* HUD */,
 				D2EC7FF617CBC58B004D58E5 /* Perso */,
@@ -1343,6 +1346,7 @@
 				D2205DFA17C2523600594EE4 /* Sounds in Resources */,
 				D222792117B921D900421B00 /* Default-568h@2x.png in Resources */,
 				D222792F17B921D900421B00 /* Icon@2x.png in Resources */,
+				D266A50617D2B06E00AA1E1E /* Loading in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 #import "AppDelegate.h"
 #import "MainMenu.h"
+#import "Data.h"
 
 @implementation MyNavigationController
 
@@ -140,10 +141,12 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     BOOL mute = [prefs boolForKey:@"mute"];
     float volume = [prefs floatForKey:@"volume"];
+    BOOL firstTime = [prefs boolForKey:@"firsttime"];
     
     [[SimpleAudioEngine sharedEngine] setEffectsVolume:volume];
     [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:volume];
     [[SimpleAudioEngine sharedEngine] setMute:mute];
+    [Data setFirstTime:firstTime];
     
  	return YES;
 }
@@ -182,9 +185,11 @@
     
     BOOL mute = [[SimpleAudioEngine sharedEngine] mute];
     float volume = [[SimpleAudioEngine sharedEngine] effectsVolume];
+    BOOL firstTime = [Data isFirstTime];
     
     [defaults setBool:mute forKey:@"mute"];
     [defaults setFloat:volume forKey:@"volume"];
+    [defaults setBool:firstTime forKey:@"firsttime"];
     [defaults synchronize]; // this method is optional
     
 	CC_DIRECTOR_END();

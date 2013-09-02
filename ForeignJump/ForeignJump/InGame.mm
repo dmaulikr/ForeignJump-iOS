@@ -157,7 +157,7 @@ HUD* hud;
         //load all particles systems (piece, smoke, eplosion)
         [self loadParticles];
 
-}
+    }
 	return self;
 }
 
@@ -259,7 +259,7 @@ HUD* hud;
     }
     
     
-    if ([Data getDead])
+    if ([Data isDead])
     {
         CCCallFunc *dieAction = [CCCallFunc actionWithTarget:self selector:@selector(die)];
         
@@ -317,7 +317,7 @@ HUD* hud;
     
     startTouch = [touch locationInView: [touch view]];
     
-    if ([Data getDead])
+    if ([Data isDead])
     {
         //if dead go to main menu
        [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[MainMenu scene]]];
@@ -332,7 +332,7 @@ HUD* hud;
     stopTouch = [touch locationInView: [touch view]];
     //NSLog(@"StopY : %f", stopTouch.y);
     
-    if (![Data getDead]) {
+    if (![Data isDead]) {
     
         if (startTouch.y > stopTouch.y)
         {
@@ -396,14 +396,13 @@ HUD* hud;
     [self stopAllActions];
     
     [Data resetData];
-	
+    
     [[CCSpriteFrameCache sharedSpriteFrameCache] removeSpriteFrames];
     [CCSpriteFrameCache purgeSharedSpriteFrameCache];
     
     [[SimpleAudioEngine sharedEngine] unloadEffect:@"Sounds/coin.caf"];
     [[SimpleAudioEngine sharedEngine] unloadEffect:@"Sounds/bomb.caf"];
     [[SimpleAudioEngine sharedEngine] unloadEffect:@"Sounds/jump.caf"];
-
     
 	[super dealloc];
 }

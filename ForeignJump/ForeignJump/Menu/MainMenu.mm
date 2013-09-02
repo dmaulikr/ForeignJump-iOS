@@ -8,6 +8,7 @@
 #import "MainMenu.h"
 #import "MenuChoose.h"
 #import "MenuOptions.h"
+#import "Data.h"
 
 @implementation MainMenu {
 
@@ -79,7 +80,7 @@ CGSize size;
 }
 
 - (void) dealloc {
-
+    
     [super dealloc];
 }
 
