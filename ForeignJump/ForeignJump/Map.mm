@@ -36,6 +36,15 @@
     
     int i = 0, j = 0;
     
+    [[CCTextureCache sharedTextureCache] addImage: [Character mapTerre]];
+    [[CCTextureCache sharedTextureCache] addImage: [Character mapPiece]];
+    [[CCTextureCache sharedTextureCache] addImage: [Character mapBomb]];
+    [[CCTextureCache sharedTextureCache] addImage: [Character mapObstacle]];
+    [[CCTextureCache sharedTextureCache] addImage: [Character mapSousTerre]];
+    [[CCTextureCache sharedTextureCache] addImage: @"Map/acdcTile.png"];
+    [[CCTextureCache sharedTextureCache] addImage: @"Map/rien.png"];
+
+    
     for (NSString *line in [data componentsSeparatedByString:@"\n"])
     {
         for (int ch = 0; ch < line.length; ch++) {

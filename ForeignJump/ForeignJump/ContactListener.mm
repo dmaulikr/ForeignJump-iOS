@@ -11,49 +11,61 @@
 #import "Hero.h"
 #import "Data.h"
 
+b2Body *bodyA;
+b2Body *bodyB;
+CCSprite *textureA;
+CCSprite *textureB;
+
 void ContactListener::BeginContact(b2Contact *contact)
 {
-    b2Body *bodyA = contact->GetFixtureA()->GetBody();
-    b2Body *bodyB = contact->GetFixtureB()->GetBody();
+    bodyA = contact->GetFixtureA()->GetBody();
+    bodyB = contact->GetFixtureB()->GetBody();
     
-    CCSprite *textureA = (CCSprite *)bodyA->GetUserData();
-    CCSprite *textureB = (CCSprite *)bodyB->GetUserData();
+    textureA = (CCSprite *)bodyA->GetUserData();
+    textureB = (CCSprite *)bodyB->GetUserData();
     
     // hero & pièce
     if (textureA.tag == HeroType && textureB.tag == Piece)
     {
-        [textureB setVisible:NO];
-        [Data startCoinParticle:textureB.position];
-        [Data addBodyToDestroy:bodyB];
-        
-        activateCoin();
+        activateCoin(NO);
     }
     else if (textureA.tag == Piece && textureB.tag == HeroType)
     {
-        [textureA setVisible:NO];
-        [Data startCoinParticle:textureA.position];
-        [Data addBodyToDestroy:bodyA];
-
-        activateCoin();
+        activateCoin(YES);
     }
+    
+    
+    // hero & bombe
+    if (textureA.tag == HeroType && textureB.tag == Bombe)
+    {
+        activateBomb(NO);
+    }
+    else if (textureA.tag == Bombe && textureB.tag == HeroType)
+    {
+        activateBomb(YES);
+    }
+    
+    // hero & ACDC
+    if (textureA.tag == HeroType && textureB.tag == ACDC)
+    {
+        activateACDC(NO);
+    }
+    else if (textureA.tag == ACDC && textureB.tag == HeroType)
+    {
+        activateACDC(YES);
+    }
+
     
     // hero & ennemy
     if (textureA.tag == HeroType && textureB.tag == EnnemyType)
     {
-        [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/gameover.caf"];
-        [textureA setVisible:NO];
-        [Data setEnnemyKilledState:YES];
-        [Data setDead:YES];
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        killedByEnnemy(NO);
     }
     else if (textureA.tag == EnnemyType && textureB.tag == HeroType)
     {
-        [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/gameover.caf"];
-        [textureB setVisible:NO];
-        [Data setEnnemyKilledState:YES];
-        [Data setDead:YES];
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        killedByEnnemy(YES);
     }
+    
     
     // ennemy & ACDC Type
     if ((textureA.tag == EnnemyType && textureB.tag == ACDCType) || (textureA.tag == ACDCType && textureB.tag == EnnemyType))
@@ -62,48 +74,74 @@ void ContactListener::BeginContact(b2Contact *contact)
         runWithDelay(@selector(hide));
     }
     
-    // hero & ACDC
-    if (textureA.tag == HeroType && textureB.tag == ACDC)
-    {
-        [textureB setVisible:NO];
-        runWithDelay(@selector(show));
-        [Data addBodyToDestroy:bodyB];
-    }
-    else if (textureA.tag == ACDC && textureB.tag == HeroType)
-    {
-        [textureA setVisible:NO];
-        runWithDelay(@selector(show));
-        [Data addBodyToDestroy:bodyA];
-    }
-    
-    // hero & bombe
-    if (textureA.tag == HeroType && textureB.tag == Bombe)
-    {
-        [textureA setVisible:NO];
-        [Data startBombParticle:textureB.position];
-        activateBomb();
-    }
-    else if (textureA.tag == Bombe && textureB.tag == HeroType)
-    {
-        [textureB setVisible:NO];
-        [Data startBombParticle:textureA.position];
-        activateBomb();
-    }
 }
 
-void ContactListener::activateBomb()
+void ContactListener::activateBomb(BOOL isA)
 {
-    [Data setBombState:YES];
+    if (isA) {
+        [textureB setVisible:NO];
+        [[InGame instance] releaseBombAtPoint:textureA.position];
+    }
+    else
+    {
+        [textureA setVisible:NO];
+        [[InGame instance] releaseBombAtPoint:textureB.position];
+    }
+    
     [Data setDead:YES];
     [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/bomb.caf"];
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
-void ContactListener::activateCoin()
+void ContactListener::activateCoin(BOOL isA)
 {
-    [Data setCoinState:YES];
+    if (isA) {
+        [textureA setVisible:NO];
+        [[InGame instance] releaseSparklesAtPoint:textureA.position];
+        [Data addBodyToDestroy:bodyA];
+    }
+    else
+    {
+        [textureB setVisible:NO];
+        [[InGame instance] releaseSparklesAtPoint:textureB.position];
+        [Data addBodyToDestroy:bodyB];
+    }
+    
     [Data scorePlusPlus];
+    [Data addDistance:10];
     [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/coin.caf"];
+}
+
+void ContactListener::activateACDC(BOOL isA)
+{
+    if (isA) {
+        [textureA setVisible:NO];
+        [Data addBodyToDestroy:bodyA];
+    }
+    else
+    {
+        [textureB setVisible:NO];
+        [Data addBodyToDestroy:bodyB];
+    }
+    
+    runWithDelay(@selector(show));
+}
+
+void ContactListener::killedByEnnemy(BOOL isA)
+{
+    [[SimpleAudioEngine sharedEngine] playEffect:@"Sounds/gameover.caf"];
+    
+    if (isA) {
+        [textureB setVisible:NO];
+    }
+    else
+    {
+        [textureA setVisible:NO];
+    }
+
+    [[InGame instance] deathByEnnemy];
+    [Data setDead:YES];
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
 void ContactListener::runWithDelay(SEL method)

@@ -16,21 +16,13 @@
 + (void) addScore:(int)score_;
 + (void) scorePlusPlus;
 
++ (int) getDistance;
++ (void) setDistance:(int)distance_;
++ (void) addDistance:(int)distance_;
++ (void) distancePlusPlus;
+
 + (BOOL) isDead;
 + (void) setDead:(BOOL)dead_;
-
-+ (void) setCoinState:(BOOL)state;
-+ (BOOL) isCoinTouched;
-+ (void) startCoinParticle:(CGPoint)point;
-+ (CGPoint) getCoinPoint;
-
-+ (void) setBombState:(BOOL)state;
-+ (BOOL) isBombTouched;
-+ (void) startBombParticle:(CGPoint)point;
-+ (CGPoint) getBombPoint;
-
-+ (void) setEnnemyKilledState:(BOOL)state;
-+ (BOOL) isKilledByEnnemy;
 
 + (id) initDestroyArray;
 + (NSMutableArray *) getToDestroyArray;
@@ -39,7 +31,7 @@
 + (BOOL) isDestroyArrayEmpty;
 + (BOOL) isDestroyArrayFull;
 
-+ (BOOL) isFirstTime;
-+ (void) setFirstTime:(BOOL)state;
++ (BOOL) isNotFirstTime;
++ (void) setNotFirstTime:(BOOL)state;
 
 @end

@@ -11,15 +11,10 @@
 const int capacity = 1;
 
 static int score;
+
+static float distance;
+
 static BOOL dead;
-
-static CGPoint coinTouchPoint;
-static BOOL coinTouched;
-
-static CGPoint bombTouchPoint;
-static BOOL bombTouched;
-
-static BOOL killedByEnnemy;
 
 static NSMutableArray *toDestroyArray;
 
@@ -29,22 +24,17 @@ static BOOL firstTime;
 
 + (void)resetData {
     score = 0;
+
+    distance = 0;
+    
     dead = NO;
-    
-    coinTouchPoint = ccp(0,0);
-    coinTouched = NO;
-    
-    bombTouchPoint = ccp(0,0);
-    bombTouched = NO;
-    
-    killedByEnnemy = NO;
     
     [toDestroyArray release];
 }
 
 #pragma mark - Score
 + (int) getScore {
-    return score;
+    return (int)score;
 }
 
 + (void) setScore:(int)score_ {
@@ -59,6 +49,23 @@ static BOOL firstTime;
     [self addScore:1];
 }
 
+#pragma mark - Distance
++ (int) getDistance {
+    return distance;
+}
+
++ (void) setDistance:(int)distance_ {
+    distance = distance_;
+}
+
++ (void) addDistance:(int)distance_ {
+    distance += distance_;
+}
+
++ (void) distancePlusPlus {
+    [self addDistance:1];
+}
+
 #pragma mark - Dead
 + (BOOL) isDead {
     return dead;
@@ -66,48 +73,6 @@ static BOOL firstTime;
 
 + (void) setDead:(BOOL)dead_ {
     dead = dead_;
-}
-
-#pragma mark - Coin
-+ (void) setCoinState:(BOOL)state {
-    coinTouched = state;
-}
-
-+ (BOOL) isCoinTouched {
-    return coinTouched;
-}
-
-+ (void) startCoinParticle:(CGPoint)point {
-    coinTouchPoint = point;
-}
-
-+ (CGPoint) getCoinPoint {
-    return coinTouchPoint;
-}
-
-#pragma mark - Bomb
-+ (void) setBombState:(BOOL)state {
-    bombTouched = state;
-}
-
-+ (BOOL) isBombTouched {
-    return bombTouched;
-}
-
-+ (void) startBombParticle:(CGPoint)point {
-    bombTouchPoint = point;
-}
-
-+ (CGPoint) getBombPoint {
-    return bombTouchPoint;
-}
-
-+ (void) setEnnemyKilledState:(BOOL)state {
-    killedByEnnemy = state;
-}
-
-+ (BOOL) isKilledByEnnemy {
-    return killedByEnnemy;
 }
 
 + (id) initDestroyArray {
@@ -146,11 +111,11 @@ static BOOL firstTime;
     return [toDestroyArray count] >= capacity;
 }
 
-+ (BOOL) isFirstTime {
++ (BOOL) isNotFirstTime {
     return !firstTime;
 }
 
-+ (void) setFirstTime:(BOOL)state {
++ (void) setNotFirstTime:(BOOL)state {
     firstTime = !state;
 }
 

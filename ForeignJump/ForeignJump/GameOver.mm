@@ -45,8 +45,4 @@
     return YES;
 }
 
-- (void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
-    
-}
-
 @end

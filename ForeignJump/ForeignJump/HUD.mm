@@ -21,9 +21,14 @@
         size = [[CCDirector sharedDirector] winSize];
     
 		scoreLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", 0] fontName:@"HUD/SCRATCH.TTF" fontSize:30.0];
-        [scoreLabel setPosition:ccp(64,284)];
+        [scoreLabel setPosition:ccp(67,285)];
         [scoreLabel setColor:ccc3(0,0,0)];
         [self addChild:scoreLabel];
+        
+		distanceLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", 0] fontName:@"HUD/SCRATCH.TTF" fontSize:30.0];
+        [distanceLabel setPosition:ccp(67,255)];
+        [distanceLabel setColor:ccc3(0,0,0)];
+        [self addChild:distanceLabel];
         
         [self scheduleUpdate];
         
@@ -80,7 +85,10 @@
 
 - (void) update:(ccTime)delta {
     int score = [Data getScore];
+    int distance = [Data getDistance];
+    
     [scoreLabel setString:[NSString stringWithFormat:@"%i", score]];
+    [distanceLabel setString:[NSString stringWithFormat:@"%i", distance]];
     
     if ([Data isDead]) {
         [pauseMenu setVisible:NO];

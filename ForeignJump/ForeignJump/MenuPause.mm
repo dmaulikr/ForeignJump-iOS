@@ -72,6 +72,7 @@
 }
 
 - (void) goToMenu {
+    [InGame pauseAll];
     [[CCDirector sharedDirector] replaceScene:[MainMenu scene]];
 }
 

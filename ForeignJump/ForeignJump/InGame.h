@@ -19,7 +19,7 @@
 
 // InGame
 @interface InGame : CCLayer {
-	GLESDebugDraw *m_debugDraw;		// strong ref
+	//GLESDebugDraw *m_debugDraw;		// strong ref
     Hero *hero; //the main hero
     Ennemy *ennemy;
     ACDCHelp *acdc;
@@ -36,10 +36,24 @@
 
 + (CCScene *) scene;
 
++ (InGame *) instance;
+
 + (b2World *) getWorld;
 
 + (float) getWorldWidth;
 
 + (void) pauseAll;
+
+- (void) stopAll;
+
+- (void) releaseSparklesAtPoint:(CGPoint)point;
+
+- (void) releaseBombAtPoint:(CGPoint)point;
+
+- (void) releaseExplosionAtBombPoint;
+
+- (void) releaseSmokeAtBombPoint;
+
+- (void) deathByEnnemy;
 
 @end

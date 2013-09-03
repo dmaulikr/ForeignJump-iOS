@@ -191,6 +191,7 @@
 		D25EE21B17CA3082009FE704 /* MenuChoose.mm in Sources */ = {isa = PBXBuildFile; fileRef = D25EE21A17CA3082009FE704 /* MenuChoose.mm */; };
 		D266A50117CFE45C00AA1E1E /* Data.mm in Sources */ = {isa = PBXBuildFile; fileRef = D266A4FF17CFE31000AA1E1E /* Data.mm */; };
 		D266A50617D2B06E00AA1E1E /* Loading in Resources */ = {isa = PBXBuildFile; fileRef = D266A50517D2B06E00AA1E1E /* Loading */; };
+		D266A50C17D5657000AA1E1E /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = D266A50B17D5657000AA1E1E /* Tutorial.m */; };
 		D27240AF17B923CE00DCAFBF /* Background.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240A017B923CE00DCAFBF /* Background.mm */; };
 		D27240B017B923CE00DCAFBF /* ContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240A217B923CE00DCAFBF /* ContactListener.mm */; };
 		D27240B217B923CE00DCAFBF /* Hero.mm in Sources */ = {isa = PBXBuildFile; fileRef = D27240A617B923CE00DCAFBF /* Hero.mm */; };
@@ -593,6 +594,8 @@
 		D266A4FE17CFE31000AA1E1E /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		D266A4FF17CFE31000AA1E1E /* Data.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Data.mm; sourceTree = "<group>"; };
 		D266A50517D2B06E00AA1E1E /* Loading */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Loading; path = Resources/Loading; sourceTree = "<group>"; };
+		D266A50A17D5657000AA1E1E /* Tutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tutorial.h; sourceTree = "<group>"; };
+		D266A50B17D5657000AA1E1E /* Tutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tutorial.m; sourceTree = "<group>"; };
 		D272409F17B923CE00DCAFBF /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
 		D27240A017B923CE00DCAFBF /* Background.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Background.mm; sourceTree = "<group>"; };
 		D27240A117B923CE00DCAFBF /* ContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListener.h; sourceTree = "<group>"; };
@@ -691,6 +694,8 @@
 				D25EE21A17CA3082009FE704 /* MenuChoose.mm */,
 				D2EC7FFB17CC2D04004D58E5 /* MenuOptions.h */,
 				D2EC7FFC17CC2D04004D58E5 /* MenuOptions.mm */,
+				D266A50A17D5657000AA1E1E /* Tutorial.h */,
+				D266A50B17D5657000AA1E1E /* Tutorial.m */,
 				D27240A717B923CE00DCAFBF /* InGame.h */,
 				D27240A817B923CE00DCAFBF /* InGame.mm */,
 				D27240A517B923CE00DCAFBF /* Hero.h */,
@@ -1404,6 +1409,7 @@
 				D2837C3917B9B728008FCC59 /* Ennemy.mm in Sources */,
 				D2227ABC17B921DB00421B00 /* b2DynamicTree.cpp in Sources */,
 				D2227AE817B921DB00421B00 /* b2ContactManager.cpp in Sources */,
+				D266A50C17D5657000AA1E1E /* Tutorial.m in Sources */,
 				D22279B117B921DA00421B00 /* CCParticleExamples.m in Sources */,
 				D22279AE17B921DA00421B00 /* CCParticleBatchNode.m in Sources */,
 				D2227AC917B921DB00421B00 /* b2EdgeShape.cpp in Sources */,

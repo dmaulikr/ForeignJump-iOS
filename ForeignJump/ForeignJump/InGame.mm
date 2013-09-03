@@ -15,6 +15,7 @@
 #import "MenuPause.h"
 #import "GameOver.h"
 #import "Data.h"
+#import <dispatch/dispatch.h>
 
 #pragma mark - Constant declaration
 static const int mapCols = 110;
@@ -26,6 +27,9 @@ static const CGPoint ennemiPosition = ccp(10,280);
 
 static b2World *worldInstance;
 static float worldWidth;
+
+static InGame *instance;
+
 
 @implementation InGame {
     CGPoint startTouch;
@@ -39,8 +43,10 @@ static float worldWidth;
     CCParticleSystemQuad *smoke;
     CCParticleSystemQuad *sparkle;
     CCParticleSystemQuad *explosion;
-    BOOL exploded;
-    BOOL killed;
+    
+    CGPoint bombPoint;
+    
+    dispatch_queue_t backgroundQueue;
 }
 
 Background *background;
@@ -80,6 +86,10 @@ HUD* hud;
 	return scene;
 }
 
++ (InGame *) instance {
+    return instance;
+}
+
 + (b2World *) getWorld {
     return worldInstance;
 }
@@ -106,7 +116,6 @@ HUD* hud;
 }
 
 #pragma mark - Init Methods
-
 -(id) init
 {
 	if( (self=[super init])) {
@@ -117,9 +126,9 @@ HUD* hud;
         
         worldSize = CGSizeMake(25 * mapCols, 25 * mapRows);
         
-        exploded = NO;
-        
         worldWidth = worldSize.width;
+        
+        [Data setDistance:0];
         
         //enable touch
         [self setTouchEnabled:YES];
@@ -156,7 +165,10 @@ HUD* hud;
         
         //load all particles systems (piece, smoke, eplosion)
         [self loadParticles];
-
+        
+        backgroundQueue = dispatch_queue_create("com.francisvm.ForeignJump", NULL);
+        
+        instance = self;
     }
 	return self;
 }
@@ -214,6 +226,8 @@ HUD* hud;
 
 -(void) update: (ccTime) delta {
     
+    [Data addDistance:[hero position].x / 1000];
+    
     world->Step(delta, 10, 10);
     for(b2Body *b = world->GetBodyList(); b; b=b->GetNext()) {
         if (b->GetUserData() != NULL && b->GetType() == b2_dynamicBody)
@@ -222,42 +236,6 @@ HUD* hud;
             [data setPosition:ccp(b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO)];
         }
     }
-    
-    if ([Data isCoinTouched])
-    {
-        sparkle.position = [Data getCoinPoint];
-        [sparkle resetSystem];
-        [Data setCoinState:NO];
-    }
-    
-    if ([Data isBombTouched] && !exploded)
-    {
-        [self stopAll];
-        
-        CCDelayTime *delay = [CCDelayTime actionWithDuration:0.2];
-        
-        CCCallFunc *explodeAction = [CCCallFunc actionWithTarget:self selector:@selector(releaseExplosion)];
-        
-        CCCallFunc *smokeAction = [CCCallFunc actionWithTarget:self selector:@selector(releaseSmoke)];
-        
-        CCSequence *bombsequence = [CCSequence actions:explodeAction, delay, smokeAction, nil];
-        
-        [self runAction:bombsequence];
-        
-        CCFadeOut *fadeOutEnnemy = [CCFadeOut actionWithDuration:1];
-        
-        [ennemy.texture runAction:fadeOutEnnemy];
-    }
-
-    if ([Data isKilledByEnnemy] && !killed)
-    {
-        [self stopAll];
-        
-        CCFadeOut *fadeOutEnnemy = [CCFadeOut actionWithDuration:1];
-        
-        [ennemy.texture runAction:fadeOutEnnemy];
-    }
-    
     
     if ([Data isDead])
     {
@@ -270,36 +248,22 @@ HUD* hud;
         [self runAction:gameOverSequence];
     }
     
-    NSString *str = [NSString stringWithFormat:@"%i", [[Data getToDestroyArray] count]];
+//    NSString *str = [NSString stringWithFormat:@"%i", [[Data getToDestroyArray] count]];
     
-    if ([Data isDestroyArrayFull])
-    {
-        [Data destroyAllBodies];
-    }
- 
-}
-
-- (void)releaseExplosion {
-    [explosion setPosition:[Data getBombPoint]];
-    [explosion resetSystem];
-}
-
-- (void)releaseSmoke {
-    [smoke setPosition:[Data getBombPoint]];
-    [smoke resetSystem];
-}
-
-- (void) die {
-
-    CCFadeIn *fade = [CCFadeIn actionWithDuration:1];
-    [gameOver.bg runAction:fade];
+    //clean bodies in the background with GCD
+    dispatch_async(backgroundQueue, ^(void) {
+        if ([Data isDestroyArrayFull])
+        {
+            [Data destroyAllBodies];
+        }
+    });
+    
 }
 
 - (void) stopAll {
     
     hero.body->SetLinearVelocity(b2Vec2(0,0));
     
-    killed = YES;
     [Data setDead:YES];
     
     [hero unscheduleAllSelectors];
@@ -311,6 +275,50 @@ HUD* hud;
     [self unscheduleAllSelectors];
 }
 
+- (void) releaseSparklesAtPoint:(CGPoint)point {
+    [sparkle setPosition: point];
+    [sparkle resetSystem];
+}
+
+- (void) releaseBombAtPoint:(CGPoint)point {
+    bombPoint = point;
+    
+    [self stopAll];
+    
+    CCDelayTime *delay = [CCDelayTime actionWithDuration:0.2];
+    
+    CCCallFunc *explodeAction = [CCCallFunc actionWithTarget:self selector:@selector(releaseExplosionAtBombPoint)];
+    CCCallFunc *smokeAction = [CCCallFunc actionWithTarget:self selector:@selector(releaseSmokeAtBombPoint)];
+    
+    CCSequence *bombsequence = [CCSequence actions:explodeAction, delay, smokeAction, nil];
+    
+    [self runAction:bombsequence];
+    
+    CCFadeOut *fadeOutEnnemy = [CCFadeOut actionWithDuration:1];
+    [ennemy.texture runAction:fadeOutEnnemy];
+}
+
+- (void) die {
+    CCFadeIn *fade = [CCFadeIn actionWithDuration:1];
+    [gameOver.bg runAction:fade];
+}
+
+- (void)releaseExplosionAtBombPoint {
+    [explosion setPosition: bombPoint];
+    [explosion resetSystem];
+}
+
+- (void)releaseSmokeAtBombPoint {
+    [smoke setPosition: bombPoint];
+    [smoke resetSystem];
+}
+
+- (void) deathByEnnemy {
+    [self stopAll];
+    CCFadeOut *fadeOutEnnemy = [CCFadeOut actionWithDuration:1];
+    [ennemy.texture runAction:fadeOutEnnemy];
+}
+
 #pragma mark - Touch methods
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
@@ -319,7 +327,6 @@ HUD* hud;
     
     if ([Data isDead])
     {
-        //if dead go to main menu
        [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[MainMenu scene]]];
     }
     //NSLog(@"StartY : %f", startTouch.y);
@@ -380,14 +387,16 @@ HUD* hud;
 #pragma mark - Dealloc
 
 -(void) dealloc {
+
+    dispatch_release(backgroundQueue);
     
 	delete world;
 	world = NULL;
     
     delete contactListener;
     
-	delete m_debugDraw;
-	m_debugDraw = NULL;
+//	delete m_debugDraw;
+//	m_debugDraw = NULL;
     
     worldInstance = NULL;
     worldWidth = NULL;
@@ -409,7 +418,7 @@ HUD* hud;
 
 -(void) draw
 {
-    /*
+ /*
 	//
 	// IMPORTANT:
 	// This is only for debug purposes
@@ -431,7 +440,7 @@ HUD* hud;
     uint32 flags = 0;
     flags += GLESDebugDraw::e_shapeBit;
     m_debugDraw->SetFlags(flags);
-    */
+  */
 }
 
 

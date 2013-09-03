@@ -60,7 +60,17 @@
 	// Create the main window
 	window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
-	
+    //save mute preferences
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    BOOL mute = [prefs boolForKey:@"mute"];
+    float volume = [prefs floatForKey:@"volume"];
+    BOOL notFirstTime = [prefs boolForKey:@"notFirstTime"];
+    
+    [[SimpleAudioEngine sharedEngine] setEffectsVolume:volume];
+    [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:volume];
+    [[SimpleAudioEngine sharedEngine] setMute:mute];
+    [Data setNotFirstTime:notFirstTime];
+    
 	// CCGLView creation
 	// viewWithFrame: size of the OpenGL view. For full screen use [_window bounds]
 	//  - Possible values: any CGRect
@@ -90,7 +100,7 @@
 	director_.wantsFullScreenLayout = YES;
     
 	// Display FSP and SPF
-	[director_ setDisplayStats:NO];
+	[director_ setDisplayStats:YES];
 	
 	// set FPS at 60
 	[director_ setAnimationInterval:1.0/60];
@@ -137,17 +147,6 @@
 	// make main window visible
 	[window_ makeKeyAndVisible];
     
-    //save mute preferences
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    BOOL mute = [prefs boolForKey:@"mute"];
-    float volume = [prefs floatForKey:@"volume"];
-    BOOL firstTime = [prefs boolForKey:@"firsttime"];
-    
-    [[SimpleAudioEngine sharedEngine] setEffectsVolume:volume];
-    [[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:volume];
-    [[SimpleAudioEngine sharedEngine] setMute:mute];
-    [Data setFirstTime:firstTime];
-    
  	return YES;
 }
 
@@ -185,12 +184,13 @@
     
     BOOL mute = [[SimpleAudioEngine sharedEngine] mute];
     float volume = [[SimpleAudioEngine sharedEngine] effectsVolume];
-    BOOL firstTime = [Data isFirstTime];
+    BOOL notFirstTime = YES;
     
     [defaults setBool:mute forKey:@"mute"];
     [defaults setFloat:volume forKey:@"volume"];
-    [defaults setBool:firstTime forKey:@"firsttime"];
-    [defaults synchronize]; // this method is optional
+    [defaults setBool:notFirstTime forKey:@"notFirstTime"];
+    //[defaults removeObjectForKey:@"notFirstTime"];
+    [defaults synchronize];
     
 	CC_DIRECTOR_END();
 }

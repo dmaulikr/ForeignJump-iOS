@@ -33,7 +33,7 @@ static const float coinRadius = 0.39f;
 
         position = position_;
     
-        texture = [CCSprite spriteWithFile:texture_];
+        texture = [CCSprite spriteWithTexture:[[CCTextureCache sharedTextureCache] textureForKey:texture_]];
     
         [texture setPosition:position];
     

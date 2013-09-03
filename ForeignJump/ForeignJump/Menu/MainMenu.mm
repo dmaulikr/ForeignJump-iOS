@@ -9,12 +9,14 @@
 #import "MenuChoose.h"
 #import "MenuOptions.h"
 #import "Data.h"
+#import "Tutorial.h"
 
 @implementation MainMenu {
 
 }
 
 CGSize size;
+Tutorial *tutorialLayer;
 
 + (CCScene *) scene
 {
@@ -23,9 +25,12 @@ CGSize size;
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
     
+    tutorialLayer = [Tutorial node];
+    [scene addChild: tutorialLayer z:1];
+    
     // add menu layer
 	MainMenu *layer = [MainMenu node];
-	[scene addChild: layer z:2];
+	[scene addChild: layer z:0];
     
 	// return the scene
 	return scene;
@@ -62,9 +67,19 @@ CGSize size;
         //end menu
         
         [[SimpleAudioEngine sharedEngine] preloadEffect:@"Sounds/ok.caf"];
-        [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"Sounds/menuMusic.mp3"];
+//        [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"Sounds/menuMusic.mp3"];
         
-        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Sounds/menuMusic.mp3" loop:YES];
+//        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Sounds/menuMusic.mp3" loop:YES];
+        
+        
+        if (![Data isNotFirstTime]) {
+            [tutorialLayer setVisible:NO];
+        }
+        else
+        {
+            [tutorialLayer setVisible:YES];
+        }
+
     }
     return self;
 }

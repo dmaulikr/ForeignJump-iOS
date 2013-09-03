@@ -11,7 +11,9 @@ class ContactListener : public b2ContactListener
 {
 private:
     void BeginContact(b2Contact *contact);
-    void activateBomb();
-    void activateCoin();
+    void activateBomb(BOOL isA);
+    void activateCoin(BOOL isA);
+    void killedByEnnemy (BOOL isA);
+    void activateACDC(BOOL isA);
     void runWithDelay(SEL method);
 };

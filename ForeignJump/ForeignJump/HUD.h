@@ -8,6 +8,7 @@
 
 @interface HUD : CCLayer {
     CCLabelTTF *scoreLabel;
+    CCLabelTTF *distanceLabel;
     CCSprite *flag;
     CCSprite *coins;
 }
