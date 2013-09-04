@@ -14,6 +14,7 @@
 #import "Ennemy.h"
 #import "MenuPause.h"
 #import "GameOver.h"
+#import "GameWon.h"
 #import "Data.h"
 #import <dispatch/dispatch.h>
 
@@ -29,7 +30,7 @@ static b2World *worldInstance;
 static float worldWidth;
 
 static InGame *instance;
-
+static CCScene *thisScene;
 
 @implementation InGame {
     CGPoint startTouch;
@@ -51,6 +52,7 @@ static InGame *instance;
 
 Background *background;
 GameOver *gameOver;
+GameWon *gameWon;
 MenuPause *menuPause;
 HUD* hud;
 
@@ -75,12 +77,11 @@ HUD* hud;
     hud = [HUD node];
     [scene addChild:hud z: 2];
     
-    gameOver = [GameOver node];
-    [scene addChild:gameOver z: 9999];
-	
     menuPause = [MenuPause node];
     [menuPause setVisible:NO];
     [scene addChild:menuPause z: 4];
+    
+    thisScene = scene;
     
 	// return the scene
 	return scene;
@@ -237,8 +238,11 @@ HUD* hud;
         }
     }
     
-    if ([Data isDead])
-    {
+    if ([hero position].x >= worldWidth - 30) {
+        [Data setWin:YES];
+    }
+    
+    if ([Data isDead]) {
         CCCallFunc *dieAction = [CCCallFunc actionWithTarget:self selector:@selector(die)];
         
         CCDelayTime *delay = [CCDelayTime actionWithDuration:0.5];
@@ -246,6 +250,16 @@ HUD* hud;
         CCSequence *gameOverSequence = [CCSequence actions:delay, dieAction, nil];
         
         [self runAction:gameOverSequence];
+    }
+    
+    if ([Data didWin]) {
+        CCCallFunc *winAction = [CCCallFunc actionWithTarget:self selector:@selector(won)];
+        
+        CCDelayTime *delay = [CCDelayTime actionWithDuration:0.5];
+        
+        CCSequence *gameWonSequence = [CCSequence actions:delay, winAction, nil];
+        
+        [self runAction:gameWonSequence];
     }
     
 //    NSString *str = [NSString stringWithFormat:@"%i", [[Data getToDestroyArray] count]];
@@ -299,8 +313,22 @@ HUD* hud;
 }
 
 - (void) die {
+    gameOver = [GameOver node];
+    [thisScene addChild:gameOver z: 9999];
+    
     CCFadeIn *fade = [CCFadeIn actionWithDuration:1];
     [gameOver.bg runAction:fade];
+}
+
+- (void) won {
+    
+    [self stopAll];
+    
+    gameWon = [GameWon node];
+    [thisScene addChild:gameWon z:9999];
+    
+    CCFadeIn *fade = [CCFadeIn actionWithDuration:1];
+    [gameWon.bg runAction:fade];
 }
 
 - (void)releaseExplosionAtBombPoint {

@@ -10,6 +10,7 @@
 #import "MenuOptions.h"
 #import "Data.h"
 #import "Tutorial.h"
+#import "ABGameKitHelper.h"
 
 @implementation MainMenu {
 
@@ -39,6 +40,8 @@ Tutorial *tutorialLayer;
 - (id) init {
     
    	if( (self = [super init])) {
+
+       // [ABGameKitHelper sharedHelper];
         
         //background
         CCSprite *background = [CCSprite spriteWithFile:@"Menu/menubg.png"];
@@ -72,12 +75,12 @@ Tutorial *tutorialLayer;
 //        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"Sounds/menuMusic.mp3" loop:YES];
         
         
-        if (![Data isNotFirstTime]) {
+        if ([Data isNotFirstTime]) {
             [tutorialLayer setVisible:NO];
         }
         else
         {
-            [tutorialLayer setVisible:YES];
+            [tutorialLayer setVisible:NO];
         }
 
     }

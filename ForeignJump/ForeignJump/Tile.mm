@@ -74,6 +74,11 @@ static const float coinRadius = 0.39f;
                 [self createPhysicsCoin];
                 break;
             }
+            case Bonus:
+            {
+                [self createPhysicsCoin];
+                break;
+            }
             
             default:
             {

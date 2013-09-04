@@ -16,6 +16,8 @@ static float distance;
 
 static BOOL dead;
 
+static BOOL win;
+
 static NSMutableArray *toDestroyArray;
 
 static BOOL firstTime;
@@ -28,6 +30,8 @@ static BOOL firstTime;
     distance = 0;
     
     dead = NO;
+    
+    win = NO;
     
     [toDestroyArray release];
 }
@@ -75,6 +79,18 @@ static BOOL firstTime;
     dead = dead_;
 }
 
+
+#pragma mark - Win
++ (BOOL) didWin {
+    return win;
+}
+
++ (void) setWin:(BOOL)win_ {
+    win = win_;
+}
+
+
+#pragma mark - Array to destroy
 + (id) initDestroyArray {
     toDestroyArray = [[NSMutableArray alloc] initWithCapacity:capacity];
     return toDestroyArray;
@@ -111,12 +127,17 @@ static BOOL firstTime;
     return [toDestroyArray count] >= capacity;
 }
 
+#pragma mark - FirstTime
 + (BOOL) isNotFirstTime {
     return !firstTime;
 }
 
 + (void) setNotFirstTime:(BOOL)state {
     firstTime = !state;
+}
+
++ (NSInteger)randomIntBetween:(NSInteger)min and:(NSInteger)max {
+    return (NSInteger)(min + arc4random_uniform(max + 1 - min));
 }
 
 @end

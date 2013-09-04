@@ -15,5 +15,6 @@ private:
     void activateCoin(BOOL isA);
     void killedByEnnemy (BOOL isA);
     void activateACDC(BOOL isA);
+    void activateBonus(BOOL isA);
     void runWithDelay(SEL method);
 };

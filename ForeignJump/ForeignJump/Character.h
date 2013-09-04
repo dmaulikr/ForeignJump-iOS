@@ -7,10 +7,10 @@
 //
 
 enum CharCase {
-    Roumain = 1,
-    Indien = 2,
-    Renoi = 3,
-    Reunionnais = 4
+    Roumain = 111,
+    Indien = 112,
+    Renoi = 113,
+    Reunionnais = 114
 };
 
 @interface Character : NSObject 

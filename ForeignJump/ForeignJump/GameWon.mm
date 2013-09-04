@@ -1,17 +1,17 @@
 //
-//  GameOver.m
+//  GameWon.m
 //  ForeignJump
 //
-//  Created by Francis Visoiu Mistrih on 27/08/13.
+//  Created by Francis Visoiu Mistrih on 03/09/13.
 //  Copyright 2013 Epimac. All rights reserved.
 //
 
-#import "GameOver.h"
+#import "GameWon.h"
 #import "MainMenu.h"
 #import "Data.h"
 #import "ABGameKitHelper.h"
 
-@implementation GameOver {
+@implementation GameWon {
     CGSize size;
 }
 
@@ -23,12 +23,12 @@
         
         size = [[CCDirector sharedDirector] winSize];
         
-        bg = [CCSprite spriteWithFile:@"Menu/GameOver.png"];
+        bg = [CCSprite spriteWithFile:@"Menu/GameWon.png"];
         [bg setPosition:ccp(size.width/2, size.height/2)];
         [bg setOpacity:0];
         [self addChild:bg z:0 tag:9999];
         
-       // [[ABGameKitHelper sharedHelper] showLeaderboard:@"leaderboardID"];
+     //   [[ABGameKitHelper sharedHelper] showLeaderboard:@"leaderboardID"];
     }
 	return self;
 }
@@ -40,9 +40,9 @@
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     
-    if ([Data isDead])
+    if ([Data didWin])
     {
-     //   [[ABGameKitHelper sharedHelper] reportScore:[Data getScore] forLeaderboard:@"leaderboardId"];
+    //    [[ABGameKitHelper sharedHelper] reportScore:[Data getScore] forLeaderboard:@"leaderboardId"];
         //if dead go to main menu
         [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[MainMenu scene]]];
     }

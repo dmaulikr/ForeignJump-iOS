@@ -24,6 +24,9 @@
 + (BOOL) isDead;
 + (void) setDead:(BOOL)dead_;
 
++ (BOOL) didWin;
++ (void) setWin:(BOOL)win_;
+
 + (id) initDestroyArray;
 + (NSMutableArray *) getToDestroyArray;
 + (void) destroyAllBodies;
@@ -33,5 +36,7 @@
 
 + (BOOL) isNotFirstTime;
 + (void) setNotFirstTime:(BOOL)state;
+
++ (NSInteger)randomIntBetween:(NSInteger)min and:(NSInteger)max;
 
 @end
