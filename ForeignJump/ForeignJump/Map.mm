@@ -86,11 +86,13 @@
                 {
                     Tile *object = [Tile tileWithSpriteFile:@"Map/acdcTile.png" andType:ACDC atPosition:ccp(i*25,size.height - j*25)];
                     [self addChild:object.texture];
+                    break;
                 }
                 case 'B':
                 {
                     Tile *object = [Tile tileWithSpriteFile:[Character mapSousTerre] andType:Bonus atPosition:ccp(i*25,size.height - j*25)];
                     [self addChild:object.texture];
+                    break;
                 }
 
                 default:

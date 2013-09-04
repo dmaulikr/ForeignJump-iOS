@@ -138,8 +138,7 @@ void ContactListener::activateACDC(BOOL isA)
 
 void ContactListener::activateBonus(BOOL isA)
 {
-    int random = [Data randomIntBetween:0 and:3];
-    
+//    int random = [Data randomIntBetween:0 and:3];
     
     if (isA) {
         [textureA setVisible:NO];
