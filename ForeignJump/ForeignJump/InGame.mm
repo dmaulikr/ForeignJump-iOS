@@ -227,8 +227,6 @@ HUD* hud;
 
 -(void) update: (ccTime) delta {
     
-    [Data addDistance:[hero position].x / 1000];
-    
     world->Step(delta, 10, 10);
     for(b2Body *b = world->GetBodyList(); b; b=b->GetNext()) {
         if (b->GetUserData() != NULL && b->GetType() == b2_dynamicBody)
@@ -262,7 +260,6 @@ HUD* hud;
         [self runAction:gameWonSequence];
     }
     
-//    NSString *str = [NSString stringWithFormat:@"%i", [[Data getToDestroyArray] count]];
     
     //clean bodies in the background with GCD
     dispatch_async(backgroundQueue, ^(void) {
@@ -271,6 +268,9 @@ HUD* hud;
             [Data destroyAllBodies];
         }
     });
+    
+    //NSLog(@"%f", [Data timeEleapsed]);
+    //NSString *str = [NSString stringWithFormat:@"%i", [[Data getToDestroyArray] count]];
     
 }
 

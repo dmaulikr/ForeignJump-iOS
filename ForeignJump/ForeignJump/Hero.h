@@ -13,6 +13,8 @@
     CGPoint position;
     b2Body *body;
     TypeCase type;
+    
+    BOOL isSuperman;
 }
 
 @property (nonatomic, readonly) CCSprite *texture;
@@ -35,6 +37,8 @@
 - (void) startAnimation;
 
 - (void) jump:(float)intensity;
+
+- (void) superMan;
 
 @end
 

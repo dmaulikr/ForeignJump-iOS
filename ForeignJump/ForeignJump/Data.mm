@@ -8,7 +8,7 @@
 #import "Data.h"
 #import "InGame.h"
 
-const int capacity = 1;
+const int capacity = 2;
 
 static int score;
 
@@ -21,6 +21,8 @@ static BOOL win;
 static NSMutableArray *toDestroyArray;
 
 static BOOL firstTime;
+
+static float timeBegin = [[NSDate date] timeIntervalSince1970];
 
 @implementation Data
 
@@ -134,6 +136,10 @@ static BOOL firstTime;
 
 + (void) setNotFirstTime:(BOOL)state {
     firstTime = !state;
+}
+
++ (float) timeEleapsed {
+    return [[NSDate date] timeIntervalSince1970] - timeBegin;
 }
 
 + (NSInteger)randomIntBetween:(NSInteger)min and:(NSInteger)max {

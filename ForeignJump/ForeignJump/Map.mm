@@ -43,6 +43,7 @@
     [[CCTextureCache sharedTextureCache] addImage: [Character mapSousTerre]];
     [[CCTextureCache sharedTextureCache] addImage: @"Map/acdcTile.png"];
     [[CCTextureCache sharedTextureCache] addImage: @"Map/rien.png"];
+    [[CCTextureCache sharedTextureCache] addImage: @"Map/superman.png"];
 
     
     for (NSString *line in [data componentsSeparatedByString:@"\n"])
@@ -91,6 +92,12 @@
                 case 'B':
                 {
                     Tile *object = [Tile tileWithSpriteFile:[Character mapSousTerre] andType:Bonus atPosition:ccp(i*25,size.height - j*25)];
+                    [self addChild:object.texture];
+                    break;
+                }
+                case 'S':
+                {
+                    Tile *object = [Tile tileWithSpriteFile:@"Map/superman.png" andType:Superman atPosition:ccp(i*25,size.height - j*25)];
                     [self addChild:object.texture];
                     break;
                 }

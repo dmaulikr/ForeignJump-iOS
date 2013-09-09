@@ -16,5 +16,6 @@ private:
     void killedByEnnemy (BOOL isA);
     void activateACDC(BOOL isA);
     void activateBonus(BOOL isA);
+    void activateSuperman(BOOL isA);
     void runWithDelay(SEL method);
 };

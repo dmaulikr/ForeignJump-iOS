@@ -37,6 +37,8 @@
 + (BOOL) isNotFirstTime;
 + (void) setNotFirstTime:(BOOL)state;
 
++ (float) timeEleapsed;
+
 + (NSInteger)randomIntBetween:(NSInteger)min and:(NSInteger)max;
 
 @end

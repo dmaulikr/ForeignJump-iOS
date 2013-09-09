@@ -7,6 +7,7 @@
 //
 #import "Hero.h"
 #import "InGame.h"
+#import "Data.h"
 
 #pragma mark - Constant declaration
 static const float densityconst = 1.85f;
@@ -20,6 +21,9 @@ static Hero *instance;
     CCAction *walkAction;
     float delta;
     b2World *world_;
+    float variableVelocity;
+    float supermanStartTime;
+    float supermanElapsedTime;
     
     CCSpriteBatchNode *spriteSheet;
 }
@@ -47,6 +51,8 @@ static Hero *instance;
         position = position_;
         
         animate = YES;
+        
+        isSuperman = NO;
         
         type = HeroType;
         
@@ -135,6 +141,7 @@ static Hero *instance;
     
     //set constant velocity
     body->SetLinearVelocity(b2Vec2(velocityx, 0));
+    variableVelocity = velocityx;
     
     //update position
     [self schedule:@selector(update:)];
@@ -151,8 +158,22 @@ static Hero *instance;
     
     //NSLog(@"%f , %f", vel.x, vel.y);
     
-    //set velocity.x to const value
-    body->SetLinearVelocity(b2Vec2(velocityx, vel.y));
+    variableVelocity += 0.0007;
+    
+    if (isSuperman)
+    {
+        body->SetLinearVelocity(b2Vec2(10, vel.y));
+        
+        if ((supermanElapsedTime = [Data timeEleapsed] - supermanStartTime) > 3)
+        {
+            isSuperman = NO;
+        }
+    }
+    else
+    {
+        //set velocity.x to const value
+        body->SetLinearVelocity(b2Vec2(variableVelocity, vel.y));
+    }
 
     position.x = body->GetPosition().x * PTM_RATIO;
     position.y = body->GetPosition().y * PTM_RATIO;
@@ -163,9 +184,14 @@ static Hero *instance;
         [self startAnimation];
     }
     
-    if (vel.x >= -0.41 && vel.x <= 0.001 && animate)
+    if (vel.x <= -0.1 && animate)
     {
         [self stopAnimation];
+    }
+    
+    if (vel.x >= -0.5)
+    {
+        [Data addDistance:[self position].x / 1000];
     }
 }
 
@@ -192,6 +218,11 @@ static Hero *instance;
 - (void) startAnimation {
     [texture resumeActions];
     animate = YES;
+}
+
+- (void) superMan {
+    isSuperman = YES;
+    supermanStartTime = [Data timeEleapsed];
 }
 
 #pragma mark - Dealloc

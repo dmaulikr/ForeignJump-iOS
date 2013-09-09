@@ -83,6 +83,16 @@ void ContactListener::BeginContact(b2Contact *contact)
     {
         activateBonus(YES);
     }
+    
+    // hero & superman
+    if (textureA.tag == HeroType && textureB.tag == Superman)
+    {
+        activateSuperman(NO);
+    }
+    else if (textureA.tag == Superman && textureB.tag == HeroType)
+    {
+        activateSuperman(YES);
+    }
 }
 
 void ContactListener::activateBomb(BOOL isA)
@@ -138,7 +148,7 @@ void ContactListener::activateACDC(BOOL isA)
 
 void ContactListener::activateBonus(BOOL isA)
 {
-//    int random = [Data randomIntBetween:0 and:3];
+    //    int random = [Data randomIntBetween:0 and:3];
     
     if (isA) {
         [textureA setVisible:NO];
@@ -148,6 +158,19 @@ void ContactListener::activateBonus(BOOL isA)
         [textureB setVisible:NO];
     }
 }
+
+void ContactListener::activateSuperman(BOOL isA)
+{
+    if (isA) {
+        [textureA setVisible:NO];
+    }
+    else
+    {
+        [textureB setVisible:NO];
+    }
+    [[Hero heroInstance] superMan];
+}
+
 
 void ContactListener::killedByEnnemy(BOOL isA)
 {

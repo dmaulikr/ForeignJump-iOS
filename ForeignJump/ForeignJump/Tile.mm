@@ -79,9 +79,15 @@ static const float coinRadius = 0.39f;
                 [self createPhysicsCoin];
                 break;
             }
-            
+            case Superman:
+            {
+                [self createPhysicsCoin];
+                break;
+            }
+                
             default:
             {
+                //null
                 break;
             }
         }
