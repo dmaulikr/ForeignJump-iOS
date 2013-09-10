@@ -56,6 +56,7 @@ GameOver *gameOver;
 GameWon *gameWon;
 MenuPause *menuPause;
 HUD* hud;
+CCParticleSystemQuad *snow;
 
 #pragma mark - synthesize
 @synthesize hero;
@@ -81,6 +82,14 @@ HUD* hud;
     menuPause = [MenuPause node];
     [menuPause setVisible:NO];
     [scene addChild:menuPause z: 4];
+    
+    if ([Character type] == Roumain) {
+        //snow
+        snow = [CCParticleSystemQuad particleWithFile:@"Particle/snow.plist"];
+        [snow setPosition: ccp(200,800)];
+        [snow resetSystem];
+        [scene addChild:snow z:0];
+    }
     
     thisScene = scene;
     
