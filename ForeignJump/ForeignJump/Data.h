@@ -39,6 +39,8 @@
 
 + (float) timeEleapsed;
 
-+ (NSInteger)randomIntBetween:(NSInteger)min and:(NSInteger)max;
++ (int)randomIntBetween:(int)minValue and:(int)maxValue;
++ (int) getBonus;
++ (void) setBonus:(int)number;
 
 @end

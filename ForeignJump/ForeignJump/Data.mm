@@ -24,6 +24,8 @@ static BOOL firstTime;
 
 static float timeBegin = [[NSDate date] timeIntervalSince1970];
 
+static int bonus;
+
 @implementation Data
 
 + (void)resetData {
@@ -36,6 +38,10 @@ static float timeBegin = [[NSDate date] timeIntervalSince1970];
     win = NO;
     
     [toDestroyArray release];
+    
+    timeBegin = 0;
+    
+    bonus = 0;
 }
 
 #pragma mark - Score
@@ -150,8 +156,17 @@ static float timeBegin = [[NSDate date] timeIntervalSince1970];
     return [[NSDate date] timeIntervalSince1970] - timeBegin;
 }
 
-+ (NSInteger)randomIntBetween:(NSInteger)min and:(NSInteger)max {
-    return (NSInteger)(min + arc4random_uniform(max + 1 - min));
++ (int)randomIntBetween:(int)minValue and:(int)maxValue {
+    return (int)(minValue + arc4random_uniform(maxValue + 1 - minValue));
 }
+
++ (int) getBonus {
+    return bonus;
+}
+
++ (void) setBonus:(int)number {
+    bonus = number;
+}
+
 
 @end

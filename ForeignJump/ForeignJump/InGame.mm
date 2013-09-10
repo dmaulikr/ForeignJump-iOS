@@ -13,6 +13,7 @@
 #import "Character.h"
 #import "Ennemy.h"
 #import "MenuPause.h"
+#import "MenuOptions.h"
 #import "GameOver.h"
 #import "GameWon.h"
 #import "Data.h"
@@ -130,6 +131,8 @@ HUD* hud;
         worldWidth = worldSize.width;
         
         [Data setDistance:0];
+        
+        [Data setBonus:0];
         
         //enable touch
         [self setTouchEnabled:YES];
@@ -353,11 +356,17 @@ HUD* hud;
     
     startTouch = [touch locationInView: [touch view]];
     
-    if ([Data isDead])
-    {
-       [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[MainMenu scene]]];
+    if ([Data isDead]) {
+        if ([Data getBonus] > 0) {
+            NSLog(@"Bonus : %d", [Data getBonus]);
+        }
+        else
+        {
+            NSLog(@"No bonus, sorry");
+        }
+        [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[MainMenu scene]]];
+        //NSLog(@"StartY : %f", startTouch.y);
     }
-    //NSLog(@"StartY : %f", startTouch.y);
     
     return YES;
 }

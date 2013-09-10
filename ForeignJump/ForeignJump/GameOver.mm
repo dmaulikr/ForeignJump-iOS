@@ -8,6 +8,7 @@
 
 #import "GameOver.h"
 #import "MainMenu.h"
+#import "MenuOptions.h"
 #import "Data.h"
 #import "ABGameKitHelper.h"
 
@@ -32,21 +33,4 @@
     }
 	return self;
 }
-
--(void) registerWithTouchDispatcher
-{
-	[[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
-}
-
-- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    
-    if ([Data isDead])
-    {
-     //   [[ABGameKitHelper sharedHelper] reportScore:[Data getScore] forLeaderboard:@"leaderboardId"];
-        //if dead go to main menu
-        [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0f scene:[MainMenu scene]]];
-    }
-    return YES;
-}
-
 @end
