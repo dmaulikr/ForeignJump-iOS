@@ -118,7 +118,15 @@ static float timeBegin = [[NSDate date] timeIntervalSince1970];
 }
 
 + (void) addBodyToDestroy:(b2Body *)body {
-    [toDestroyArray addObject:[NSValue valueWithPointer:body]];
+    id userData = (id)body->GetUserData();
+    CCSprite *dataSprite = (CCSprite *)userData;
+    
+    //setting the user data to 999999 so that it doesn't add into the array again
+    if (dataSprite.tag != 999999) {
+        dataSprite.tag = 999999;
+        body->SetUserData(dataSprite);
+        [toDestroyArray addObject:[NSValue valueWithPointer:body]];
+    }
 }
 
 + (BOOL) isDestroyArrayEmpty {
