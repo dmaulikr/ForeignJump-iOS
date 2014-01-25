@@ -53,7 +53,6 @@
         [self addChild:menu];
         //end menu
         
-        
         //volume slider
         volumeSlider = [[UISlider alloc] initWithFrame:CGRectMake(size.width/2 - 75, size.height/2 + 100, 150, 50)];
         [volumeSlider setMaximumValue:100];
@@ -62,7 +61,6 @@
         
         [[[CCDirector sharedDirector] view] addSubview:volumeSlider];
         [volumeSlider setHidden:YES];
-        
     }
 	return self;
 }

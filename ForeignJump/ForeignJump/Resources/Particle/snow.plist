@@ -39,9 +39,9 @@
 	<key>gravityy</key>
 	<real>0</real>
 	<key>maxParticles</key>
-	<real>572</real>
+	<integer>900</integer>
 	<key>maxRadius</key>
-	<real>100</real>
+	<integer>10</integer>
 	<key>maxRadiusVariance</key>
 	<real>0</real>
 	<key>minRadius</key>
